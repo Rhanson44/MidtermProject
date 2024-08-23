@@ -1,4 +1,4 @@
-package com.skilldistillery.nationalparks;
+package com.skilldistillery.nationalparks.entities;
 
 import static org.junit.jupiter.api.Assertions.*;
 
