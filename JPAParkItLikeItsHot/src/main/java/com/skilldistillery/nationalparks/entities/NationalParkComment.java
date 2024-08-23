@@ -1,6 +1,7 @@
 package com.skilldistillery.nationalparks.entities;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
@@ -9,6 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -31,6 +33,10 @@ public class NationalParkComment {
 	@ManyToOne
 	@JoinColumn(name="national_park_id")
 	private NationalPark nationalParks;
+	
+	@ManyToMany(mappedBy="user")
+	private List<User> users;
+	
 	
 
 	public NationalParkComment() {

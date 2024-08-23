@@ -1,6 +1,7 @@
 package com.skilldistillery.nationalparks.entities;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -8,7 +9,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -46,7 +50,18 @@ public class PointOfInterest {
     @JoinColumn(name="national_park_id")
 	private NationalPark nationalParks;
     
+    @ManyToOne
+    @JoinColumn(name="user_id")
+   	private User user;
     
+    @ManyToMany
+    @JoinTable(name="point_of_interest_has_type",
+	joinColumns=@JoinColumn(name="point_of_interest_id"),
+	inverseJoinColumns=@JoinColumn(name="point_of_interest_type_id"))
+	private List<PointOfInterestType> interestTypes;
+    
+    @OneToMany(mappedBy="pointOfInterestComment")
+	private List<PointOfInterestComment> poiComments;
     
 	
 
