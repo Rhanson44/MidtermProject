@@ -26,7 +26,25 @@ CREATE TABLE IF NOT EXISTS `national_park` (
   `description` TEXT NULL,
   `state` VARCHAR(100) NULL,
   `year_established` INT NULL,
-  `img_url` VARCHAR(2000) NULL,
+  `image_url` VARCHAR(2000) NULL,
+  `latitude` DOUBLE NULL,
+  `longitude` DOUBLE NULL,
+  `price_of_entry` DECIMAL(8,2) NULL,
+  `website_url` VARCHAR(200) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `flora_type`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `flora_type` ;
+
+CREATE TABLE IF NOT EXISTS `flora_type` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(100) NULL,
+  `description` VARCHAR(250) NULL,
+  `image_url` VARCHAR(2000) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -39,9 +57,16 @@ DROP TABLE IF EXISTS `flora` ;
 CREATE TABLE IF NOT EXISTS `flora` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
-  `type` VARCHAR(100) NULL,
   `species` VARCHAR(45) NULL,
-  PRIMARY KEY (`id`))
+  `flora_type_id` INT NOT NULL,
+  `image_url` VARCHAR(2000) NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_flora_flora_type1_idx` (`flora_type_id` ASC) VISIBLE,
+  CONSTRAINT `fk_flora_flora_type1`
+    FOREIGN KEY (`flora_type_id`)
+    REFERENCES `flora_type` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -70,6 +95,20 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `animal_type`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `animal_type` ;
+
+CREATE TABLE IF NOT EXISTS `animal_type` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(100) NULL,
+  `description` VARCHAR(250) NULL,
+  `image_url` VARCHAR(2000) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `animal`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `animal` ;
@@ -77,9 +116,16 @@ DROP TABLE IF EXISTS `animal` ;
 CREATE TABLE IF NOT EXISTS `animal` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
-  `type` VARCHAR(45) NULL,
   `endangered` TINYINT NULL,
-  PRIMARY KEY (`id`))
+  `animal_type_id` INT NOT NULL,
+  `image_url` VARCHAR(2000) NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_animal_animal_type1_idx` (`animal_type_id` ASC) VISIBLE,
+  CONSTRAINT `fk_animal_animal_type1`
+    FOREIGN KEY (`animal_type_id`)
+    REFERENCES `animal_type` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -115,8 +161,12 @@ DROP TABLE IF EXISTS `mountain` ;
 CREATE TABLE IF NOT EXISTS `mountain` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
-  `elevation` INT NULL,
+  `elevation_in_meters` INT NULL,
   `average_snowfall` VARCHAR(45) NULL,
+  `latitude` DOUBLE NULL,
+  `longitude` DOUBLE NULL,
+  `image_url` VARCHAR(2000) NULL,
+  `description` TEXT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -146,84 +196,6 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `points_of_interest`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `points_of_interest` ;
-
-CREATE TABLE IF NOT EXISTS `points_of_interest` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(100) NULL,
-  `type` VARCHAR(100) NULL,
-  `longitude` INT NULL,
-  `latitude` INT NULL,
-  `img_url` VARCHAR(2000) NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `national_park_has_points_of_interest`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `national_park_has_points_of_interest` ;
-
-CREATE TABLE IF NOT EXISTS `national_park_has_points_of_interest` (
-  `national_park_id` INT NOT NULL,
-  `points_of_interest_id` INT NOT NULL,
-  PRIMARY KEY (`national_park_id`, `points_of_interest_id`),
-  INDEX `fk_national_park_has_points_of_interest_points_of_interest1_idx` (`points_of_interest_id` ASC) VISIBLE,
-  INDEX `fk_national_park_has_points_of_interest_national_park1_idx` (`national_park_id` ASC) VISIBLE,
-  CONSTRAINT `fk_national_park_has_points_of_interest_national_park1`
-    FOREIGN KEY (`national_park_id`)
-    REFERENCES `national_park` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_national_park_has_points_of_interest_points_of_interest1`
-    FOREIGN KEY (`points_of_interest_id`)
-    REFERENCES `points_of_interest` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `trails`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `trails` ;
-
-CREATE TABLE IF NOT EXISTS `trails` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `national_park_id` INT NOT NULL,
-  `name` VARCHAR(100) NULL,
-  `trail_length` INT NULL,
-  `trail_difficulty` VARCHAR(45) NULL,
-  `trail_map` VARCHAR(2000) NULL,
-  PRIMARY KEY (`id`, `national_park_id`),
-  INDEX `fk_trails_national_park1_idx` (`national_park_id` ASC) VISIBLE,
-  CONSTRAINT `fk_trails_national_park1`
-    FOREIGN KEY (`national_park_id`)
-    REFERENCES `national_park` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `login`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `login` ;
-
-CREATE TABLE IF NOT EXISTS `login` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `username` VARCHAR(45) NULL,
-  `password` VARCHAR(45) NULL,
-  `active` TINYINT NULL,
-  `role` VARCHAR(45) NULL,
-  `first_name` VARCHAR(45) NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `user`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `user` ;
@@ -238,6 +210,222 @@ CREATE TABLE IF NOT EXISTS `user` (
   UNIQUE INDEX `username_UNIQUE` (`username` ASC) VISIBLE)
 ENGINE = InnoDB;
 
+
+-- -----------------------------------------------------
+-- Table `point_of_interest`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `point_of_interest` ;
+
+CREATE TABLE IF NOT EXISTS `point_of_interest` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(100) NULL,
+  `longitude` DOUBLE NULL,
+  `latitude` DOUBLE NULL,
+  `image_url` VARCHAR(2000) NULL,
+  `national_park_id` INT NOT NULL,
+  `description` TEXT NULL,
+  `user_id` INT NOT NULL,
+  `create_date` DATETIME NULL,
+  `last_update` DATETIME NULL,
+  `enabled` TINYINT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_point_of_interest_national_park1_idx` (`national_park_id` ASC) VISIBLE,
+  INDEX `fk_point_of_interest_user1_idx` (`user_id` ASC) VISIBLE,
+  CONSTRAINT `fk_point_of_interest_national_park1`
+    FOREIGN KEY (`national_park_id`)
+    REFERENCES `national_park` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_point_of_interest_user1`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `trail`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `trail` ;
+
+CREATE TABLE IF NOT EXISTS `trail` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(100) NULL,
+  `length_in_miles` INT NULL,
+  `trail_difficulty` INT NULL,
+  `trail_map` VARCHAR(2000) NULL,
+  `national_park_id` INT NOT NULL,
+  `user_id` INT NOT NULL,
+  `description` TEXT NULL,
+  `longitude` DOUBLE NULL,
+  `latitude` DOUBLE NULL,
+  `create_date` DATETIME NULL,
+  `last_update` DATETIME NULL,
+  `enabled` TINYINT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_trails_national_park1_idx` (`national_park_id` ASC) VISIBLE,
+  INDEX `fk_trail_user1_idx` (`user_id` ASC) VISIBLE,
+  CONSTRAINT `fk_trails_national_park1`
+    FOREIGN KEY (`national_park_id`)
+    REFERENCES `national_park` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_trail_user1`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `tour`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `tour` ;
+
+CREATE TABLE IF NOT EXISTS `tour` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(100) NOT NULL,
+  `description` TEXT NULL,
+  `length_in_hours` INT NULL,
+  `cost` DECIMAL(8,2) NULL,
+  `national_park_id` INT NOT NULL,
+  `guided` TINYINT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_tour_national_park1_idx` (`national_park_id` ASC) VISIBLE,
+  CONSTRAINT `fk_tour_national_park1`
+    FOREIGN KEY (`national_park_id`)
+    REFERENCES `national_park` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `trail_comment`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `trail_comment` ;
+
+CREATE TABLE IF NOT EXISTS `trail_comment` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `create_date` DATETIME NULL,
+  `last_update` DATETIME NULL,
+  `content` TEXT NOT NULL,
+  `image_url` VARCHAR(2000) NULL,
+  `user_id` INT NOT NULL,
+  `trail_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_trail_comment_user1_idx` (`user_id` ASC) VISIBLE,
+  INDEX `fk_trail_comment_trail1_idx` (`trail_id` ASC) VISIBLE,
+  CONSTRAINT `fk_trail_comment_user1`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_trail_comment_trail1`
+    FOREIGN KEY (`trail_id`)
+    REFERENCES `trail` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `point_of_interest_type`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `point_of_interest_type` ;
+
+CREATE TABLE IF NOT EXISTS `point_of_interest_type` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(100) NULL,
+  `description` TEXT NULL,
+  `image_url` VARCHAR(2000) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `point_of_interest_has_type`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `point_of_interest_has_type` ;
+
+CREATE TABLE IF NOT EXISTS `point_of_interest_has_type` (
+  `point_of_interest_type_id` INT NOT NULL,
+  `point_of_interest_id` INT NOT NULL,
+  PRIMARY KEY (`point_of_interest_type_id`, `point_of_interest_id`),
+  INDEX `fk_point_of_interest_type_has_point_of_interest_point_of_in_idx` (`point_of_interest_id` ASC) VISIBLE,
+  INDEX `fk_point_of_interest_type_has_point_of_interest_point_of_in_idx1` (`point_of_interest_type_id` ASC) VISIBLE,
+  CONSTRAINT `fk_point_of_interest_type_has_point_of_interest_point_of_inte1`
+    FOREIGN KEY (`point_of_interest_type_id`)
+    REFERENCES `point_of_interest_type` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_point_of_interest_type_has_point_of_interest_point_of_inte2`
+    FOREIGN KEY (`point_of_interest_id`)
+    REFERENCES `point_of_interest` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `poi_comment`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `poi_comment` ;
+
+CREATE TABLE IF NOT EXISTS `poi_comment` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `create_date` DATETIME NULL,
+  `last_update` DATETIME NULL,
+  `content` TEXT NOT NULL,
+  `image_url` VARCHAR(2000) NULL,
+  `user_id` INT NOT NULL,
+  `point_of_interest_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_trail_comment_user1_idx` (`user_id` ASC) VISIBLE,
+  INDEX `fk_poi_comment_point_of_interest1_idx` (`point_of_interest_id` ASC) VISIBLE,
+  CONSTRAINT `fk_trail_comment_user10`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_poi_comment_point_of_interest1`
+    FOREIGN KEY (`point_of_interest_id`)
+    REFERENCES `point_of_interest` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `national_park_comment`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `national_park_comment` ;
+
+CREATE TABLE IF NOT EXISTS `national_park_comment` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `create_date` DATETIME NULL,
+  `last_update` DATETIME NULL,
+  `content` TEXT NOT NULL,
+  `image_url` VARCHAR(2000) NULL,
+  `user_id` INT NOT NULL,
+  `national_park_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_trail_comment_user1_idx` (`user_id` ASC) VISIBLE,
+  INDEX `fk_national_park_comment_national_park1_idx` (`national_park_id` ASC) VISIBLE,
+  CONSTRAINT `fk_trail_comment_user100`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_national_park_comment_national_park1`
+    FOREIGN KEY (`national_park_id`)
+    REFERENCES `national_park` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
 SET SQL_MODE = '';
 DROP USER IF EXISTS nationalparksuser@localhost;
 SET SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
@@ -250,20 +438,31 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 -- -----------------------------------------------------
+-- Data for table `flora_type`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `nationalparksdb`;
+INSERT INTO `flora_type` (`id`, `name`, `description`, `image_url`) VALUES (1, 'Tree', NULL, NULL);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
 -- Data for table `flora`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `nationalparksdb`;
-INSERT INTO `flora` (`id`, `name`, `type`, `species`) VALUES (1, 'American Black Bear', 'Mammal', '0');
-INSERT INTO `flora` (`id`, `name`, `type`, `species`) VALUES (2, 'California Condor', 'Bird', '1');
-INSERT INTO `flora` (`id`, `name`, `type`, `species`) VALUES (3, 'North American Elk', 'Mammal', '0');
-INSERT INTO `flora` (`id`, `name`, `type`, `species`) VALUES (4, 'Mountain Lion', 'Mammal', '0');
-INSERT INTO `flora` (`id`, `name`, `type`, `species`) VALUES (5, 'Southern Appalachian Salamander', 'Amphibian', '0');
-INSERT INTO `flora` (`id`, `name`, `type`, `species`) VALUES (6, 'North Atlantic Right Whale', 'Mammal', '0');
-INSERT INTO `flora` (`id`, `name`, `type`, `species`) VALUES (7, 'American Bison', 'Mammal', '0');
-INSERT INTO `flora` (`id`, `name`, `type`, `species`) VALUES (8, 'Northern Spotted Owl', 'Bird', '1');
-INSERT INTO `flora` (`id`, `name`, `type`, `species`) VALUES (9, 'Moose', 'Mammal', '0');
-INSERT INTO `flora` (`id`, `name`, `type`, `species`) VALUES (10, 'Coyote', ' Mammal', '0');
+INSERT INTO `flora` (`id`, `name`, `species`, `flora_type_id`, `image_url`) VALUES (1, 'Maple Tree', '0', 1, NULL);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `animal_type`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `nationalparksdb`;
+INSERT INTO `animal_type` (`id`, `name`, `description`, `image_url`) VALUES (1, 'Mammal', NULL, NULL);
 
 COMMIT;
 
@@ -273,18 +472,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `nationalparksdb`;
-INSERT INTO `animal` (`id`, `name`, `type`, `endangered`) VALUES (1, 'American Black Bear', 'Mammal', 0);
-INSERT INTO `animal` (`id`, `name`, `type`, `endangered`) VALUES (2, 'California Condor', 'Bird', 1);
-INSERT INTO `animal` (`id`, `name`, `type`, `endangered`) VALUES (3, 'North American Elk', 'Mammal', 0);
-INSERT INTO `animal` (`id`, `name`, `type`, `endangered`) VALUES (4, 'Mountain Lion', 'Mammal', 0);
-INSERT INTO `animal` (`id`, `name`, `type`, `endangered`) VALUES (5, 'Southern Appalachian Salamander', 'Amphibian', 0);
-INSERT INTO `animal` (`id`, `name`, `type`, `endangered`) VALUES (6, 'North Atlantic Right Whale', 'Mammal', 0);
-INSERT INTO `animal` (`id`, `name`, `type`, `endangered`) VALUES (7, 'American Bison', 'Mammal', 0);
-INSERT INTO `animal` (`id`, `name`, `type`, `endangered`) VALUES (8, 'Northern Spotted Owl', 'Bird', 1);
-INSERT INTO `animal` (`id`, `name`, `type`, `endangered`) VALUES (9, 'Moose', 'Mammal', 0);
-INSERT INTO `animal` (`id`, `name`, `type`, `endangered`) VALUES (10, 'Coyote', ' Mammal', 0);
-INSERT INTO `animal` (`id`, `name`, `type`, `endangered`) VALUES (11, 'Bighorn Sheep', 'Mammal', 0);
-INSERT INTO `animal` (`id`, `name`, `type`, `endangered`) VALUES (12, 'Mule Deer', 'Mammal', 0);
+INSERT INTO `animal` (`id`, `name`, `endangered`, `animal_type_id`, `image_url`) VALUES (1, 'American Black Bear', 0, 1, NULL);
 
 COMMIT;
 
