@@ -9,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -37,6 +38,19 @@ public class NationalPark {
 	
 	@ManyToMany(mappedBy="floraType")
 	private List<FloraType> floraTypes;
+	
+	@ManyToMany(mappedBy="mountain")
+	private List<Mountain> mountains;
+	
+	@OneToMany(mappedBy="pointOfInterest")
+	private List<PointOfInterest> interests;
+	
+	@OneToMany(mappedBy="trail")
+	private List<Trail> trails;
+	
+	@OneToMany(mappedBy="nationalParkComment")
+	private List<NationalParkComment> parkComments;
+	
  	
 	public NationalPark() {
 		super();

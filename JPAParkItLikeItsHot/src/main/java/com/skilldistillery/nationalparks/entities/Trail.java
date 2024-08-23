@@ -8,6 +8,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Trail {
@@ -40,6 +42,14 @@ public class Trail {
 	
 	@Column(name="last_update")
 	private LocalDateTime lastUpdate;
+	
+	@ManyToOne
+	@JoinColumn(name="national_park_id")
+	private NationalPark nationalParks;
+	
+
+	
+	
 	
 	private boolean enabled;
 
