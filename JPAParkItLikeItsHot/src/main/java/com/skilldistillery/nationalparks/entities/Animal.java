@@ -1,11 +1,16 @@
 package com.skilldistillery.nationalparks.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 
 public class Animal {
 	@Id
@@ -16,6 +21,17 @@ public class Animal {
 	private Boolean	endangered;
 	@Column(name = "image_url")
 	private String imageUrl;
+	
+	@ManyToMany
+	@JoinTable(name="national_park_has_animal",
+				joinColumns=@JoinColumn(name="animal_id"),
+				inverseJoinColumns=@JoinColumn(name="national_park_id"))
+	private List<NationalPark> nationalParks;
+	
+	@ManyToOne
+	@JoinColumn(name="animal_type_id")
+	private AnimalType animalType;
+	
 	
 	public Animal() {
 		super();

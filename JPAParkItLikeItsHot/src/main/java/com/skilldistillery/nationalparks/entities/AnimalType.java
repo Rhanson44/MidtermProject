@@ -1,11 +1,13 @@
 package com.skilldistillery.nationalparks.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 public class AnimalType {
 	@Id
@@ -16,6 +18,9 @@ public class AnimalType {
 	private String description;
 	@Column(name = "image_url")
 	private String imageUrl;
+	
+	@OneToMany(mappedBy="animalTypes")
+	private List<Animal> animals;
 	
 	public AnimalType() {
 		super();
