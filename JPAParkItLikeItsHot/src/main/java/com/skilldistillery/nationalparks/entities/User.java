@@ -37,7 +37,10 @@ public class User {
 	
 	@OneToMany(mappedBy="pointOfInterest")
 	private List<PointOfInterest> interests;
-
+	
+	@OneToMany(mappedBy="trail")
+	private List<Trail> trails;
+	
 	public int getId() {
 		return id;
 	}
