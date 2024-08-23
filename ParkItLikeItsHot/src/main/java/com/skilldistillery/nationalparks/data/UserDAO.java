@@ -1,5 +1,8 @@
 package com.skilldistillery.nationalparks.data;
 
-public interface UserDAO {
+import com.skilldistillery.nationalparks.entities.User;
 
+public interface UserDAO {
+	User authenticateUser(String username, String password);
+	
 }
