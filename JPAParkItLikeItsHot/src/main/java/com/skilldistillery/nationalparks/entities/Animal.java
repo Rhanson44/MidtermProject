@@ -68,6 +68,23 @@ public class Animal {
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
 	}
+	
+
+	public List<NationalPark> getNationalParks() {
+		return nationalParks;
+	}
+
+	public void setNationalParks(List<NationalPark> nationalParks) {
+		this.nationalParks = nationalParks;
+	}
+
+	public AnimalType getAnimalType() {
+		return animalType;
+	}
+
+	public void setAnimalType(AnimalType animalType) {
+		this.animalType = animalType;
+	}
 
 	@Override
 	public int hashCode() {
@@ -88,7 +105,8 @@ public class Animal {
 
 	@Override
 	public String toString() {
-		return "Animal [id=" + id + ", name=" + name + ", endangered=" + endangered + ", imageUrl=" + imageUrl + "]";
+		return "Animal [id=" + id + ", name=" + name + ", endangered=" + endangered + ", imageUrl=" + imageUrl
+				+ ", nationalParks=" + nationalParks + ", animalType=" + animalType + "]";
 	}
 
 	
