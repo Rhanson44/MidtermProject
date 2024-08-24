@@ -111,6 +111,22 @@ public class Mountain {
 		this.description = description;
 	}
 
+	public int getElevationInMeters() {
+		return elevationInMeters;
+	}
+
+	public void setElevationInMeters(int elevationInMeters) {
+		this.elevationInMeters = elevationInMeters;
+	}
+
+	public List<NationalPark> getNationalParks() {
+		return nationalParks;
+	}
+
+	public void setNationalParks(List<NationalPark> nationalParks) {
+		this.nationalParks = nationalParks;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -130,26 +146,12 @@ public class Mountain {
 
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Mountain [id=");
-		builder.append(id);
-		builder.append(", name=");
-		builder.append(name);
-		builder.append(", elevation=");
-		builder.append(elevationInMeters);
-		builder.append(", averageSnowfall=");
-		builder.append(averageSnowfall);
-		builder.append(", latitude=");
-		builder.append(latitude);
-		builder.append(", longitude=");
-		builder.append(longitude);
-		builder.append(", imageUrl=");
-		builder.append(imageUrl);
-		builder.append(", description=");
-		builder.append(description);
-		builder.append("]");
-		return builder.toString();
+		return "Mountain [id=" + id + ", name=" + name + ", elevationInMeters=" + elevationInMeters
+				+ ", averageSnowfall=" + averageSnowfall + ", latitude=" + latitude + ", longitude=" + longitude
+				+ ", imageUrl=" + imageUrl + ", description=" + description + ", nationalParks=" + nationalParks + "]";
 	}
+
+	
 
 	
 }

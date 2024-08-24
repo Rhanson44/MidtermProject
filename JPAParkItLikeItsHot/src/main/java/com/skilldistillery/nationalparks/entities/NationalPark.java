@@ -110,6 +110,42 @@ public class NationalPark {
 	public void setWebsiteUrl(String websiteUrl) {
 		this.websiteUrl = websiteUrl;
 	}
+	public List<Animal> getAnimals() {
+		return animals;
+	}
+	public void setAnimals(List<Animal> animals) {
+		this.animals = animals;
+	}
+	public List<FloraType> getFloraTypes() {
+		return floraTypes;
+	}
+	public void setFloraTypes(List<FloraType> floraTypes) {
+		this.floraTypes = floraTypes;
+	}
+	public List<Mountain> getMountains() {
+		return mountains;
+	}
+	public void setMountains(List<Mountain> mountains) {
+		this.mountains = mountains;
+	}
+	public List<PointOfInterest> getInterests() {
+		return interests;
+	}
+	public void setInterests(List<PointOfInterest> interests) {
+		this.interests = interests;
+	}
+	public List<Trail> getTrails() {
+		return trails;
+	}
+	public void setTrails(List<Trail> trails) {
+		this.trails = trails;
+	}
+	public List<NationalParkComment> getParkComments() {
+		return parkComments;
+	}
+	public void setParkComments(List<NationalParkComment> parkComments) {
+		this.parkComments = parkComments;
+	}
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -125,11 +161,14 @@ public class NationalPark {
 		NationalPark other = (NationalPark) obj;
 		return id == other.id;
 	}
+	
 	@Override
 	public String toString() {
 		return "NationalPark [id=" + id + ", description=" + description + ", state=" + state + ", year=" + year
 				+ ", imageUrl=" + imageUrl + ", latitude=" + latitude + ", longitutde=" + longitutde + ", price="
-				+ price + ", websiteUrl=" + websiteUrl + "]";
+				+ price + ", websiteUrl=" + websiteUrl + ", animals=" + animals + ", floraTypes=" + floraTypes
+				+ ", mountains=" + mountains + ", interests=" + interests + ", trails=" + trails + ", parkComments="
+				+ parkComments + "]";
 	}
 	
 }

@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -32,70 +34,14 @@ public class PointOfInterestComment {
     @Column(name="user_id")
     private int userId;
 
-    @Column(name="point_of_interest_id")
-    private int pointOfInterestId;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public LocalDateTime getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(LocalDateTime createDate) {
-        this.createDate = createDate;
-    }
-
-    public LocalDateTime getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(LocalDateTime lastUpdate) {
-        this.lastUpdate = lastUpdate;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public int getPointOfInterestId() {
-        return pointOfInterestId;
-    }
-
-    public void setPointOfInterestId(int pointOfInterestId) {
-        this.pointOfInterestId = pointOfInterestId;
-    }
-
+    @ManyToOne
+    @JoinColumn(name="point_of_interest_id")
+   	private PointOfInterest interests;
 
     @Override
-    public String toString() {
-        return "PointOfInterestComment [id=" + id + ", createDate=" + createDate + ", lastUpdate=" + lastUpdate 
-            + ", content=" + content + ", imageUrl=" + imageUrl + ", userId=" + userId 
-            + ", pointOfInterestId=" + pointOfInterestId + "]";
-    }
+	public String toString() {
+		return "PointOfInterestComment [id=" + id + ", createDate=" + createDate + ", lastUpdate=" + lastUpdate
+				+ ", content=" + content + ", imageUrl=" + imageUrl + ", userId=" + userId + ", interests=" + interests
+				+ "]";
+	}
 }

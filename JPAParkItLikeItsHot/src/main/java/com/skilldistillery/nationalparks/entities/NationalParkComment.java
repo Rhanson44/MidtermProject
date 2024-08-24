@@ -1,6 +1,7 @@
 package com.skilldistillery.nationalparks.entities;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
@@ -9,6 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -31,6 +33,10 @@ public class NationalParkComment {
 	@ManyToOne
 	@JoinColumn(name="national_park_id")
 	private NationalPark nationalParks;
+	
+	@ManyToMany(mappedBy="user")
+	private List<User> users;
+	
 	
 
 	public NationalParkComment() {
@@ -67,6 +73,18 @@ public class NationalParkComment {
 	public void setLastUpdate(LocalDateTime lastUpdate) {
 		this.lastUpdate = lastUpdate;
 	}
+	public NationalPark getNationalParks() {
+		return nationalParks;
+	}
+	public void setNationalParks(NationalPark nationalParks) {
+		this.nationalParks = nationalParks;
+	}
+	public List<User> getUsers() {
+		return users;
+	}
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -85,7 +103,9 @@ public class NationalParkComment {
 	@Override
 	public String toString() {
 		return "NationalParkComment [id=" + id + ", content=" + content + ", imageUrl=" + imageUrl + ", createDate="
-				+ createDate + ", lastUpdate=" + lastUpdate + "]";
+				+ createDate + ", lastUpdate=" + lastUpdate + ", nationalParks=" + nationalParks + ", users=" + users
+				+ "]";
 	}
+	
 	
 }

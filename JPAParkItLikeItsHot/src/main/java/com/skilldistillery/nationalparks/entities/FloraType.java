@@ -52,6 +52,8 @@ public class FloraType {
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
 	}
+	
+	
 
 	@Override
 	public int hashCode() {
@@ -75,6 +77,8 @@ public class FloraType {
 		return "FloraType [id=" + id + ", name=" + name + ", description=" + description + ", imageUrl=" + imageUrl
 				+ "]";
 	}
+
+	
 
 	
 }

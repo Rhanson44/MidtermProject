@@ -73,6 +73,23 @@ public class Flora {
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
 	}
+	
+
+	public List<NationalPark> getNationalParks() {
+		return nationalParks;
+	}
+
+	public void setNationalParks(List<NationalPark> nationalParks) {
+		this.nationalParks = nationalParks;
+	}
+
+	public FloraType getFloraType() {
+		return floraType;
+	}
+
+	public void setFloraType(FloraType floraType) {
+		this.floraType = floraType;
+	}
 
 	@Override
 	public int hashCode() {
@@ -93,8 +110,11 @@ public class Flora {
 
 	@Override
 	public String toString() {
-		return "Flora [id=" + id + ", name=" + name + ", species=" + species + ", imageUrl=" + imageUrl + "]";
+		return "Flora [id=" + id + ", name=" + name + ", species=" + species + ", imageUrl=" + imageUrl
+				+ ", nationalParks=" + nationalParks + ", floraType=" + floraType + "]";
 	}
+
+	
 	
 	
 	
