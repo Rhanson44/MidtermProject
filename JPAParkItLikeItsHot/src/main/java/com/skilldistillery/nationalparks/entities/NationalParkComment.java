@@ -73,6 +73,18 @@ public class NationalParkComment {
 	public void setLastUpdate(LocalDateTime lastUpdate) {
 		this.lastUpdate = lastUpdate;
 	}
+	public NationalPark getNationalParks() {
+		return nationalParks;
+	}
+	public void setNationalParks(NationalPark nationalParks) {
+		this.nationalParks = nationalParks;
+	}
+	public List<User> getUsers() {
+		return users;
+	}
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -91,7 +103,9 @@ public class NationalParkComment {
 	@Override
 	public String toString() {
 		return "NationalParkComment [id=" + id + ", content=" + content + ", imageUrl=" + imageUrl + ", createDate="
-				+ createDate + ", lastUpdate=" + lastUpdate + "]";
+				+ createDate + ", lastUpdate=" + lastUpdate + ", nationalParks=" + nationalParks + ", users=" + users
+				+ "]";
 	}
+	
 	
 }
