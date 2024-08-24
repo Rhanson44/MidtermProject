@@ -94,6 +94,14 @@ public class TrailComment {
 		return id == other.id;
 	}
 
+	public Trail getTrail() {
+		return trail;
+	}
+
+	public void setTrail(Trail trail) {
+		this.trail = trail;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -107,6 +115,8 @@ public class TrailComment {
 		builder.append(content);
 		builder.append(", imageUrl=");
 		builder.append(imageUrl);
+		builder.append(", trail=");
+		builder.append(trail);
 		builder.append("]");
 		return builder.toString();
 	}

@@ -45,6 +45,14 @@ public class Trail {
 	@Column(name="last_update")
 	private LocalDateTime lastUpdate;
 	
+	public NationalPark getNationalParks() {
+		return nationalParks;
+	}
+
+	public void setNationalParks(NationalPark nationalParks) {
+		this.nationalParks = nationalParks;
+	}
+
 	@ManyToOne
 	@JoinColumn(name="national_park_id")
 	private NationalPark nationalParks;
@@ -186,10 +194,14 @@ public class Trail {
 		builder.append(createDate);
 		builder.append(", lastUpdate=");
 		builder.append(lastUpdate);
+		builder.append(", nationalParks=");
+		builder.append(nationalParks);
 		builder.append(", enabled=");
 		builder.append(enabled);
 		builder.append("]");
 		return builder.toString();
 	}
+
+	
 	
 }
