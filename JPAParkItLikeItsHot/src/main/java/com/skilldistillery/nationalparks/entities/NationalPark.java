@@ -132,7 +132,4 @@ public class NationalPark {
 				+ price + ", websiteUrl=" + websiteUrl + "]";
 	}
 	
-	
-
-	
 }
