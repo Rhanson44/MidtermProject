@@ -35,6 +35,30 @@ public class User {
 	inverseJoinColumns=@JoinColumn(name="national_park_id"))
 	private List<NationalPark> nationalParks;
 	
+	public List<NationalPark> getNationalParks() {
+		return nationalParks;
+	}
+
+	public void setNationalParks(List<NationalPark> nationalParks) {
+		this.nationalParks = nationalParks;
+	}
+
+	public List<PointOfInterest> getInterests() {
+		return interests;
+	}
+
+	public void setInterests(List<PointOfInterest> interests) {
+		this.interests = interests;
+	}
+
+	public List<Trail> getTrails() {
+		return trails;
+	}
+
+	public void setTrails(List<Trail> trails) {
+		this.trails = trails;
+	}
+
 	@OneToMany(mappedBy="pointOfInterest")
 	private List<PointOfInterest> interests;
 	
@@ -100,7 +124,26 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password=" + password + ", enabled=" + enabled
-				+ ", role=" + role + "]";
+		StringBuilder builder = new StringBuilder();
+		builder.append("User [id=");
+		builder.append(id);
+		builder.append(", username=");
+		builder.append(username);
+		builder.append(", password=");
+		builder.append(password);
+		builder.append(", enabled=");
+		builder.append(enabled);
+		builder.append(", role=");
+		builder.append(role);
+		builder.append(", nationalParks=");
+		builder.append(nationalParks);
+		builder.append(", interests=");
+		builder.append(interests);
+		builder.append(", trails=");
+		builder.append(trails);
+		builder.append("]");
+		return builder.toString();
 	}
+
+	
 }
