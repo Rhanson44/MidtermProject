@@ -24,13 +24,13 @@ CREATE TABLE IF NOT EXISTS `national_park` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
   `description` TEXT NULL,
-  `state` VARCHAR(100) NULL,
   `year_established` INT NULL,
-  `image_url` VARCHAR(2000) NULL,
-  `latitude` DOUBLE NULL,
+  `state` VARCHAR(100) NULL,
   `longitude` DOUBLE NULL,
+  `latitude` DOUBLE NULL,
   `price_of_entry` DECIMAL(8,2) NULL,
   `website_url` VARCHAR(200) NULL,
+  `image_url` VARCHAR(2000) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -116,8 +116,8 @@ DROP TABLE IF EXISTS `animal` ;
 CREATE TABLE IF NOT EXISTS `animal` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
-  `endangered` TINYINT NULL,
   `animal_type_id` INT NOT NULL,
+  `endangered` TINYINT NULL,
   `image_url` VARCHAR(2000) NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_animal_animal_type1_idx` (`animal_type_id` ASC) VISIBLE,
@@ -160,13 +160,12 @@ DROP TABLE IF EXISTS `mountain` ;
 
 CREATE TABLE IF NOT EXISTS `mountain` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(100) NOT NULL,
-  `elevation_in_meters` INT NULL,
-  `average_snowfall` VARCHAR(45) NULL,
+  `description` TEXT NULL,
   `latitude` DOUBLE NULL,
   `longitude` DOUBLE NULL,
+  `elevation_in_meters` INT NULL,
+  `average_snowfall_in_inches` VARCHAR(45) NULL,
   `image_url` VARCHAR(2000) NULL,
-  `description` TEXT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -219,11 +218,11 @@ DROP TABLE IF EXISTS `point_of_interest` ;
 CREATE TABLE IF NOT EXISTS `point_of_interest` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NULL,
+  `description` TEXT NULL,
   `longitude` DOUBLE NULL,
   `latitude` DOUBLE NULL,
   `image_url` VARCHAR(2000) NULL,
   `national_park_id` INT NOT NULL,
-  `description` TEXT NULL,
   `user_id` INT NOT NULL,
   `create_date` DATETIME NULL,
   `last_update` DATETIME NULL,
@@ -252,14 +251,14 @@ DROP TABLE IF EXISTS `trail` ;
 CREATE TABLE IF NOT EXISTS `trail` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NULL,
+  `description` TEXT NULL,
+  `longitude` DOUBLE NULL,
+  `latitude` DOUBLE NULL,
   `length_in_miles` INT NULL,
   `trail_difficulty` INT NULL,
   `trail_map` VARCHAR(2000) NULL,
   `national_park_id` INT NOT NULL,
   `user_id` INT NOT NULL,
-  `description` TEXT NULL,
-  `longitude` DOUBLE NULL,
-  `latitude` DOUBLE NULL,
   `create_date` DATETIME NULL,
   `last_update` DATETIME NULL,
   `enabled` TINYINT NULL,
@@ -286,12 +285,12 @@ DROP TABLE IF EXISTS `tour` ;
 
 CREATE TABLE IF NOT EXISTS `tour` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(100) NOT NULL,
+  `name` VARCHAR(100) NULL,
   `description` TEXT NULL,
+  `guided` TINYINT NULL,
   `length_in_hours` INT NULL,
   `cost` DECIMAL(8,2) NULL,
   `national_park_id` INT NOT NULL,
-  `guided` TINYINT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_tour_national_park1_idx` (`national_park_id` ASC) VISIBLE,
   CONSTRAINT `fk_tour_national_park1`
@@ -438,6 +437,16 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 -- -----------------------------------------------------
+-- Data for table `national_park`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `nationalparksdb`;
+INSERT INTO `national_park` (`id`, `name`, `description`, `year_established`, `state`, `longitude`, `latitude`, `price_of_entry`, `website_url`, `image_url`) VALUES (1, 'Rocky Mountain', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
 -- Data for table `flora_type`
 -- -----------------------------------------------------
 START TRANSACTION;
@@ -472,7 +481,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `nationalparksdb`;
-INSERT INTO `animal` (`id`, `name`, `endangered`, `animal_type_id`, `image_url`) VALUES (1, 'American Black Bear', 0, 1, NULL);
+INSERT INTO `animal` (`id`, `name`, `animal_type_id`, `endangered`, `image_url`) VALUES (1, 'American Black Bear', 1, 0, NULL);
 
 COMMIT;
 
@@ -483,6 +492,76 @@ COMMIT;
 START TRANSACTION;
 USE `nationalparksdb`;
 INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (1, 'admin', 'test', 1, NULL);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `point_of_interest`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `nationalparksdb`;
+INSERT INTO `point_of_interest` (`id`, `name`, `description`, `longitude`, `latitude`, `image_url`, `national_park_id`, `user_id`, `create_date`, `last_update`, `enabled`) VALUES (1, 'Mariposa Grove', NULL, NULL, NULL, NULL, 1, 1, NULL, NULL, 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `trail`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `nationalparksdb`;
+INSERT INTO `trail` (`id`, `name`, `description`, `longitude`, `latitude`, `length_in_miles`, `trail_difficulty`, `trail_map`, `national_park_id`, `user_id`, `create_date`, `last_update`, `enabled`) VALUES (1, 'Alpine Ridge Trail', NULL, NULL, NULL, 45, NULL, NULL, 1, 1, NULL, NULL, 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `tour`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `nationalparksdb`;
+INSERT INTO `tour` (`id`, `name`, `description`, `guided`, `length_in_hours`, `cost`, `national_park_id`) VALUES (DEFAULT, NULL, NULL, NULL, NULL, NULL, 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `trail_comment`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `nationalparksdb`;
+INSERT INTO `trail_comment` (`id`, `create_date`, `last_update`, `content`, `image_url`, `user_id`, `trail_id`) VALUES (1, '2024-08-23', NULL, '1', NULL, 1, 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `point_of_interest_type`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `nationalparksdb`;
+INSERT INTO `point_of_interest_type` (`id`, `name`, `description`, `image_url`) VALUES (1, 'Visitor Center', NULL, NULL);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `poi_comment`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `nationalparksdb`;
+INSERT INTO `poi_comment` (`id`, `create_date`, `last_update`, `content`, `image_url`, `user_id`, `point_of_interest_id`) VALUES (1, '2024-08-23', NULL, '1', NULL, 1, 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `national_park_comment`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `nationalparksdb`;
+INSERT INTO `national_park_comment` (`id`, `create_date`, `last_update`, `content`, `image_url`, `user_id`, `national_park_id`) VALUES (1, '2024-08-23', NULL, '1', NULL, 1, 1);
 
 COMMIT;
 
