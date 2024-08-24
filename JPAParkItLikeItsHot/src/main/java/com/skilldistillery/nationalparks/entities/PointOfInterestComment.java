@@ -38,62 +38,10 @@ public class PointOfInterestComment {
     @JoinColumn(name="point_of_interest_id")
    	private PointOfInterest interests;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public LocalDateTime getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(LocalDateTime createDate) {
-        this.createDate = createDate;
-    }
-
-    public LocalDateTime getLastUpdate() {
-        return lastUpdate;
-    }
-
-    public void setLastUpdate(LocalDateTime lastUpdate) {
-        this.lastUpdate = lastUpdate;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-	@Override
+    @Override
 	public String toString() {
 		return "PointOfInterestComment [id=" + id + ", createDate=" + createDate + ", lastUpdate=" + lastUpdate
 				+ ", content=" + content + ", imageUrl=" + imageUrl + ", userId=" + userId + ", interests=" + interests
 				+ "]";
 	}
-
-
-
-    
 }
