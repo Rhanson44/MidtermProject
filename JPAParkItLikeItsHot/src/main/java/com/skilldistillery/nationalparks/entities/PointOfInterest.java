@@ -32,12 +32,12 @@ public class PointOfInterest {
     @Column(name="image_url")
     private String imageUrl;
 
-    @Column(name="national_park_id")
+    @Column(name="national_park_id", insertable = false, updatable = false)
     private int nationalParkId;
 
     private String description;
 
-    @Column(name="user_id")
+    @Column(name="user_id", insertable = false, updatable = false)
     private int userId;
 
     @Column(name="create_date")
@@ -48,7 +48,7 @@ public class PointOfInterest {
     
     @ManyToOne
     @JoinColumn(name="national_park_id")
-	private NationalPark nationalParks;
+	private NationalPark nationalPark;
     
     @ManyToOne
     @JoinColumn(name="user_id")
@@ -65,6 +65,128 @@ public class PointOfInterest {
     
     private boolean enabled;
 
+  
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public int getNationalParkId() {
+        return nationalParkId;
+    }
+
+    public void setNationalParkId(int nationalParkId) {
+        this.nationalParkId = nationalParkId;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public LocalDateTime getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(LocalDateTime createDate) {
+        this.createDate = createDate;
+    }
+
+    public LocalDateTime getLastUpdate() {
+        return lastUpdate;
+    }
+
+    public void setLastUpdate(LocalDateTime lastUpdate) {
+        this.lastUpdate = lastUpdate;
+    }
+
+    public NationalPark getNationalPark() {
+        return nationalPark;
+    }
+
+    public void setNationalPark(NationalPark nationalPark) {
+        this.nationalPark = nationalPark;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<PointOfInterestType> getInterestTypes() {
+        return interestTypes;
+    }
+
+    public void setInterestTypes(List<PointOfInterestType> interestTypes) {
+        this.interestTypes = interestTypes;
+    }
+
+    public List<PointOfInterestComment> getPoiComments() {
+        return poiComments;
+    }
+
+    public void setPoiComments(List<PointOfInterestComment> poiComments) {
+        this.poiComments = poiComments;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
     @Override
     public String toString() {
         return "PointOfInterest [id=" + id + ", name=" + name + ", longitude=" + longitude 
@@ -74,4 +196,3 @@ public class PointOfInterest {
             + ", lastUpdate=" + lastUpdate + ", enabled=" + enabled + "]";
     }
 }
-
