@@ -57,6 +57,15 @@ public class AnimalType {
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
 	}
+	
+
+	public List<Animal> getAnimals() {
+		return animals;
+	}
+
+	public void setAnimals(List<Animal> animals) {
+		this.animals = animals;
+	}
 
 	@Override
 	public int hashCode() {
@@ -78,8 +87,9 @@ public class AnimalType {
 	@Override
 	public String toString() {
 		return "AnimalType [id=" + id + ", name=" + name + ", description=" + description + ", imageUrl=" + imageUrl
-				+ "]";
+				+ ", animals=" + animals + "]";
 	}
+
 	
 	
 
