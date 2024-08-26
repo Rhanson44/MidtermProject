@@ -1,20 +1,52 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%@ taglib prefix="c" uri="jakarta.tags.core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Found Park</title>
+    <title>National Parks</title>
+    <style>
+        .park-item {
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .park-item img {
+            width: 200px; /* Adjust the size as needed */
+            height: auto;
+            border-radius: 5px;
+        }
+        .park-item h2 {
+            margin: 10px 0;
+        }
+        .park-item p {
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
 </head>
 <body>
-<h1>All Parks</h1>
-	<c:forEach var="park" items="${parks}">
-		${park.name} - ${park.state}
-		<a href="${park.imageUrl}" alt="park image"></a>
-		${park.description}
-		Price of entry: ${park.price}
-		<a href="${park.websiteUrl}" alt="website url"></a>
-	</c:forEach>
+    <h1>National Parks</h1>
+    <c:if test="${not empty parks}">
+        <ul>
+            <c:forEach var="park" items="${parks}">
+                <li class="park-item">
+                    <h2>${park.name}</h2>
+                    <a href="${park.websiteUrl}" target="_blank">
+                        <img src="${park.imageUrl}" alt="${park.name}"/>
+                    </a>
+                    <p><strong>Description:</strong> ${park.description}</p>
+                    <p><strong>State:</strong> ${park.state}</p>
+                    <p><strong>Established:</strong> ${park.year}</p>
+                    <p><strong>Entry Price:</strong> ${park.price}</p>
+                </li>
+            </c:forEach>
+        </ul>
+    </c:if>
+   <c:if test="${empty parks}">
+        <p>No parks found.</p>
+    </c:if>
 </body>
 </html>

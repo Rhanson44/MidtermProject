@@ -16,7 +16,7 @@ public class ParkController {
 	@RequestMapping("park.do")
 	public String home(Model model) {
 		model.addAttribute("NationalPark", parkDAO.findAll());
-		return "parks";
+		return "park";
 	}
 	
 }
