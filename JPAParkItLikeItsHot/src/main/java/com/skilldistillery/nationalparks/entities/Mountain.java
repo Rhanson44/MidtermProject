@@ -44,8 +44,6 @@ public class Mountain {
 				inverseJoinColumns=@JoinColumn(name="national_park_id"))
 	private List<NationalPark> nationalParks;
 	
-	
-
 
 	public int getId() {
 		return id;
