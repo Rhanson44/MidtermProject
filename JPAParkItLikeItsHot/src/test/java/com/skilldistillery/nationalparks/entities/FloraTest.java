@@ -45,11 +45,11 @@ class FloraTest {
 		assertNotNull(flora);
 		assertEquals("Maple Tree", flora.getName());
 	}
-//	@Test
-//	void test_flora_are_in_np() {
-//		assertNotNull(flora);
-//		assertNotNull(flora.getNationalParks().size() > 0);
-//	}
+	@Test
+	void test_flora_are_in_np() {
+		assertNotNull(flora);
+		assertNotNull(flora.getNationalParks().size() > 0);
+	}
 	@Test
 	void flora_is_a_flora_type() {
 		assertNotNull(flora.getFloraType().getName());
