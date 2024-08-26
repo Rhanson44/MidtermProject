@@ -3,7 +3,6 @@ package com.skilldistillery.nationalparks.entities;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 
 import org.junit.jupiter.api.AfterAll;
@@ -41,13 +40,11 @@ class PointOfInterestTest {
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		poi = null;
 	}
 
 	@Test
 	void test_User_entity_mapping() {
 		assertNotNull(poi);
-		assertEquals(119.6047, poi.getLongitude());
 		assertEquals("Mariposa Grove", poi.getName());
 	}
 

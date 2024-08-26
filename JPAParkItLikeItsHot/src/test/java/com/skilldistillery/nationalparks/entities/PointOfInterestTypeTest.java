@@ -19,6 +19,7 @@ class PointOfInterestTypeTest {
 	private EntityManager em;
 	private PointOfInterestType poiType;
 
+
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 		emf = Persistence.createEntityManagerFactory("JPAParkItLikeItsHot");
@@ -38,7 +39,6 @@ class PointOfInterestTypeTest {
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		poiType = null;
 	}
 
 	@Test
