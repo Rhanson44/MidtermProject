@@ -25,10 +25,10 @@ public class Trail {
 	private String name;
 	
 	@Column(name="length_in_miles")
-	private Integer lengthInMiles;
+	private Double lengthInMiles;
 	
 	@Column(name="trail_difficulty")
-	private Integer trailDifficulty;
+	private String trailDifficulty;
 	
 	@Column(name="trail_map")
 	private String trailMap;
@@ -82,19 +82,19 @@ public class Trail {
 		this.name = name;
 	}
 
-	public Integer getLengthInMiles() {
+	public Double getLengthInMiles() {
 		return lengthInMiles;
 	}
 
-	public void setLengthInMiles(Integer lengthInMiles) {
+	public void setLengthInMiles(Double lengthInMiles) {
 		this.lengthInMiles = lengthInMiles;
 	}
 
-	public Integer getTrailDifficulty() {
+	public String getTrailDifficulty() {
 		return trailDifficulty;
 	}
 
-	public void setTrailDifficulty(Integer trailDifficulty) {
+	public void setTrailDifficulty(String trailDifficulty) {
 		this.trailDifficulty = trailDifficulty;
 	}
 
