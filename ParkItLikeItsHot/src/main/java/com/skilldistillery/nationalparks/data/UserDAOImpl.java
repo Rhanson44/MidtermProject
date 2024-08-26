@@ -29,4 +29,16 @@ public class UserDAOImpl implements UserDAO {
 	    }
 	    return user;
 	}
+
+	@Override
+	public User getUserByUserNameAndPassword(String username, String password) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Object findUserById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
