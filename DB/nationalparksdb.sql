@@ -160,6 +160,7 @@ DROP TABLE IF EXISTS `mountain` ;
 
 CREATE TABLE IF NOT EXISTS `mountain` (
   `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(100) NULL,
   `description` TEXT NULL,
   `latitude` DOUBLE NULL,
   `longitude` DOUBLE NULL,
@@ -491,7 +492,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `nationalparksdb`;
-INSERT INTO `mountain` (`id`, `description`, `latitude`, `longitude`, `elevation_in_meters`, `average_snowfall_in_inches`, `image_url`) VALUES (1, 'Mountain', 1, 1, 1, 'one', NULL);
+INSERT INTO `mountain` (`id`, `name`, `description`, `latitude`, `longitude`, `elevation_in_meters`, `average_snowfall_in_inches`, `image_url`) VALUES (1, NULL, 'Mountain', 1, 1, 1, 'one', NULL);
 
 COMMIT;
 
@@ -513,7 +514,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `nationalparksdb`;
-INSERT INTO `point_of_interest` (`id`, `name`, `description`, `longitude`, `latitude`, `image_url`, `national_park_id`, `user_id`, `create_date`, `last_update`, `enabled`) VALUES (1, 'Mariposa Grove', NULL, NULL, NULL, NULL, 1, 1, NULL, NULL, 1);
+INSERT INTO `point_of_interest` (`id`, `name`, `description`, `longitude`, `latitude`, `image_url`, `national_park_id`, `user_id`, `create_date`, `last_update`, `enabled`) VALUES (1, 'Mariposa Grove', 'Mariposa Grove of Giant Sequoias is a popular destination in Yosemite National Park\'s southern Valley, on the slopes of the Sierra Nevada Mountains. It\'s the largest of the park\'s three giant sequoia groves\', with about 500 mature trees, some of which may be thousands of years old. The grove is known for its magnificent trees, some with branches as large as a normal tree, and offers a variety of trails for all levels, including some accessible trails for visitors with disabilities.', 119.6047, 37.5098, 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Yellowstone_National_Park_%28WY%2C_USA%29%2C_Old_Faithful_Geyser_--_2022_--_2599.jpg/2560px-Yellowstone_National_Park_%28WY%2C_USA%29%2C_Old_Faithful_Geyser_--_2022_--_2599.jpg', 1, 1, NULL, NULL, 1);
 
 COMMIT;
 
