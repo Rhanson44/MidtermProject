@@ -47,6 +47,10 @@ public class User {
 	@OneToMany(mappedBy="user")
 	private List<Trail> trails;
 	
+	@OneToMany(mappedBy="user")
+	private List<TrailComment> trailComments;
+	
+	
 	public List<NationalPark> getNationalParks() {
 		return nationalParks;
 	}
