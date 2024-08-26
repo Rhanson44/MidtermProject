@@ -2,6 +2,7 @@ package com.skilldistillery.nationalparks.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -46,4 +47,19 @@ public class TrailTest {
 		assertNotNull(trail);
 		assertEquals(45, trail.getLengthInMiles());
 	}
+	@Test
+	void trail_has_a_user() {
+		assertNotNull(trail.getUser().getPassword());
+		assertEquals("admin", trail.getUser().getPassword());
+	}
+	@Test
+	void trail_is_in_a_np() {
+		assertNotNull(trail.getNationalParks().getName());
+		assertEquals("Rocky Mountain",trail.getNationalParks().getName());
+	}
+	 @Test 
+	 void test__trail_has_comments() {
+		 assertNotNull(trail.getTrailComments());
+		 assertTrue(trail.getTrailComments().size()>0);
+	 }
 }

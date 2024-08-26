@@ -153,6 +153,23 @@ public class Trail {
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
+	
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public List<TrailComment> getTrailComments() {
+		return trailComments;
+	}
+
+	public void setTrailComments(List<TrailComment> trailComments) {
+		this.trailComments = trailComments;
+	}
 
 	@Override
 	public int hashCode() {

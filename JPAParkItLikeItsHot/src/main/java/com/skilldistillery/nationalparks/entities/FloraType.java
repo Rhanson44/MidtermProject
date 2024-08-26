@@ -28,12 +28,7 @@ public class FloraType {
 	@OneToMany(mappedBy="floraType")
 	private List<Flora> flora;
 	
-//	@ManyToMany(mappedBy="nationalPark")
-//	@JoinTable(name="national_park_has_flora_type",
-//				joinColumns=@JoinColumn(name="flora_type_id"),
-//				inverseJoinColumns=@JoinColumn(name="national_park_id"))
-//	private List<NationalPark> nationalParks;
-//	
+
 	public FloraType() {
 		super();
 	}

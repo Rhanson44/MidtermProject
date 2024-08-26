@@ -45,4 +45,14 @@ public class TrailCommentTest {
 		assertNotNull(trailComment);
 		assertEquals("1", trailComment.getContent());
 	}
+	@Test
+	void comment_is_about_a_trail() {
+		assertNotNull(trailComment.getTrail().getName());
+		assertEquals("Alpine Ridge Trail", trailComment.getTrail().getName());
+	}
+	@Test
+	void comment_belongs_to_a_user() {
+		assertNotNull(trailComment.getUser().getPassword());
+		assertEquals("admin", trailComment.getUser().getPassword());
+	}
 }

@@ -10,8 +10,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -34,15 +34,25 @@ public class NationalParkComment {
 	@JoinColumn(name="national_park_id")
 	private NationalPark nationalParks;
 	
-	@ManyToMany(mappedBy="nationalParkComments")
-	private List<User> users;
+	@ManyToOne
+	@JoinColumn(name= "user_id")
+	private User user;
 	
 	
+
 
 	public NationalParkComment() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -79,12 +89,7 @@ public class NationalParkComment {
 	public void setNationalParks(NationalPark nationalParks) {
 		this.nationalParks = nationalParks;
 	}
-	public List<User> getUsers() {
-		return users;
-	}
-	public void setUsers(List<User> users) {
-		this.users = users;
-	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -103,7 +108,7 @@ public class NationalParkComment {
 	@Override
 	public String toString() {
 		return "NationalParkComment [id=" + id + ", content=" + content + ", imageUrl=" + imageUrl + ", createDate="
-				+ createDate + ", lastUpdate=" + lastUpdate + ", nationalParks=" + nationalParks + ", users=" + users
+				+ createDate + ", lastUpdate=" + lastUpdate + ", nationalParks=" + nationalParks + ", users=" + user
 				+ "]";
 	}
 	

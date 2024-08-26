@@ -1,6 +1,8 @@
 package com.skilldistillery.nationalparks.entities;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -45,5 +47,13 @@ class UserTest {
 		assertNotNull(user);
 		assertEquals("admin", user.getUsername());
 	}
+
+	@Test
+	void user_has_np_comments() {
+		assertNotNull(user.getNationalParkComments());
+		assertTrue(user.getNationalParkComments().size()>0);		
+	}
+
+
 
 }

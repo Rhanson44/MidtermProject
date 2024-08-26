@@ -12,7 +12,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="point_of_interest_comment")
+@Table(name="poi_comment")
 public class PointOfInterestComment {
 
     @Id

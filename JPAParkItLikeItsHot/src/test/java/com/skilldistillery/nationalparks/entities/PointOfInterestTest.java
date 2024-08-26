@@ -50,5 +50,15 @@ class PointOfInterestTest {
 
 		assertEquals("Mariposa Grove", poi.getName());
 	}
+	@Test
+	void test_interest_are_a_type() {
+		assertNotNull(poi);
+		assertNotNull(poi.getInterestTypes().size() > 0);
+	}
+	@Test
+	void test_interest_have_comments() {
+		assertNotNull(poi);
+		assertNotNull(poi.getPoiComments().size() > 0);
+	}
 
 }

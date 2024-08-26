@@ -29,16 +29,9 @@ public class User {
 		super();
 	}
 
-	@ManyToMany
-	@JoinTable(name="national_park",
-	joinColumns=@JoinColumn(name="user_id"),
-	inverseJoinColumns=@JoinColumn(name="national_park_id"))
-	private List<NationalPark> nationalParks;
-	
-	@ManyToMany
-	@JoinTable(name="national_park_comment",
-	joinColumns=@JoinColumn(name="user_id"),
-	inverseJoinColumns=@JoinColumn(name="national_park_comment_id"))
+
+
+	@OneToMany(mappedBy ="user")
 	private List<NationalParkComment> nationalParkComments;
 	
 	@OneToMany(mappedBy="user")
@@ -51,13 +44,7 @@ public class User {
 	private List<TrailComment> trailComments;
 	
 	
-	public List<NationalPark> getNationalParks() {
-		return nationalParks;
-	}
 
-	public void setNationalParks(List<NationalPark> nationalParks) {
-		this.nationalParks = nationalParks;
-	}
 
 	public List<PointOfInterest> getInterests() {
 		return interests;
@@ -115,6 +102,23 @@ public class User {
 	public void setRole(String role) {
 		this.role = role;
 	}
+	
+
+	public List<NationalParkComment> getNationalParkComments() {
+		return nationalParkComments;
+	}
+
+	public void setNationalParkComments(List<NationalParkComment> nationalParkComments) {
+		this.nationalParkComments = nationalParkComments;
+	}
+
+	public List<TrailComment> getTrailComments() {
+		return trailComments;
+	}
+
+	public void setTrailComments(List<TrailComment> trailComments) {
+		this.trailComments = trailComments;
+	}
 
 	@Override
 	public int hashCode() {
@@ -147,7 +151,6 @@ public class User {
 		builder.append(", role=");
 		builder.append(role);
 		builder.append(", nationalParks=");
-		builder.append(nationalParks);
 		builder.append(", interests=");
 		builder.append(interests);
 		builder.append(", trails=");

@@ -2,6 +2,7 @@ package com.skilldistillery.nationalparks.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -44,6 +45,17 @@ class AnimalTest {
 	void test_User_entity_mapping() {
 		assertNotNull(animal);
 		assertEquals("American Black Bear", animal.getName());
+	}
+	
+//	@Test
+//	void np_has_animal() {
+//		 assertNotNull(animal.getNationalParks());
+//		 assertTrue(animal.getNationalParks().size()>0);		
+//	}
+	@Test
+	void animal_is_an_animal_type() {
+		assertNotNull(animal.getAnimalType().getName());
+		assertEquals("Mammal", animal.getAnimalType().getName());
 	}
 
 }

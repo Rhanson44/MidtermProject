@@ -14,12 +14,11 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
-class PointOfInterestTypeTest {
-	
+class PointOfInterestCommentTest {
+
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private PointOfInterestType poiType;
-
+	private PointOfInterestComment comment;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -34,23 +33,26 @@ class PointOfInterestTypeTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		poiType = em.find(PointOfInterestType.class, 1);
+		comment = em.find(PointOfInterestComment.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
+
 	}
 
 	@Test
-	void test_User_entity_mapping() {
-		assertNotNull(poiType);
-		assertEquals( "Visitor Center", poiType.getName());
+	void test_interest_has_comments() {
+		assertNotNull(comment);
+		assertEquals("1", comment.getContent());
 	}
+
 	@Test
-	void test_types_are_assigned_to_poi() {
-		assertNotNull(poiType);
-		assertNotNull(poiType.getInterests().size() > 0);
+	void poi_comments_has_interests() {
+		assertNotNull(comment.getInterests().getName());
+		assertEquals("Mariposa Grove", comment.getInterests().getName());
 	}
+
 
 }

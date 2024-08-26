@@ -2,6 +2,7 @@ package com.skilldistillery.nationalparks.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -45,5 +46,10 @@ class MountainTest {
 		assertNotNull(mountain);
 		assertEquals("Mountain", mountain.getDescription());
 	}
+//	@Test
+//	void np_has_mountain() {
+//		 assertNotNull(mountain.getNationalParks());
+//		 assertTrue(mountain.getNationalParks().size()>0);		
+//	}
 
 }

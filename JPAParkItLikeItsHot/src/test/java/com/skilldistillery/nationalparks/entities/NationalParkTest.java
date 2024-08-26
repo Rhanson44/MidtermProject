@@ -45,5 +45,36 @@ class NationalParkTest {
 		assertNotNull(park);
 		assertEquals("Rocky Mountain", park.getName());
 	}
+	@Test
+	void test_animals_are_in_np() {
+		assertNotNull(park);
+		assertNotNull(park.getAnimals().size() > 0);
+	}
+//	@Test
+//	void test_flora_are_in_np() {
+//		assertNotNull(park);
+//		assertNotNull(park.getFlora().size() > 0);
+//	}
+	@Test
+	void test_poi_are_in_np() {
+		assertNotNull(park);
+		assertNotNull(park.getInterests().size() > 0);
+	}
+	@Test
+	void test_mountain_are_in_np() {
+		assertNotNull(park);
+		assertNotNull(park.getMountains().size() > 0);
+	}
+	@Test
+	void test_comments_are_about_np() {
+		assertNotNull(park);
+		assertNotNull(park.getParkComments().size() > 0);
+	}
+	@Test
+	void test_trails_are_in_np() {
+		assertNotNull(park);
+		assertNotNull(park.getTrails().size() > 0);
+	}
+	
 
 }

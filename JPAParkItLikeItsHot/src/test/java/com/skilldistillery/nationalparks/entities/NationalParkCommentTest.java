@@ -2,6 +2,7 @@ package com.skilldistillery.nationalparks.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -46,5 +47,15 @@ class NationalParkCommentTest {
 		assertEquals(1,npComment.getId() );
 		
 	}
+//		@Test
+//	void user_has_comment() {
+//		 assertNotNull(npComment.getUsers());
+//		 assertTrue(npComment.getUsers().size()>0);		
+//	}
+		@Test
+		void test_comment_np_mapping() {
+			assertNotNull(npComment.getNationalParks().getName());
+			assertEquals("Rocky Mountain",npComment.getNationalParks().getName());
+		}
 
 }

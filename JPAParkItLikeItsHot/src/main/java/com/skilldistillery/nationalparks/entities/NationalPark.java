@@ -54,8 +54,7 @@ public class NationalPark {
 	@OneToMany(mappedBy="nationalParks")
 	private List<NationalParkComment> parkComments;
 	
-	@ManyToMany(mappedBy="nationalParks")
-	private List<User> user;
+
 	
  	
 	public NationalPark() {
@@ -182,7 +181,7 @@ public class NationalPark {
 				+ ", year=" + year + ", imageUrl=" + imageUrl + ", latitude=" + latitude + ", longitutde=" + longitude
 				+ ", price=" + price + ", websiteUrl=" + websiteUrl + ", animals=" + animals + ", flora=" + flora
 				+ ", mountains=" + mountains + ", interests=" + interests + ", trails=" + trails + ", parkComments="
-				+ parkComments + ", user=" + user + "]";
+				+ parkComments + ", user="  + "]";
 	}
 	
 }
