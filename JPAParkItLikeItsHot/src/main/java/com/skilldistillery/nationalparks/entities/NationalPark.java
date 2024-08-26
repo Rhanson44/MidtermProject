@@ -26,13 +26,13 @@ public class NationalPark {
 	private String description;
 	private String state;
 	@Column(name="year_established")
-	private int year;
+	private Integer year;
 	@Column(name="image_url")
 	private String imageUrl;
-	private double latitude;
-	private double longitutde;
+	private Double latitude;
+	private Double longitude;
 	@Column(name="price_of_entry")
-	private double price;
+	private Double price;
 	@Column(name="website_url")
 	private String websiteUrl;
 	
@@ -88,10 +88,10 @@ public class NationalPark {
 	public void setState(String state) {
 		this.state = state;
 	}
-	public int getYear() {
+	public Integer getYear() {
 		return year;
 	}
-	public void setYear(int year) {
+	public void setYear(Integer year) {
 		this.year = year;
 	}
 	public String getImageUrl() {
@@ -100,22 +100,22 @@ public class NationalPark {
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
 	}
-	public double getLatitude() {
+	public Double getLatitude() {
 		return latitude;
 	}
-	public void setLatitude(double latitude) {
+	public void setLatitude(Double latitude) {
 		this.latitude = latitude;
 	}
-	public double getLongitutde() {
-		return longitutde;
+	public Double getLongitutde() {
+		return longitude;
 	}
-	public void setLongitutde(double longitutde) {
-		this.longitutde = longitutde;
+	public void setLongitutde(Double longitutde) {
+		this.longitude = longitutde;
 	}
-	public double getPrice() {
+	public Double getPrice() {
 		return price;
 	}
-	public void setPrice(double price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 	public String getWebsiteUrl() {
@@ -179,7 +179,7 @@ public class NationalPark {
 	@Override
 	public String toString() {
 		return "NationalPark [id=" + id + ", name=" + name + ", description=" + description + ", state=" + state
-				+ ", year=" + year + ", imageUrl=" + imageUrl + ", latitude=" + latitude + ", longitutde=" + longitutde
+				+ ", year=" + year + ", imageUrl=" + imageUrl + ", latitude=" + latitude + ", longitutde=" + longitude
 				+ ", price=" + price + ", websiteUrl=" + websiteUrl + ", animals=" + animals + ", flora=" + flora
 				+ ", mountains=" + mountains + ", interests=" + interests + ", trails=" + trails + ", parkComments="
 				+ parkComments + ", user=" + user + "]";

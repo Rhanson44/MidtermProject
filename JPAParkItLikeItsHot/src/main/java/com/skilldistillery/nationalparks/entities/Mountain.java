@@ -26,7 +26,7 @@ public class Mountain {
 	@Column(name="elevation_in_meters")
 	private int elevationInMeters;
 	
-	@Column(name="average_snowfall")
+	@Column(name="average_snowfall_in_inches")
 	private String averageSnowfall;
 	
 	private double latitude;
