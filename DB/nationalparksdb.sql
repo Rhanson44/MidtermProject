@@ -491,7 +491,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `nationalparksdb`;
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (1, 'admin', 'test', 1, NULL);
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (1, 'admin', 'admin', 1, 'admin');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (2, 'user', 'user', 1, 'user');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (3, 't', 't', 1, 't');
 
 COMMIT;
 

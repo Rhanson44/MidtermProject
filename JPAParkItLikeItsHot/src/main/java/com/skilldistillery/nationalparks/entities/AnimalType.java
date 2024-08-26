@@ -9,7 +9,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 @Entity
+@Table(name = "animal_type")
 public class AnimalType {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
