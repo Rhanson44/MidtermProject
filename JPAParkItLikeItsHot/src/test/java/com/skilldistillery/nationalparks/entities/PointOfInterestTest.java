@@ -1,11 +1,8 @@
 package com.skilldistillery.nationalparks.entities;
 
-<<<<<<< HEAD
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-=======
 import static org.junit.jupiter.api.Assertions.*;
->>>>>>> 63088f072074edc96b192fa257b0c75fbdcfd624
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -18,11 +15,7 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
 class PointOfInterestTest {
-<<<<<<< HEAD
-	
-=======
 
->>>>>>> 63088f072074edc96b192fa257b0c75fbdcfd624
 	private static EntityManagerFactory emf;
 	private EntityManager em;
 	private PointOfInterest poi;
@@ -46,20 +39,16 @@ class PointOfInterestTest {
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-<<<<<<< HEAD
-=======
-		poi = null;
->>>>>>> 63088f072074edc96b192fa257b0c75fbdcfd624
+
 	}
 
 	@Test
 	void test_User_entity_mapping() {
 		assertNotNull(poi);
-<<<<<<< HEAD
+
 		assertEquals( 119.6047, poi.getLongitude());
-=======
+
 		assertEquals("Mariposa Grove", poi.getName());
->>>>>>> 63088f072074edc96b192fa257b0c75fbdcfd624
 	}
 
 }
