@@ -70,8 +70,8 @@ public class PointOfInterestType {
         this.interests = interests;
     }
 
-    @Override
-    public String toString() {
-        return "PointOfInterestType [id=" + id + ", name=" + name + ", description=" + description + ", imageUrl=" + imageUrl + "]";
-    }
+//    @Override
+//    public String toString() {
+//        return "PointOfInterestType [id=" + id + ", name=" + name + ", description=" + description + ", imageUrl=" + imageUrl + "]";
+//    }
 }

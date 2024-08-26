@@ -96,10 +96,10 @@ public class PointOfInterestComment {
         this.interests = interests;
     }
 
-    @Override
-    public String toString() {
-        return "PointOfInterestComment [id=" + id + ", createDate=" + createDate + ", lastUpdate=" + lastUpdate
-                + ", content=" + content + ", imageUrl=" + imageUrl + ", userId=" + userId + ", interests=" + interests
-                + "]";
-    }
+//    @Override
+//    public String toString() {
+//        return "PointOfInterestComment [id=" + id + ", createDate=" + createDate + ", lastUpdate=" + lastUpdate
+//                + ", content=" + content + ", imageUrl=" + imageUrl + ", userId=" + userId + ", interests=" + interests
+//                + "]";
+//    }
 }
