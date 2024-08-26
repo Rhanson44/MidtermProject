@@ -20,6 +20,9 @@ public class NationalPark {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
+	private String name;
+	
+
 	private String description;
 	private String state;
 	@Column(name="year_established")
@@ -59,9 +62,17 @@ public class NationalPark {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public int getId() {
 		return id;
 	}
+	
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -164,14 +175,14 @@ public class NationalPark {
 		NationalPark other = (NationalPark) obj;
 		return id == other.id;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "NationalPark [id=" + id + ", description=" + description + ", state=" + state + ", year=" + year
-				+ ", imageUrl=" + imageUrl + ", latitude=" + latitude + ", longitutde=" + longitutde + ", price="
-				+ price + ", websiteUrl=" + websiteUrl + ", animals=" + animals + ", floraTypes=" + flora
+		return "NationalPark [id=" + id + ", name=" + name + ", description=" + description + ", state=" + state
+				+ ", year=" + year + ", imageUrl=" + imageUrl + ", latitude=" + latitude + ", longitutde=" + longitutde
+				+ ", price=" + price + ", websiteUrl=" + websiteUrl + ", animals=" + animals + ", flora=" + flora
 				+ ", mountains=" + mountains + ", interests=" + interests + ", trails=" + trails + ", parkComments="
-				+ parkComments + "]";
+				+ parkComments + ", user=" + user + "]";
 	}
 	
 }
