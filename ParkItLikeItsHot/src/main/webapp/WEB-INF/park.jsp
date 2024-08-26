@@ -14,7 +14,7 @@
             border-radius: 5px;
         }
         .park-item img {
-            width: 200px; /* Adjust the size as needed */
+            width: 400px; /* Adjust the size as needed */
             height: auto;
             border-radius: 5px;
         }
@@ -30,9 +30,8 @@
 <body>
     <h1>National Parks</h1>
     <c:if test="${not empty parks}">
-        <ul>
             <c:forEach var="park" items="${parks}">
-                <li class="park-item">
+                <div class="park-item">
                     <h2>${park.name}</h2>
                     <a href="${park.websiteUrl}" target="_blank">
                         <img src="${park.imageUrl}" alt="${park.name}"/>
@@ -41,9 +40,8 @@
                     <p><strong>State:</strong> ${park.state}</p>
                     <p><strong>Established:</strong> ${park.year}</p>
                     <p><strong>Entry Price:</strong> ${park.price}</p>
-                </li>
+                </div>
             </c:forEach>
-        </ul>
     </c:if>
    <c:if test="${empty parks}">
         <p>No parks found.</p>
