@@ -29,7 +29,7 @@ public class Flora {
 	@ManyToMany
 	@JoinTable(name="national_park_has_flora",
 				joinColumns=@JoinColumn(name="flora_id"),
-				inverseJoinColumns=@JoinColumn(name="national_park_id"))
+				inverseJoinColumns=@JoinColumn(name="national_parks_id"))
 	private List<NationalPark> nationalParks;
 	
 	@ManyToOne
@@ -107,11 +107,11 @@ public class Flora {
 		return id == other.id;
 	}
 
-	@Override
-	public String toString() {
-		return "Flora [id=" + id + ", name=" + name + ", species=" + species + ", imageUrl=" + imageUrl
-				+ ", nationalParks=" + nationalParks + ", floraType=" + floraType + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "Flora [id=" + id + ", name=" + name + ", species=" + species + ", imageUrl=" + imageUrl
+//				+ ", nationalParks=" + nationalParks + ", floraType=" + floraType + "]";
+//	}
 
 	
 	

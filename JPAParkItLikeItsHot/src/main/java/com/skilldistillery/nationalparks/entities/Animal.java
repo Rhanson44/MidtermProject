@@ -104,11 +104,11 @@ public class Animal {
 		return id == other.id;
 	}
 
-	@Override
-	public String toString() {
-		return "Animal [id=" + id + ", name=" + name + ", endangered=" + endangered + ", imageUrl=" + imageUrl
-				+ ", nationalParks=" + nationalParks + ", animalType=" + animalType + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "Animal [id=" + id + ", name=" + name + ", endangered=" + endangered + ", imageUrl=" + imageUrl
+//				+ ", nationalParks=" + nationalParks + ", animalType=" + animalType + "]";
+//	}
 
 	
 

@@ -105,12 +105,21 @@ public class NationalParkComment {
 		NationalParkComment other = (NationalParkComment) obj;
 		return id == other.id;
 	}
+<<<<<<< HEAD
 	@Override
 	public String toString() {
 		return "NationalParkComment [id=" + id + ", content=" + content + ", imageUrl=" + imageUrl + ", createDate="
 				+ createDate + ", lastUpdate=" + lastUpdate + ", nationalParks=" + nationalParks + ", users=" + user
 				+ "]";
 	}
+=======
+//	@Override
+//	public String toString() {
+//		return "NationalParkComment [id=" + id + ", content=" + content + ", imageUrl=" + imageUrl + ", createDate="
+//				+ createDate + ", lastUpdate=" + lastUpdate + ", nationalParks=" + nationalParks + ", users=" + users
+//				+ "]";
+//	}
+>>>>>>> 14735585aaebee14eb0d05f982d550aa6d4b351a
 	
 	
 }

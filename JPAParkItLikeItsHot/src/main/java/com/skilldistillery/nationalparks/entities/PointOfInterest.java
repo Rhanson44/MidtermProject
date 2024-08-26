@@ -186,12 +186,12 @@ public class PointOfInterest {
         this.enabled = enabled;
     }
 
-    @Override
-    public String toString() {
-        return "PointOfInterest [id=" + id + ", name=" + name + ", longitude=" + longitude 
-            + ", latitude=" + latitude + ", imageUrl=" + imageUrl 
-            + ", nationalParkId=" + nationalParkId + ", description=" + description 
-            + ", userId=" + userId + ", createDate=" + createDate 
-            + ", lastUpdate=" + lastUpdate + ", enabled=" + enabled + "]";
-    }
+//    @Override
+//    public String toString() {
+//        return "PointOfInterest [id=" + id + ", name=" + name + ", longitude=" + longitude 
+//            + ", latitude=" + latitude + ", imageUrl=" + imageUrl 
+//            + ", nationalParkId=" + nationalParkId + ", description=" + description 
+//            + ", userId=" + userId + ", createDate=" + createDate 
+//            + ", lastUpdate=" + lastUpdate + ", enabled=" + enabled + "]";
+//    }
 }

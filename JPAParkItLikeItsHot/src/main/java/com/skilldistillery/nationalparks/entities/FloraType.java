@@ -84,11 +84,11 @@ public class FloraType {
 		return id == other.id;
 	}
 
-	@Override
-	public String toString() {
-		return "FloraType [id=" + id + ", name=" + name + ", description=" + description + ", imageUrl=" + imageUrl
-				+ "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "FloraType [id=" + id + ", name=" + name + ", description=" + description + ", imageUrl=" + imageUrl
+//				+ "]";
+//	}
 
 	
 

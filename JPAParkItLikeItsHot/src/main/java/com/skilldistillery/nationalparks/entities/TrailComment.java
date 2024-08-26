@@ -115,24 +115,24 @@ public class TrailComment {
 		this.trail = trail;
 	}
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("TrailComment [id=");
-		builder.append(id);
-		builder.append(", createDate=");
-		builder.append(createDate);
-		builder.append(", lastUpdate=");
-		builder.append(lastUpdate);
-		builder.append(", content=");
-		builder.append(content);
-		builder.append(", imageUrl=");
-		builder.append(imageUrl);
-		builder.append(", trail=");
-		builder.append(trail);
-		builder.append("]");
-		return builder.toString();
-	}
+//	@Override
+//	public String toString() {
+//		StringBuilder builder = new StringBuilder();
+//		builder.append("TrailComment [id=");
+//		builder.append(id);
+//		builder.append(", createDate=");
+//		builder.append(createDate);
+//		builder.append(", lastUpdate=");
+//		builder.append(lastUpdate);
+//		builder.append(", content=");
+//		builder.append(content);
+//		builder.append(", imageUrl=");
+//		builder.append(imageUrl);
+//		builder.append(", trail=");
+//		builder.append(trail);
+//		builder.append("]");
+//		return builder.toString();
+//	}
 	
 	
 }

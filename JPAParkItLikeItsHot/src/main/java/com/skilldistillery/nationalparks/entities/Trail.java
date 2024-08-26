@@ -188,36 +188,36 @@ public class Trail {
 		return id == other.id;
 	}
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Trail [id=");
-		builder.append(id);
-		builder.append(", name=");
-		builder.append(name);
-		builder.append(", lengthInMiles=");
-		builder.append(lengthInMiles);
-		builder.append(", trailDifficulty=");
-		builder.append(trailDifficulty);
-		builder.append(", trailMap=");
-		builder.append(trailMap);
-		builder.append(", description=");
-		builder.append(description);
-		builder.append(", longitude=");
-		builder.append(longitude);
-		builder.append(", latitude=");
-		builder.append(latitude);
-		builder.append(", createDate=");
-		builder.append(createDate);
-		builder.append(", lastUpdate=");
-		builder.append(lastUpdate);
-		builder.append(", nationalParks=");
-		builder.append(nationalParks);
-		builder.append(", enabled=");
-		builder.append(enabled);
-		builder.append("]");
-		return builder.toString();
-	}
+//	@Override
+//	public String toString() {
+//		StringBuilder builder = new StringBuilder();
+//		builder.append("Trail [id=");
+//		builder.append(id);
+//		builder.append(", name=");
+//		builder.append(name);
+//		builder.append(", lengthInMiles=");
+//		builder.append(lengthInMiles);
+//		builder.append(", trailDifficulty=");
+//		builder.append(trailDifficulty);
+//		builder.append(", trailMap=");
+//		builder.append(trailMap);
+//		builder.append(", description=");
+//		builder.append(description);
+//		builder.append(", longitude=");
+//		builder.append(longitude);
+//		builder.append(", latitude=");
+//		builder.append(latitude);
+//		builder.append(", createDate=");
+//		builder.append(createDate);
+//		builder.append(", lastUpdate=");
+//		builder.append(lastUpdate);
+//		builder.append(", nationalParks=");
+//		builder.append(nationalParks);
+//		builder.append(", enabled=");
+//		builder.append(enabled);
+//		builder.append("]");
+//		return builder.toString();
+//	}
 
 	
 	

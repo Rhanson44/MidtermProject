@@ -44,8 +44,6 @@ public class Mountain {
 				inverseJoinColumns=@JoinColumn(name="national_park_id"))
 	private List<NationalPark> nationalParks;
 	
-	
-
 
 	public int getId() {
 		return id;
@@ -144,12 +142,12 @@ public class Mountain {
 		return id == other.id;
 	}
 
-	@Override
-	public String toString() {
-		return "Mountain [id=" + id + ", name=" + name + ", elevationInMeters=" + elevationInMeters
-				+ ", averageSnowfall=" + averageSnowfall + ", latitude=" + latitude + ", longitude=" + longitude
-				+ ", imageUrl=" + imageUrl + ", description=" + description + ", nationalParks=" + nationalParks + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "Mountain [id=" + id + ", name=" + name + ", elevationInMeters=" + elevationInMeters
+//				+ ", averageSnowfall=" + averageSnowfall + ", latitude=" + latitude + ", longitude=" + longitude
+//				+ ", imageUrl=" + imageUrl + ", description=" + description + ", nationalParks=" + nationalParks + "]";
+//	}
 
 	
 
