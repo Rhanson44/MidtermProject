@@ -41,7 +41,6 @@ class PointOfInterestTest {
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		poi = null;
 	}
 
 	@Test

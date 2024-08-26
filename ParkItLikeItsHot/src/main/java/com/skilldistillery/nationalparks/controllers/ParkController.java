@@ -13,10 +13,10 @@ public class ParkController {
 	@Autowired
 	private NationalParkDAO parkDAO;
 	
-	@RequestMapping(path = {"/","/home.do"})
+	@RequestMapping("park.do")
 	public String home(Model model) {
 		model.addAttribute("NationalPark", parkDAO.findAll());
-		return "home";
+		return "parks";
 	}
 	
 }
