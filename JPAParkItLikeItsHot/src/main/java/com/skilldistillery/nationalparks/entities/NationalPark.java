@@ -36,20 +36,23 @@ public class NationalPark {
 	@ManyToMany(mappedBy="nationalParks")
 	private List<Animal> animals;
 	
-	@ManyToMany(mappedBy="floraType")
-	private List<FloraType> floraTypes;
+	@ManyToMany(mappedBy="nationalParks")
+	private List<Flora> flora;
 	
-	@ManyToMany(mappedBy="mountain")
+	@ManyToMany(mappedBy="nationalParks")
 	private List<Mountain> mountains;
 	
-	@OneToMany(mappedBy="pointOfInterest")
+	@OneToMany(mappedBy="nationalParks")
 	private List<PointOfInterest> interests;
 	
-	@OneToMany(mappedBy="trail")
+	@OneToMany(mappedBy="nationalParks")
 	private List<Trail> trails;
 	
-	@OneToMany(mappedBy="nationalParkComment")
+	@OneToMany(mappedBy="nationalParks")
 	private List<NationalParkComment> parkComments;
+	
+	@ManyToMany(mappedBy="nationalParks")
+	private List<User> user;
 	
  	
 	public NationalPark() {
@@ -116,11 +119,11 @@ public class NationalPark {
 	public void setAnimals(List<Animal> animals) {
 		this.animals = animals;
 	}
-	public List<FloraType> getFloraTypes() {
-		return floraTypes;
+	public List<Flora> getFlora() {
+		return flora;
 	}
-	public void setFloraTypes(List<FloraType> floraTypes) {
-		this.floraTypes = floraTypes;
+	public void setFlora(List<Flora> flora) {
+		this.flora = flora;
 	}
 	public List<Mountain> getMountains() {
 		return mountains;
@@ -166,7 +169,7 @@ public class NationalPark {
 	public String toString() {
 		return "NationalPark [id=" + id + ", description=" + description + ", state=" + state + ", year=" + year
 				+ ", imageUrl=" + imageUrl + ", latitude=" + latitude + ", longitutde=" + longitutde + ", price="
-				+ price + ", websiteUrl=" + websiteUrl + ", animals=" + animals + ", floraTypes=" + floraTypes
+				+ price + ", websiteUrl=" + websiteUrl + ", animals=" + animals + ", floraTypes=" + flora
 				+ ", mountains=" + mountains + ", interests=" + interests + ", trails=" + trails + ", parkComments="
 				+ parkComments + "]";
 	}

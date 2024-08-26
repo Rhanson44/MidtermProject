@@ -29,6 +29,8 @@ public class PointOfInterest {
 
     private double latitude;
 
+    private boolean enabled;
+    
     @Column(name="image_url")
     private String imageUrl;
 
@@ -48,7 +50,7 @@ public class PointOfInterest {
     
     @ManyToOne
     @JoinColumn(name="national_park_id")
-	private NationalPark nationalPark;
+	private NationalPark nationalParks;
     
     @ManyToOne
     @JoinColumn(name="user_id")
@@ -60,12 +62,9 @@ public class PointOfInterest {
 	inverseJoinColumns=@JoinColumn(name="point_of_interest_type_id"))
 	private List<PointOfInterestType> interestTypes;
     
-    @OneToMany(mappedBy="pointOfInterestComment")
+    @OneToMany(mappedBy="interests")
 	private List<PointOfInterestComment> poiComments;
     
-    private boolean enabled;
-
-  
 
     public int getId() {
         return id;
@@ -148,11 +147,11 @@ public class PointOfInterest {
     }
 
     public NationalPark getNationalPark() {
-        return nationalPark;
+        return nationalParks;
     }
 
     public void setNationalPark(NationalPark nationalPark) {
-        this.nationalPark = nationalPark;
+        this.nationalParks = nationalPark;
     }
 
     public User getUser() {

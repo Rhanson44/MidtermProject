@@ -4,11 +4,12 @@ import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-
+@Entity
 public class AnimalType {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +20,7 @@ public class AnimalType {
 	@Column(name = "image_url")
 	private String imageUrl;
 	
-	@OneToMany(mappedBy="animalTypes")
+	@OneToMany(mappedBy="animalType")
 	private List<Animal> animals;
 	
 	public AnimalType() {

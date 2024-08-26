@@ -35,6 +35,18 @@ public class User {
 	inverseJoinColumns=@JoinColumn(name="national_park_id"))
 	private List<NationalPark> nationalParks;
 	
+	@ManyToMany
+	@JoinTable(name="national_park_comment",
+	joinColumns=@JoinColumn(name="user_id"),
+	inverseJoinColumns=@JoinColumn(name="national_park_comment_id"))
+	private List<NationalParkComment> nationalParkComments;
+	
+	@OneToMany(mappedBy="user")
+	private List<PointOfInterest> interests;
+	
+	@OneToMany(mappedBy="user")
+	private List<Trail> trails;
+	
 	public List<NationalPark> getNationalParks() {
 		return nationalParks;
 	}
@@ -59,11 +71,6 @@ public class User {
 		this.trails = trails;
 	}
 
-	@OneToMany(mappedBy="pointOfInterest")
-	private List<PointOfInterest> interests;
-	
-	@OneToMany(mappedBy="trail")
-	private List<Trail> trails;
 	
 	public int getId() {
 		return id;

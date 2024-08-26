@@ -58,10 +58,10 @@ public class Trail {
 	private NationalPark nationalParks;
 	
 	@ManyToOne
-	@JoinColumn(name="user_id")
+	@JoinColumn(name="user")
 	private User user;
 
-	@OneToMany(mappedBy="trailComment")
+	@OneToMany(mappedBy="trail")
 	private List<TrailComment> trailComments;
 	
 	private boolean enabled;

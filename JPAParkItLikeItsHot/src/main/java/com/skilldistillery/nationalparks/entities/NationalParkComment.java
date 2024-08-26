@@ -34,7 +34,7 @@ public class NationalParkComment {
 	@JoinColumn(name="national_park_id")
 	private NationalPark nationalParks;
 	
-	@ManyToMany(mappedBy="user")
+	@ManyToMany(mappedBy="nationalParkComments")
 	private List<User> users;
 	
 	

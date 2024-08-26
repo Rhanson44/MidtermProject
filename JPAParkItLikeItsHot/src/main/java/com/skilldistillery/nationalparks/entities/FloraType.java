@@ -1,12 +1,18 @@
 package com.skilldistillery.nationalparks.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
+@Entity
 public class FloraType {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,6 +23,15 @@ public class FloraType {
 	@Column(name = "image_url")
 	private String imageUrl;
 	
+	@OneToMany(mappedBy="floraType")
+	private List<Flora> flora;
+	
+//	@ManyToMany(mappedBy="nationalPark")
+//	@JoinTable(name="national_park_has_flora_type",
+//				joinColumns=@JoinColumn(name="flora_type_id"),
+//				inverseJoinColumns=@JoinColumn(name="national_park_id"))
+//	private List<NationalPark> nationalParks;
+//	
 	public FloraType() {
 		super();
 	}
