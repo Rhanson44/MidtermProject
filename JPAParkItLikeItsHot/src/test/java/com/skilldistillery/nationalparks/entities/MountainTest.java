@@ -46,10 +46,10 @@ class MountainTest {
 		assertNotNull(mountain);
 		assertEquals("Mountain", mountain.getDescription());
 	}
-//	@Test
-//	void np_has_mountain() {
-//		 assertNotNull(mountain.getNationalParks());
-//		 assertTrue(mountain.getNationalParks().size()>0);		
-//	}
+	@Test
+	void np_has_mountain() {
+		 assertNotNull(mountain.getNationalParks());
+		 assertTrue(mountain.getNationalParks().size()>0);		
+	}
 
 }

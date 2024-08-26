@@ -47,11 +47,11 @@ class AnimalTest {
 		assertEquals("American Black Bear", animal.getName());
 	}
 	
-//	@Test
-//	void np_has_animal() {
-//		 assertNotNull(animal.getNationalParks());
-//		 assertTrue(animal.getNationalParks().size()>0);		
-//	}
+	@Test
+	void np_has_animals() {
+		 assertNotNull(animal.getNationalParks());
+		 assertTrue(animal.getNationalParks().size()>0);		
+	}
 	@Test
 	void animal_is_an_animal_type() {
 		assertNotNull(animal.getAnimalType().getName());
