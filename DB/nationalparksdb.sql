@@ -487,6 +487,16 @@ COMMIT;
 
 
 -- -----------------------------------------------------
+-- Data for table `mountain`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `nationalparksdb`;
+INSERT INTO `mountain` (`id`, `description`, `latitude`, `longitude`, `elevation_in_meters`, `average_snowfall_in_inches`, `image_url`) VALUES (1, 'Mountain', 1, 1, 1, '1', NULL);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
 -- Data for table `user`
 -- -----------------------------------------------------
 START TRANSACTION;
