@@ -87,11 +87,11 @@ public class AnimalType {
 		return id == other.id;
 	}
 
-	@Override
-	public String toString() {
-		return "AnimalType [id=" + id + ", name=" + name + ", description=" + description + ", imageUrl=" + imageUrl
-				+ ", animals=" + animals + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "AnimalType [id=" + id + ", name=" + name + ", description=" + description + ", imageUrl=" + imageUrl
+//				+ ", animals=" + animals + "]";
+//	}
 
 	
 	
