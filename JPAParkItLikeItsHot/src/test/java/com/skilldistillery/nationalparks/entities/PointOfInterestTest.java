@@ -13,11 +13,11 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
-class MountainTest {
+class PointOfInterestTest {
 	
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private Mountain mountain;
+	private PointOfInterest poi;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -32,7 +32,7 @@ class MountainTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		mountain = em.find(Mountain.class, 1);
+		poi = em.find(PointOfInterest.class, 1);
 	}
 
 	@AfterEach
@@ -42,8 +42,8 @@ class MountainTest {
 
 	@Test
 	void test_User_entity_mapping() {
-		assertNotNull(mountain);
-		assertEquals("Mountain", mountain.getDescription());
+		assertNotNull(poi);
+		assertEquals( 119.6047, poi.getLongitude());
 	}
 
 }
