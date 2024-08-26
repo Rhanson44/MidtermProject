@@ -36,6 +36,10 @@ public class TrailComment {
 	@ManyToOne
 	@JoinColumn(name="trail_id")
 	private Trail trail;
+	
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
 
 	public int getId() {
 		return id;

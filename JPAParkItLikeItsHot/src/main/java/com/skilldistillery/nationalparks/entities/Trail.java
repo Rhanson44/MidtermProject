@@ -25,19 +25,19 @@ public class Trail {
 	private String name;
 	
 	@Column(name="length_in_miles")
-	private int lengthInMiles;
+	private Integer lengthInMiles;
 	
 	@Column(name="trail_difficulty")
-	private int trailDifficulty;
+	private Integer trailDifficulty;
 	
 	@Column(name="trail_map")
 	private String trailMap;
 	
 	private String description;
 	
-	private double longitude;
+	private Double longitude;
 	
-	private double latitude;
+	private Double latitude;
 	
 	@Column(name="create_date")
 	private LocalDateTime createDate;
@@ -58,7 +58,7 @@ public class Trail {
 	private NationalPark nationalParks;
 	
 	@ManyToOne
-	@JoinColumn(name="user")
+	@JoinColumn(name="user_id")
 	private User user;
 
 	@OneToMany(mappedBy="trail")
@@ -82,19 +82,19 @@ public class Trail {
 		this.name = name;
 	}
 
-	public int getLengthInMiles() {
+	public Integer getLengthInMiles() {
 		return lengthInMiles;
 	}
 
-	public void setLengthInMiles(int lengthInMiles) {
+	public void setLengthInMiles(Integer lengthInMiles) {
 		this.lengthInMiles = lengthInMiles;
 	}
 
-	public int getTrailDifficulty() {
+	public Integer getTrailDifficulty() {
 		return trailDifficulty;
 	}
 
-	public void setTrailDifficulty(int trailDifficulty) {
+	public void setTrailDifficulty(Integer trailDifficulty) {
 		this.trailDifficulty = trailDifficulty;
 	}
 
@@ -114,19 +114,19 @@ public class Trail {
 		this.description = description;
 	}
 
-	public double getLongitude() {
+	public Double getLongitude() {
 		return longitude;
 	}
 
-	public void setLongitude(double longitude) {
+	public void setLongitude(Double longitude) {
 		this.longitude = longitude;
 	}
 
-	public double getLatitude() {
+	public Double getLatitude() {
 		return latitude;
 	}
 
-	public void setLatitude(double latitude) {
+	public void setLatitude(Double latitude) {
 		this.latitude = latitude;
 	}
 
