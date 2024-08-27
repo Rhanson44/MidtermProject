@@ -39,8 +39,7 @@ public class PointOfInterest {
 
     private String description;
 
-    @Column(name="user_id", insertable = false, updatable = false)
-    private int userId;
+
 
     @Column(name="create_date")
     private LocalDateTime createDate;
@@ -52,9 +51,7 @@ public class PointOfInterest {
     @JoinColumn(name="national_park_id")
 	private NationalPark nationalParks;
     
-    @ManyToOne
-    @JoinColumn(name="user_id")
-   	private User user;
+
     
     @ManyToMany
     @JoinTable(name="point_of_interest_has_type",
@@ -122,13 +119,7 @@ public class PointOfInterest {
         this.description = description;
     }
 
-    public int getUserId() {
-        return userId;
-    }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
 
     public LocalDateTime getCreateDate() {
         return createDate;
@@ -154,13 +145,7 @@ public class PointOfInterest {
         this.nationalParks = nationalPark;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
+  
 
     public List<PointOfInterestType> getInterestTypes() {
         return interestTypes;

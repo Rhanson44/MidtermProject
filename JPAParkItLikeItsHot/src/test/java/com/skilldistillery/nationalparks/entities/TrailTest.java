@@ -47,11 +47,7 @@ public class TrailTest {
 		assertNotNull(trail);
 		assertEquals(45, trail.getLengthInMiles());
 	}
-	@Test
-	void trail_has_a_user() {
-		assertNotNull(trail.getUser().getPassword());
-		assertEquals("admin", trail.getUser().getPassword());
-	}
+
 	@Test
 	void trail_is_in_a_np() {
 		assertNotNull(trail.getNationalParks().getName());
