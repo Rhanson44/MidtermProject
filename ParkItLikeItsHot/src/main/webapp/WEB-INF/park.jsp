@@ -28,6 +28,7 @@
     </style>
 </head>
 <body>
+<jsp:include page="nav.jsp"/>
     <h1>National Parks</h1>
     <c:if test="${not empty parks}">
             <c:forEach var="park" items="${parks}">
