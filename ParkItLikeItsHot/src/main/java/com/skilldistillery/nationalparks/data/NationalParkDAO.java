@@ -11,6 +11,8 @@ public interface NationalParkDAO {
 	NationalPark findById(int id);
 	
 	List<NationalPark> findAll();
+	Animal create(Animal newAnimal);
+
 
 //	Animal parkAnimal(Animal animal);
 	

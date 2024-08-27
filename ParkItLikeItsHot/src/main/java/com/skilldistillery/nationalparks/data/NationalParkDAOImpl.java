@@ -28,5 +28,17 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 		return em.createQuery("SELECT n FROM NationalPark n", NationalPark.class).getResultList();
 	}
 
+	@Override
+	public Animal create(Animal newAnimal) {
+	
+			
+			em.persist(newAnimal);
+			em.flush();
+			return newAnimal;
+		
+		}
 
-}
+	}
+
+
+

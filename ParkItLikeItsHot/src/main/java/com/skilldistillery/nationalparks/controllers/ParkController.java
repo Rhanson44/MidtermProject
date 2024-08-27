@@ -38,7 +38,6 @@ public class ParkController {
     public String postComment(
             @RequestParam("parkId") int parkId,
             @RequestParam("content") String content,
-            @RequestParam(value = "imageUrl", required = false) 
             HttpSession session,
             Model model
     ) {
