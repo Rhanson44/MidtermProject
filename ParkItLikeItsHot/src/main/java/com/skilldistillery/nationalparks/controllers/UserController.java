@@ -4,11 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-
-import com.skilldistillery.nationalparks.data.NationalParkDAO;
 import com.skilldistillery.nationalparks.data.UserDAO;
-import com.skilldistillery.nationalparks.entities.NationalPark;
 import com.skilldistillery.nationalparks.entities.User;
 
 import jakarta.servlet.http.HttpSession;
@@ -39,14 +37,7 @@ public class UserController {
        return "account";
     }
 
-	public String registerUser(User user, HttpSession session) {
-		User registeredUser = userDAO.registerUser(user);
-		if (registeredUser != null) {
-			session.setAttribute("registeredUser", registeredUser);
-		}
-		return "account";
-	}
-
+	
 	@RequestMapping(path = "updatePassword.do", method = RequestMethod.POST)
 	public String updatePassword(User user, String password, Model model) {
 		if (user == null) {
