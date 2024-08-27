@@ -222,22 +222,6 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `user`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `user` ;
-
-CREATE TABLE IF NOT EXISTS `user` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `username` VARCHAR(45) NOT NULL,
-  `password` VARCHAR(45) NOT NULL,
-  `enabled` TINYINT NULL,
-  `role` VARCHAR(45) NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE INDEX `username_UNIQUE` (`username` ASC) VISIBLE)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `trail`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `trail` ;
@@ -252,23 +236,32 @@ CREATE TABLE IF NOT EXISTS `trail` (
   `latitude` DOUBLE NULL,
   `longitude` DOUBLE NULL,
   `national_park_id` INT NOT NULL,
-  `user_id` INT NULL,
   `create_date` DATETIME NULL,
   `last_update` DATETIME NULL,
   `enabled` TINYINT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_trails_national_park1_idx` (`national_park_id` ASC) VISIBLE,
-  INDEX `fk_trail_user1_idx` (`user_id` ASC) VISIBLE,
   CONSTRAINT `fk_trails_national_park1`
     FOREIGN KEY (`national_park_id`)
     REFERENCES `national_park` (`id`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_trail_user1`
-    FOREIGN KEY (`user_id`)
-    REFERENCES `user` (`id`)
-    ON DELETE NO ACTION
     ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `user`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `user` ;
+
+CREATE TABLE IF NOT EXISTS `user` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(45) NOT NULL,
+  `enabled` TINYINT NULL,
+  `role` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `username_UNIQUE` (`username` ASC) VISIBLE)
 ENGINE = InnoDB;
 
 
@@ -636,6 +629,27 @@ COMMIT;
 
 
 -- -----------------------------------------------------
+-- Data for table `trail`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `nationalparksdb`;
+INSERT INTO `trail` (`id`, `name`, `length_in_miles`, `trail_difficulty`, `trail_map`, `description`, `latitude`, `longitude`, `national_park_id`, `create_date`, `last_update`, `enabled`) VALUES (1, 'Upper Yosemite Falls Trail', 6.6 , 'Hard', 'https://www.alltrails.com/_next/image?url=https%3A%2F%2Fwww.alltrails.com%2Fapi%2Falltrails%2Fv3%2Fmaps%2F155658190%2Fstatic_map%3Fsize%3D295x240%26scale%3D2%26key%3D3p0t5s6b5g4g0e8k3c1j3w7y5c3m4t8i&w=640&q=75', 'his section of the trail begins with a lot of switchbacks.Though steep,it is actually well-shaded', 37.74297, -119.60325, 1, NULL, NULL, 1);
+INSERT INTO `trail` (`id`, `name`, `length_in_miles`, `trail_difficulty`, `trail_map`, `description`, `latitude`, `longitude`, `national_park_id`, `create_date`, `last_update`, `enabled`) VALUES (2, 'Emerald Pools Trail', 3.0 , 'Moderate', 'https://www.alltrails.com/_next/image?url=https%3A%2F%2Fwww.alltrails.com%2Fapi%2Falltrails%2Fv3%2Fmaps%2F56662574%2Fstatic_map%3Fsize%3D295x240%26scale%3D2%26key%3D3p0t5s6b5g4g0e8k3c1j3w7y5c3m4t8i&w=640&q=75', 'The Lower Pool Trail is the easiest,gaining very little elevation and being smooth and wide,37.251123,-112.957232', 37.251123, -112.957232, 2, NULL, NULL, 1);
+INSERT INTO `trail` (`id`, `name`, `length_in_miles`, `trail_difficulty`, `trail_map`, `description`, `latitude`, `longitude`, `national_park_id`, `create_date`, `last_update`, `enabled`) VALUES (3, 'Avalanche Lake', 5.9 , 'Moderate', 'https://www.alltrails.com/_next/image?url=https%3A%2F%2Fwww.alltrails.com%2Fapi%2Falltrails%2Fv3%2Fmaps%2F171922975%2Fstatic_map%3Fsize%3D295x240%26scale%3D2%26key%3D3p0t5s6b5g4g0e8k3c1j3w7y5c3m4t8i&w=640&q=75', 'Generally considered a moderately challenging route,this is a very popular area for camping and hiking', 48.68067, -113.81904, 3, NULL, NULL, 1);
+INSERT INTO `trail` (`id`, `name`, `length_in_miles`, `trail_difficulty`, `trail_map`, `description`, `latitude`, `longitude`, `national_park_id`, `create_date`, `last_update`, `enabled`) VALUES (4, 'South Kaibab Trail to Ooh Aah Point', 1.8 , 'Moderate', 'https://www.alltrails.com/_next/image?url=https%3A%2F%2Fwww.alltrails.com%2Fapi%2Falltrails%2Fv3%2Fmaps%2F98001155%2Fstatic_map%3Fsize%3D295x240%26scale%3D2%26key%3D3p0t5s6b5g4g0e8k3c1j3w7y5c3m4t8i&w=640&q=75', 'The south Kaibab Trail is the shortest route to the Colorado river at 6.5 miles to achieve the almost mile elevation change', 36.05293, -112.08718, 4, NULL, NULL, 1);
+INSERT INTO `trail` (`id`, `name`, `length_in_miles`, `trail_difficulty`, `trail_map`, `description`, `latitude`, `longitude`, `national_park_id`, `create_date`, `last_update`, `enabled`) VALUES (5, 'Alum Cave Trail to Mount LeConte', 11.0 , 'Hard', 'https://www.alltrails.com/_next/image?url=https%3A%2F%2Fwww.alltrails.com%2Fapi%2Falltrails%2Fv3%2Fmaps%2F106841060%2Fstatic_map%3Fsize%3D295x240%26scale%3D2%26key%3D3p0t5s6b5g4g0e8k3c1j3w7y5c3m4t8i&w=640&q=75', 'Generally considered a challenging route.This is a very popular area for backpacking and hiking', 35.6295702, -83.4517407, 5, NULL, NULL, 1);
+INSERT INTO `trail` (`id`, `name`, `length_in_miles`, `trail_difficulty`, `trail_map`, `description`, `latitude`, `longitude`, `national_park_id`, `create_date`, `last_update`, `enabled`) VALUES (6, 'Jordan Pond Path', 3.1 , 'Easy', 'https://www.alltrails.com/_next/image?url=https%3A%2F%2Fwww.alltrails.com%2Fapi%2Falltrails%2Fv3%2Fmaps%2F85247657%2Fstatic_map%3Fsize%3D295x240%26scale%3D2%26key%3D3p0t5s6b5g4g0e8k3c1j3w7y5c3m4t8i&w=640&q=75', 'Generally considered an easy route,it takes an average of 55 min to complete', 44.3316563, -68.2577205, 6, NULL, NULL, 1);
+INSERT INTO `trail` (`id`, `name`, `length_in_miles`, `trail_difficulty`, `trail_map`, `description`, `latitude`, `longitude`, `national_park_id`, `create_date`, `last_update`, `enabled`) VALUES (7, 'Upper Geyser Basin', 3.5 , 'Easy', 'https://www.alltrails.com/_next/image?url=https%3A%2F%2Fwww.alltrails.com%2Fapi%2Falltrails%2Fv3%2Fmaps%2F66234735%2Fstatic_map%3Fsize%3D295x240%26scale%3D2%26key%3D3p0t5s6b5g4g0e8k3c1j3w7y5c3m4t8i&w=640&q=75', 'The best times to visit this trail are May through October', 44.52357, -110.84006, 7, NULL, NULL, 1);
+INSERT INTO `trail` (`id`, `name`, `length_in_miles`, `trail_difficulty`, `trail_map`, `description`, `latitude`, `longitude`, `national_park_id`, `create_date`, `last_update`, `enabled`) VALUES (8, 'Hall of Mosses Trail', 1.1 , 'Easy', 'https://www.alltrails.com/_next/image?url=https%3A%2F%2Fwww.alltrails.com%2Fapi%2Falltrails%2Fv3%2Fmaps%2F243606491%2Fstatic_map%3Fsize%3D295x240%26scale%3D2%26key%3D3p0t5s6b5g4g0e8k3c1j3w7y5c3m4t8i&w=640&q=75', 'You\'ll need to leave pups at home—dogs aren\'t allowed on this trail', 47.86329, -123.93352, 8, NULL, NULL, 1);
+INSERT INTO `trail` (`id`, `name`, `length_in_miles`, `trail_difficulty`, `trail_map`, `description`, `latitude`, `longitude`, `national_park_id`, `create_date`, `last_update`, `enabled`) VALUES (9, 'Taggart Lake Loop', 3.8 , 'Easy', 'https://www.alltrails.com/_next/image?url=https%3A%2F%2Fwww.alltrails.com%2Fapi%2Falltrails%2Fv3%2Fmaps%2F181188621%2Fstatic_map%3Fsize%3D295x240%26scale%3D2%26key%3D3p0t5s6b5g4g0e8k3c1j3w7y5c3m4t8i&w=640&q=75', 'This is a very popular area for birding,hiking,and horseback riding', 43.70107, -110.742243, 9, NULL, NULL, 1);
+INSERT INTO `trail` (`id`, `name`, `length_in_miles`, `trail_difficulty`, `trail_map`, `description`, `latitude`, `longitude`, `national_park_id`, `create_date`, `last_update`, `enabled`) VALUES (10, 'Emerald Lake Trail', 3.2 , 'Moderate', 'https://www.alltrails.com/_next/image?url=https%3A%2F%2Fwww.alltrails.com%2Fapi%2Falltrails%2Fv3%2Fmaps%2F171606678%2Fstatic_map%3Fsize%3D295x240%26scale%3D2%26key%3D3p0t5s6b5g4g0e8k3c1j3w7y5c3m4t8i&w=640&q=75', 'Generally considered a moderately challenging route,it takes an average of 1 h 39 min to complete', 40.28794, -105.66429, 10, NULL, NULL, 1);
+INSERT INTO `trail` (`id`, `name`, `length_in_miles`, `trail_difficulty`, `trail_map`, `description`, `latitude`, `longitude`, `national_park_id`, `create_date`, `last_update`, `enabled`) VALUES (11, 'Delicate Arch Trail', 3.2 , 'Moderate', 'https://www.alltrails.com/_next/image?url=https%3A%2F%2Fwww.alltrails.com%2Fapi%2Falltrails%2Fv3%2Fmaps%2F69199735%2Fstatic_map%3Fsize%3D295x240%26scale%3D2%26key%3D3p0t5s6b5g4g0e8k3c1j3w7y5c3m4t8i&w=640&q=75', 'The trail is open year-round and is beautiful to visit anytime', 38.7356524, -109.5205071, 11, NULL, NULL, 1);
+INSERT INTO `trail` (`id`, `name`, `length_in_miles`, `trail_difficulty`, `trail_map`, `description`, `latitude`, `longitude`, `national_park_id`, `create_date`, `last_update`, `enabled`) VALUES (12, 'Wall Street and Queens Garden Loop Trail', 3.2 , 'Moderate', 'https://www.alltrails.com/_next/image?url=https%3A%2F%2Fwww.alltrails.com%2Fapi%2Falltrails%2Fv3%2Fmaps%2F43068652%2Fstatic_map%3Fsize%3D295x240%26scale%3D2%26key%3D3p0t5s6b5g4g0e8k3c1j3w7y5c3m4t8i&w=640&q=75', 'This is a very popular area for hiking,so you\'ll likely encounter other people while exploring', 37.6229251, -112.1661025, 12, NULL, NULL, 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
 -- Data for table `user`
 -- -----------------------------------------------------
 START TRANSACTION;
@@ -644,27 +658,6 @@ INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (1, 
 INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (2, 'user', 'user', 1, 'user');
 INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (3, 't', 't', 1, 't');
 INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (4, 'nationalparksuser', 'nationalparksuser', 1, 'nationalparksuser');
-
-COMMIT;
-
-
--- -----------------------------------------------------
--- Data for table `trail`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `nationalparksdb`;
-INSERT INTO `trail` (`id`, `name`, `length_in_miles`, `trail_difficulty`, `trail_map`, `description`, `latitude`, `longitude`, `national_park_id`, `user_id`, `create_date`, `last_update`, `enabled`) VALUES (1, 'Upper Yosemite Falls Trail', 6.6 , 'Hard', 'https://www.alltrails.com/_next/image?url=https%3A%2F%2Fwww.alltrails.com%2Fapi%2Falltrails%2Fv3%2Fmaps%2F155658190%2Fstatic_map%3Fsize%3D295x240%26scale%3D2%26key%3D3p0t5s6b5g4g0e8k3c1j3w7y5c3m4t8i&w=640&q=75', 'his section of the trail begins with a lot of switchbacks.Though steep,it is actually well-shaded', 37.74297, -119.60325, 1, NULL, NULL, NULL, 1);
-INSERT INTO `trail` (`id`, `name`, `length_in_miles`, `trail_difficulty`, `trail_map`, `description`, `latitude`, `longitude`, `national_park_id`, `user_id`, `create_date`, `last_update`, `enabled`) VALUES (2, 'Emerald Pools Trail', 3.0 , 'Moderate', 'https://www.alltrails.com/_next/image?url=https%3A%2F%2Fwww.alltrails.com%2Fapi%2Falltrails%2Fv3%2Fmaps%2F56662574%2Fstatic_map%3Fsize%3D295x240%26scale%3D2%26key%3D3p0t5s6b5g4g0e8k3c1j3w7y5c3m4t8i&w=640&q=75', 'The Lower Pool Trail is the easiest,gaining very little elevation and being smooth and wide,37.251123,-112.957232', 37.251123, -112.957232, 2, NULL, NULL, NULL, 1);
-INSERT INTO `trail` (`id`, `name`, `length_in_miles`, `trail_difficulty`, `trail_map`, `description`, `latitude`, `longitude`, `national_park_id`, `user_id`, `create_date`, `last_update`, `enabled`) VALUES (3, 'Avalanche Lake', 5.9 , 'Moderate', 'https://www.alltrails.com/_next/image?url=https%3A%2F%2Fwww.alltrails.com%2Fapi%2Falltrails%2Fv3%2Fmaps%2F171922975%2Fstatic_map%3Fsize%3D295x240%26scale%3D2%26key%3D3p0t5s6b5g4g0e8k3c1j3w7y5c3m4t8i&w=640&q=75', 'Generally considered a moderately challenging route,this is a very popular area for camping and hiking', 48.68067, -113.81904, 3, NULL, NULL, NULL, 1);
-INSERT INTO `trail` (`id`, `name`, `length_in_miles`, `trail_difficulty`, `trail_map`, `description`, `latitude`, `longitude`, `national_park_id`, `user_id`, `create_date`, `last_update`, `enabled`) VALUES (4, 'South Kaibab Trail to Ooh Aah Point', 1.8 , 'Moderate', 'https://www.alltrails.com/_next/image?url=https%3A%2F%2Fwww.alltrails.com%2Fapi%2Falltrails%2Fv3%2Fmaps%2F98001155%2Fstatic_map%3Fsize%3D295x240%26scale%3D2%26key%3D3p0t5s6b5g4g0e8k3c1j3w7y5c3m4t8i&w=640&q=75', 'The south Kaibab Trail is the shortest route to the Colorado river at 6.5 miles to achieve the almost mile elevation change', 36.05293, -112.08718, 4, NULL, NULL, NULL, 1);
-INSERT INTO `trail` (`id`, `name`, `length_in_miles`, `trail_difficulty`, `trail_map`, `description`, `latitude`, `longitude`, `national_park_id`, `user_id`, `create_date`, `last_update`, `enabled`) VALUES (5, 'Alum Cave Trail to Mount LeConte', 11.0 , 'Hard', 'https://www.alltrails.com/_next/image?url=https%3A%2F%2Fwww.alltrails.com%2Fapi%2Falltrails%2Fv3%2Fmaps%2F106841060%2Fstatic_map%3Fsize%3D295x240%26scale%3D2%26key%3D3p0t5s6b5g4g0e8k3c1j3w7y5c3m4t8i&w=640&q=75', 'Generally considered a challenging route.This is a very popular area for backpacking and hiking', 35.6295702, -83.4517407, 5, NULL, NULL, NULL, 1);
-INSERT INTO `trail` (`id`, `name`, `length_in_miles`, `trail_difficulty`, `trail_map`, `description`, `latitude`, `longitude`, `national_park_id`, `user_id`, `create_date`, `last_update`, `enabled`) VALUES (6, 'Jordan Pond Path', 3.1 , 'Easy', 'https://www.alltrails.com/_next/image?url=https%3A%2F%2Fwww.alltrails.com%2Fapi%2Falltrails%2Fv3%2Fmaps%2F85247657%2Fstatic_map%3Fsize%3D295x240%26scale%3D2%26key%3D3p0t5s6b5g4g0e8k3c1j3w7y5c3m4t8i&w=640&q=75', 'Generally considered an easy route,it takes an average of 55 min to complete', 44.3316563, -68.2577205, 6, NULL, NULL, NULL, 1);
-INSERT INTO `trail` (`id`, `name`, `length_in_miles`, `trail_difficulty`, `trail_map`, `description`, `latitude`, `longitude`, `national_park_id`, `user_id`, `create_date`, `last_update`, `enabled`) VALUES (7, 'Upper Geyser Basin', 3.5 , 'Easy', 'https://www.alltrails.com/_next/image?url=https%3A%2F%2Fwww.alltrails.com%2Fapi%2Falltrails%2Fv3%2Fmaps%2F66234735%2Fstatic_map%3Fsize%3D295x240%26scale%3D2%26key%3D3p0t5s6b5g4g0e8k3c1j3w7y5c3m4t8i&w=640&q=75', 'The best times to visit this trail are May through October', 44.52357, -110.84006, 7, NULL, NULL, NULL, 1);
-INSERT INTO `trail` (`id`, `name`, `length_in_miles`, `trail_difficulty`, `trail_map`, `description`, `latitude`, `longitude`, `national_park_id`, `user_id`, `create_date`, `last_update`, `enabled`) VALUES (8, 'Hall of Mosses Trail', 1.1 , 'Easy', 'https://www.alltrails.com/_next/image?url=https%3A%2F%2Fwww.alltrails.com%2Fapi%2Falltrails%2Fv3%2Fmaps%2F243606491%2Fstatic_map%3Fsize%3D295x240%26scale%3D2%26key%3D3p0t5s6b5g4g0e8k3c1j3w7y5c3m4t8i&w=640&q=75', 'You\'ll need to leave pups at home—dogs aren\'t allowed on this trail', 47.86329, -123.93352, 8, NULL, NULL, NULL, 1);
-INSERT INTO `trail` (`id`, `name`, `length_in_miles`, `trail_difficulty`, `trail_map`, `description`, `latitude`, `longitude`, `national_park_id`, `user_id`, `create_date`, `last_update`, `enabled`) VALUES (9, 'Taggart Lake Loop', 3.8 , 'Easy', 'https://www.alltrails.com/_next/image?url=https%3A%2F%2Fwww.alltrails.com%2Fapi%2Falltrails%2Fv3%2Fmaps%2F181188621%2Fstatic_map%3Fsize%3D295x240%26scale%3D2%26key%3D3p0t5s6b5g4g0e8k3c1j3w7y5c3m4t8i&w=640&q=75', 'This is a very popular area for birding,hiking,and horseback riding', 43.70107, -110.742243, 9, NULL, NULL, NULL, 1);
-INSERT INTO `trail` (`id`, `name`, `length_in_miles`, `trail_difficulty`, `trail_map`, `description`, `latitude`, `longitude`, `national_park_id`, `user_id`, `create_date`, `last_update`, `enabled`) VALUES (10, 'Emerald Lake Trail', 3.2 , 'Moderate', 'https://www.alltrails.com/_next/image?url=https%3A%2F%2Fwww.alltrails.com%2Fapi%2Falltrails%2Fv3%2Fmaps%2F171606678%2Fstatic_map%3Fsize%3D295x240%26scale%3D2%26key%3D3p0t5s6b5g4g0e8k3c1j3w7y5c3m4t8i&w=640&q=75', 'Generally considered a moderately challenging route,it takes an average of 1 h 39 min to complete', 40.28794, -105.66429, 10, NULL, NULL, NULL, 1);
-INSERT INTO `trail` (`id`, `name`, `length_in_miles`, `trail_difficulty`, `trail_map`, `description`, `latitude`, `longitude`, `national_park_id`, `user_id`, `create_date`, `last_update`, `enabled`) VALUES (11, 'Delicate Arch Trail', 3.2 , 'Moderate', 'https://www.alltrails.com/_next/image?url=https%3A%2F%2Fwww.alltrails.com%2Fapi%2Falltrails%2Fv3%2Fmaps%2F69199735%2Fstatic_map%3Fsize%3D295x240%26scale%3D2%26key%3D3p0t5s6b5g4g0e8k3c1j3w7y5c3m4t8i&w=640&q=75', 'The trail is open year-round and is beautiful to visit anytime', 38.7356524, -109.5205071, 11, NULL, NULL, NULL, 1);
-INSERT INTO `trail` (`id`, `name`, `length_in_miles`, `trail_difficulty`, `trail_map`, `description`, `latitude`, `longitude`, `national_park_id`, `user_id`, `create_date`, `last_update`, `enabled`) VALUES (12, 'Wall Street and Queens Garden Loop Trail', 3.2 , 'Moderate', 'https://www.alltrails.com/_next/image?url=https%3A%2F%2Fwww.alltrails.com%2Fapi%2Falltrails%2Fv3%2Fmaps%2F43068652%2Fstatic_map%3Fsize%3D295x240%26scale%3D2%26key%3D3p0t5s6b5g4g0e8k3c1j3w7y5c3m4t8i&w=640&q=75', 'This is a very popular area for hiking,so you\'ll likely encounter other people while exploring', 37.6229251, -112.1661025, 12, NULL, NULL, NULL, 1);
 
 COMMIT;
 
