@@ -33,6 +33,7 @@ public class LoginController {
 		if (user != null) {
 			session.setAttribute("loginTime", lt);
 			session.setAttribute("loggedInUser", user);
+			session.setAttribute("username", user.getUsername());
 			return "account";
 
 		} else {

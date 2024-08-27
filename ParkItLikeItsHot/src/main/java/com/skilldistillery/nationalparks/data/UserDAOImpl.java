@@ -61,4 +61,23 @@ public class UserDAOImpl implements UserDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+    public boolean validatePassword(int userId, String currentPassword) {
+        String jpql = "SELECT COUNT(u) FROM User u WHERE u.id = :userId AND u.password = :currentPassword";
+        Long count = (Long) em.createQuery(jpql)
+                                        .setParameter("userId", userId)
+                                        .setParameter("currentPassword", currentPassword)
+                                        .getSingleResult();
+        return count != null && count > 0;
+    }
+
+	@Override
+	public void updatePassword(int userId, String newPassword) {
+		// TODO Auto-generated method stub
+		
+	}
+
+    
+   
 }

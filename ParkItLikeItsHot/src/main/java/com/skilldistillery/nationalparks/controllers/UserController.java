@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
 
 import com.skilldistillery.nationalparks.data.NationalParkDAO;
 import com.skilldistillery.nationalparks.data.UserDAO;
@@ -18,18 +18,18 @@ public class UserController {
 
 	@Autowired
 	private UserDAO userDAO;
-	
-	@RequestMapping(path = {"/","home.do"})
+
+	@RequestMapping(path = { "/", "home.do" })
 	public String home(Model model) {
-		model.addAttribute("SMOKETEST", userDAO.authenticateUser("admin","test"));
+		model.addAttribute("SMOKETEST", userDAO.authenticateUser("admin", "test"));
 		return "home";
 	}
-	
+
 	@RequestMapping("registerForm.do")
 	public String registerForm() {
 		return "register";
 	}
-	
+
 	@RequestMapping("register.do")
     public String registerUser(User user, HttpSession session) {
 	   User registeredUser = userDAO.registerUser(user);
@@ -38,6 +38,32 @@ public class UserController {
 	   }
        return "account";
     }
+
+	public String registerUser(User user, HttpSession session) {
+		User registeredUser = userDAO.registerUser(user);
+		if (registeredUser != null) {
+			session.setAttribute("registeredUser", registeredUser);
+		}
+		return "account";
+	}
+
+	@RequestMapping(path = "updatePassword.do", method = RequestMethod.POST)
+	public String updatePassword(User user, String password, Model model) {
+		if (user == null) {
+			model.addAttribute("error", "User not logged in");
+			return "error";
+		}
+
+		if (!userDAO.validatePassword(user.getId(), password)) {
+			model.addAttribute("error", "Current password is incorrect");
+			return "updatepassword";
+		}
+
+		userDAO.updatePassword(user.getId(), password);
+		model.addAttribute("success", "Password updated successfully");
+
+		return "success";
+	}
 
 }
 
