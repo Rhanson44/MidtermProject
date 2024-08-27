@@ -33,34 +33,12 @@ public class User {
 
 	@OneToMany(mappedBy ="user")
 	private List<NationalParkComment> nationalParkComments;
-	
-	@OneToMany(mappedBy="user")
-	private List<PointOfInterest> interests;
-	
-	@OneToMany(mappedBy="user")
-	private List<Trail> trails;
-	
+
+
 	@OneToMany(mappedBy="user")
 	private List<TrailComment> trailComments;
 	
-	
 
-
-	public List<PointOfInterest> getInterests() {
-		return interests;
-	}
-
-	public void setInterests(List<PointOfInterest> interests) {
-		this.interests = interests;
-	}
-
-	public List<Trail> getTrails() {
-		return trails;
-	}
-
-	public void setTrails(List<Trail> trails) {
-		this.trails = trails;
-	}
 
 	
 	public int getId() {
