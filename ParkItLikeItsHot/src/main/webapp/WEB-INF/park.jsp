@@ -46,7 +46,7 @@
 <body>
 
 <jsp:include page="nav.jsp"/>
-
+	<br>
     <h1>National Parks</h1>
     
     <div class="container mt-4">

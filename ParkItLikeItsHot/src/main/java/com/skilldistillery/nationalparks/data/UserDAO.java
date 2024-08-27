@@ -11,5 +11,8 @@ public interface UserDAO {
 	
 	User registerUser(User user);
 
+	boolean validatePassword(int userId, String currentPassword);
+    
+    void updatePassword(int userId, String newPassword);
 	
 }

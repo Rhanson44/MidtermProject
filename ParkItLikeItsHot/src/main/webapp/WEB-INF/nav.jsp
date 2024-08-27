@@ -7,40 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Navbar</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        .navbar {
-            transition: all 0.3s ease;
-            overflow: hidden;
-        }
-        .navbar-expand {
-            max-height: 60px; /* Adjust this height based on your navbar height */
-        }
-        .navbar-collapse {
-            max-height: 0;
-            transition: max-height 0.3s ease;
-        }
-        .navbar-expand:hover .navbar-collapse {
-            max-height: 300px; /* Adjust this based on the content height */
-        }
-        .navbar-nav {
-            display: flex;
-            flex-direction: row;
-        }
-        .navbar-nav a {
-            padding: 15px 20px; /* Adjust padding for spacing between options */
-            text-decoration: none;
-            color: #ffffff;
-        }
-        .navbar-nav a:hover {
-            background-color: #6fa08d;
-        }
-        .navbar-brand {
-            padding: 15px;
-            color: #ffffff;
-            font-size: 1.5rem;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="/webapp/style.css">
 </head>
 <body>
 <nav class="navbar navbar-light navbar-expand fixed-top" style="background-color: #8fc1ad;">
