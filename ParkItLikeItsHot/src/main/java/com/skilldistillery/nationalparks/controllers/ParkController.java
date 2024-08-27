@@ -4,8 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.skilldistillery.nationalparks.data.NationalParkDAO;
+import com.skilldistillery.nationalparks.entities.NationalPark;
+import com.skilldistillery.nationalparks.entities.User;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class ParkController {
@@ -18,5 +23,14 @@ public class ParkController {
 		model.addAttribute("parks", parkDAO.findAll());
 		return "park";
 	}
+    @RequestMapping("comment.do")
+    public String parkComments(@RequestParam("parkId") int parkId, HttpSession session, Model model) {
+        User loggedInUser = (User) session.getAttribute("loggedInUser");
+        NationalPark park = parkDAO.findById(parkId);
+        model.addAttribute("park", park);
+        model.addAttribute("comments", park.getParkComments()); 
+        model.addAttribute("loggedInUser", loggedInUser);
+        return "comment"; 
 	
+}
 }
