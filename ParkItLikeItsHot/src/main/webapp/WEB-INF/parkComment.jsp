@@ -19,7 +19,7 @@
             <div class="row d-flex justify-content-center">
                 <div class="col-md-12 col-lg-10 col-xl-8">
                     <c:if test="${not empty loggedInUser}">
-                        <form action="postComment.do" method="POST">
+                        <form action="postParkComment.do" method="POST">
                             <input type="hidden" name="parkId" value="${park.id}">
                             <div class="form-group">
                                 <textarea class="form-control" name="content" rows="4" placeholder="Write your comment here..." required></textarea>

@@ -36,18 +36,16 @@ public class ParkController {
         model.addAttribute("park", park);
         model.addAttribute("comments", park.getParkComments());
         model.addAttribute("loggedInUser", loggedInUser);
-        return "comment";
+        return "parkComment";
     }
 
-    @RequestMapping(value = "postComment.do", method = RequestMethod.POST)
+    @RequestMapping(value = "postParkComment.do", method = RequestMethod.POST)
     public String postComment(@RequestParam("parkId")int parkId, NationalParkComment comment, HttpSession session) {
         User loggedInUser = (User) session.getAttribute("loggedInUser");
         if (loggedInUser == null) {
             return "login";
         }
-        
         parkDAO.addComment(comment, parkId, loggedInUser.getId());
-
         return "redirect:comment.do?parkId=" + parkId;
     }
 }
