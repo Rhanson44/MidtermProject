@@ -17,6 +17,10 @@
             width: 400px; /* Adjust the size as needed */
             height: auto;
             border-radius: 5px;
+            transition: border 0.1s ease; /* Smooth transition for the border effect */
+        }
+        .park-item img:hover {
+            border: 3px solid #9C27B0; /* Green border on hover, adjust color and size as needed */
         }
         .park-item h2 {
             margin: 10px 0;
