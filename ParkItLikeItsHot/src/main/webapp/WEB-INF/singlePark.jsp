@@ -124,6 +124,24 @@
     <c:if test="${empty park.trails}">
         <p>No Trails found for this park.</p>
     </c:if>
+    
+     <%-- <!-- Comment Section -->
+    <h2>Comments</h2>
+
+    <!-- Display Comments -->
+    <c:if test="${not empty park.comments}">
+        <ul>
+            <c:forEach var="comment" items="${park.comments}">
+                <li>
+                    <strong>${comment.userName}:</strong> ${comment.text} <br>
+                    <small>${comment.timestamp}</small>
+                </li>
+            </c:forEach>
+        </ul>
+    </c:if>
+    <c:if test="${empty park.comments}">
+        <p>No comments yet.</p>
+    </c:if> --%>
+    
 </body>
-</html>
 </html>
