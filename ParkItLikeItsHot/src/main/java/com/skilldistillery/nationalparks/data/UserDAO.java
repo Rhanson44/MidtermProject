@@ -9,4 +9,6 @@ public interface UserDAO {
 
 	Object findUserById(int id);
 	
+	boolean registerUser(String username, String password);
+	
 }

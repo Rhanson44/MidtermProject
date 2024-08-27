@@ -8,8 +8,10 @@
 <title>Park It Like It's Hot</title>
 </head>
 <body>
-<h1>Welcome to The Site</h1>
+<h1>Park It Like It's Hot</h1>
 <a href="park.do">All Parks</a>
+<br>
+<a href="register.do" class="btn btn-secondary">Register</a>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </html>

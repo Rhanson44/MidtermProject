@@ -1,5 +1,6 @@
 package com.skilldistillery.nationalparks.data;
 
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.nationalparks.entities.User;
@@ -29,6 +30,32 @@ public class UserDAOImpl implements UserDAO {
 	    }
 	    return user;
 	}
+	
+	@Override
+	public boolean registerUser(String username, String password) {
+        try {
+            em.getTransaction().begin();
+
+            String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
+            
+            User user = new User();
+            user.setUsername(username);
+            user.setPassword(hashedPassword);
+            
+            em.persist(user);
+            em.getTransaction().commit();
+            
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            return false;
+        } finally {
+            em.close();
+        }
+    }
 
 	@Override
 	public User getUserByUserNameAndPassword(String username, String password) {
