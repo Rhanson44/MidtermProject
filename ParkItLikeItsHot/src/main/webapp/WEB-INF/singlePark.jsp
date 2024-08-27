@@ -1,135 +1,167 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html>
 <head>
-   <title>${park.name} Info</title>
+    <title>${park.name} Info</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+        .card-body {
+            min-height: 120px;
+        }
+    </style>
 </head>
 <body>
-<jsp:include page="nav.jsp"/>
-<br>
-<br>
-<br>
-<br>
-  <h1><a href="comment.do?parkId=${park.id}">Comment Section</a></h1>
-   
-    <c:if test="${not empty park.animals}">
-    <form action="singlePark.do" method="GET">
-                <input type="hidden" name="id" value="${park.id}">
-			</form>
-        <ul>
-         <h1>Animals in the ${park.name}</h1>
-    
-            <c:forEach var="animal" items="${park.animals}">
-                <li>
-                    <strong>Name:</strong> ${animal.name} <br>
-                    <strong>Type:</strong> ${animal.animalType.name} <br>
-                    <strong>Type:</strong> ${animal.animalType.description} <br>
-                    <strong>Endangered:</strong> ${animal.endangered} <br>
-                    <img src="${animal.imageUrl}" alt="${animal.name}" style="width:200px;">
-                </li>
-            </c:forEach>
-        </ul>
-    </c:if>
+    <jsp:include page="nav.jsp"/>
+	<br>
+    <div class="container">
+        <div class="my-4">
+            <h1 class="text-center mb-4">
+                <a href="comment.do?parkId=${park.id}" class="btn btn-primary">Comment Section</a>
+            </h1>
 
-    <c:if test="${empty park.flora}">
-        <p>No flora found for this park.</p>
-    </c:if>
-     <c:if test="${not empty park.flora}">
-    <form action="singlePark.do" method="GET">
-                <input type="hidden" name="id" value="${park.id}">
-			</form>
-        <ul>
-         <h1>Flora in the ${park.name}</h1>
-    
-            <c:forEach var="flora" items="${park.flora}">
-                <li>
-                    <strong>Name:</strong> ${flora.name} <br>
-                    <strong>Species:</strong> ${flora.species} <br>
-                    <strong>Type:</strong> ${flora.floraType.name} <br>
-                    <strong>Type:</strong> ${flora.floraType.description} <br>
-                    <img src="${flora.imageUrl}" alt="${flora.name}" style="width:200px;">
-                </li>
-            </c:forEach>
-        </ul>
-    </c:if>
+            <!-- Animals Section -->
+            <c:if test="${not empty park.animals}">
+                <div class="my-4">
+                    <h2>Animals in the ${park.name}</h2>
+                    <div class="row">
+                        <c:forEach var="animal" items="${park.animals}">
+                            <div class="col-md-4 mb-4">
+                                <div class="card">
+                                    <img src="${animal.imageUrl}" class="card-img-top" alt="${animal.name}">
+                                    <div class="card-body">
+                                        <h5 class="card-title">${animal.name}</h5>
+                                        <p><strong>Type:</strong> ${animal.animalType.name}</p>
+                                        <p><strong>Description:</strong> ${animal.animalType.description}</p>
+                                        <p><strong>Endangered:</strong> ${animal.endangered}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </c:forEach>
+                    </div>
+                </div>
+            </c:if>
 
-    <c:if test="${empty park.flora}">
-        <p>No flora found for this park.</p>
-    </c:if>
-     <c:if test="${not empty park.mountains}">
-    <form action="singlePark.do" method="GET">
-                <input type="hidden" name="id" value="${park.id}">
-			</form>
-        <ul>
-         <h1>Mountians in the ${park.name}</h1>
-    
-            <c:forEach var="mountain" items="${park.mountains}">
-                <li>
-                   <h2> <strong>Name:</strong> ${mountain.name}</h2> <br>
-                    <strong>Elevation (Meters):</strong> ${mountain.elevationInMeters} <br>
-                    <strong>Average Snowfall:</strong> ${mountain.averageSnowfall} <br>
-                    <strong>Description:</strong> ${mountain.description} <br>
-                    <img src="${mountain.imageUrl}" alt="${mountain.name}" style="width:200px;">
-                </li>
-            </c:forEach>
-        </ul>
-    </c:if>
+            <c:if test="${empty park.animals}">
+                <p>No animals found for this park.</p>
+            </c:if>
 
-    <c:if test="${empty park.mountains}">
-        <p>No mountains found for this park.</p>
-    </c:if>
-     <c:if test="${not empty park.interests}">
-    <form action="singlePark.do" method="GET">
-                <input type="hidden" name="id" value="${park.id}">
-			</form>
-        <ul>
-         <h1>Points of Interests in the ${park.name}</h1>
-    
-            <c:forEach var="interest" items="${park.interests}">
-                <li>
-                    <h2><strong>Name:</strong> ${interest.name}</h2> <br>
-                    <img src="${interest.imageUrl}" alt="${interest.name}" style="width:200px;"><br>
-                    <strong>${interest.name} Description:</strong> ${interest.description} <br>
-                    <strong>Longitude:</strong> ${interest.longitude} <br>
-             <%--       <strong> Type:</strong> ${interest.interestTypes} <br>
-                 <strong> ${interest.interestTypes} Description:</strong> ${interest.interestTypes.description} <br> --%> 
-                    <strong>Latitude:</strong> ${interest.latitude} <br>
-                </li>
-            </c:forEach>
-        </ul>
-    </c:if>
+            <!-- Flora Section -->
+            <c:if test="${not empty park.flora}">
+                <div class="my-4">
+                    <h2>Flora in the ${park.name}</h2>
+                    <div class="row">
+                        <c:forEach var="flora" items="${park.flora}">
+                            <div class="col-md-4 mb-4">
+                                <div class="card">
+                                    <img src="${flora.imageUrl}" class="card-img-top" alt="${flora.name}">
+                                    <div class="card-body">
+                                        <h5 class="card-title">${flora.name}</h5>
+                                        <p><strong>Species:</strong> ${flora.species}</p>
+                                        <p><strong>Type:</strong> ${flora.floraType.name}</p>
+                                        <p><strong>Description:</strong> ${flora.floraType.description}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </c:forEach>
+                    </div>
+                </div>
+            </c:if>
 
-    <c:if test="${empty park.interests}">
-        <p>No Points of Interests found for this park.</p>
-    </c:if>
+            <c:if test="${empty park.flora}">
+                <p>No flora found for this park.</p>
+            </c:if>
 
-     <c:if test="${not empty park.trails}">
-    <form action="singlePark.do" method="GET">
-                <input type="hidden" name="id" value="${park.id}">
-			</form>
-        <ul>
-         <h1>Trails in the ${park.name}</h1>
-    
-            <c:forEach var="trail" items="${park.trails}">
-                <li>
-                    <h2><strong>Name:</strong> ${trail.name}</h2> <br>
-                    <img src="${trail.trailMap}" alt="${trail.name}" style="width:200px;"><br>
-                    <strong>${trail.name} Description:</strong> ${trail.description} <br>
-                    <strong> Difficulty:</strong> ${trail.trailDifficulty} <br>
-                    <strong> Length(Miles):</strong> ${trail.lengthInMiles} <br>
-                    <strong>Longitude:</strong> ${interest.longitude} <br>
-                    <strong>Latitude:</strong> ${interest.latitude} <br>
-                </li>
-            </c:forEach>
-        </ul>
-    </c:if>
+            <!-- Mountains Section -->
+            <c:if test="${not empty park.mountains}">
+                <div class="my-4">
+                    <h2>Mountains in the ${park.name}</h2>
+                    <div class="row">
+                        <c:forEach var="mountain" items="${park.mountains}">
+                            <div class="col-md-4 mb-4">
+                                <div class="card">
+                                    <img src="${mountain.imageUrl}" class="card-img-top" alt="${mountain.name}">
+                                    <div class="card-body">
+                                        <h5 class="card-title">${mountain.name}</h5>
+                                        <p><strong>Elevation (Meters):</strong> ${mountain.elevationInMeters}</p>
+                                        <p><strong>Average Snowfall:</strong> ${mountain.averageSnowfall}</p>
+                                        <p><strong>Description:</strong> ${mountain.description}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </c:forEach>
+                    </div>
+                </div>
+            </c:if>
 
-    <c:if test="${empty park.trails}">
-        <p>No Trails found for this park.</p>
-    </c:if>
+            <c:if test="${empty park.mountains}">
+                <p>No mountains found for this park.</p>
+            </c:if>
+
+            <!-- Points of Interest Section -->
+            <c:if test="${not empty park.interests}">
+                <div class="my-4">
+                    <h2>Points of Interest in the ${park.name}</h2>
+                    <div class="row">
+                        <c:forEach var="interest" items="${park.interests}">
+                            <div class="col-md-4 mb-4">
+                                <div class="card">
+                                    <img src="${interest.imageUrl}" class="card-img-top" alt="${interest.name}">
+                                    <div class="card-body">
+                                        <h5 class="card-title">${interest.name}</h5>
+                                        <p><strong>Description:</strong> ${interest.description}</p>
+                                        <p><strong>Longitude:</strong> ${interest.longitude}</p>
+                                        <p><strong>Latitude:</strong> ${interest.latitude}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </c:forEach>
+                    </div>
+                </div>
+            </c:if>
+
+            <c:if test="${empty park.interests}">
+                <p>No points of interest found for this park.</p>
+            </c:if>
+
+            <!-- Trails Section -->
+            <c:if test="${not empty park.trails}">
+                <div class="my-4">
+                    <h2>Trails in the ${park.name}</h2>
+                    <div class="row">
+                        <c:forEach var="trail" items="${park.trails}">
+                            <div class="col-md-4 mb-4">
+                                <div class="card">
+                                    <img src="${trail.trailMap}" class="card-img-top" alt="${trail.name}">
+                                    <div class="card-body">
+                                        <h5 class="card-title">${trail.name}</h5>
+                                        <p><strong>Description:</strong> ${trail.description}</p>
+                                        <p><strong>Difficulty:</strong> ${trail.trailDifficulty}</p>
+                                        <p><strong>Length (Miles):</strong> ${trail.lengthInMiles}</p>
+                                        <p><strong>Longitude:</strong> ${trail.longitude}</p>
+                                        <p><strong>Latitude:</strong> ${trail.latitude}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </c:forEach>
+                    </div>
+                </div>
+            </c:if>
+
+            <c:if test="${empty park.trails}">
+                <p>No trails found for this park.</p>
+            </c:if>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
-</html>
 </html>

@@ -30,14 +30,7 @@ public class UserController {
 
 	
 
-	public String registerUser(User user, HttpSession session) {
-		User registeredUser = userDAO.registerUser(user);
-		if (registeredUser != null) {
-			session.setAttribute("registeredUser", registeredUser);
-		}
-		return "account";
-	}
-
+	
 	@RequestMapping(path = "updatePassword.do", method = RequestMethod.POST)
 	public String updatePassword(User user, String password, Model model) {
 		if (user == null) {
