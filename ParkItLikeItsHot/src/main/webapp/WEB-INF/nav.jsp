@@ -17,8 +17,8 @@
             <c:if test="${not empty loggedInUser}">
                 <li class="nav-item"><a class="nav-link" href="home.do">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="park.do">All Parks</a></li>
-                <li class="nav-item"><a class="nav-link" href="account.do">Account</a></li>
-                <li class="nav-item"><a class="nav-link" href="logout.do">Logout</a></li>
+<!--                 <li class="nav-item"><a class="nav-link" href="account.do">Account</a></li>
+ -->                <li class="nav-item"><a class="nav-link" href="logout.do">Logout</a></li>
             </c:if>
             <c:if test="${empty loggedInUser}">
                 <li class="nav-item"><a class="nav-link" href="park.do">All Parks</a></li>
