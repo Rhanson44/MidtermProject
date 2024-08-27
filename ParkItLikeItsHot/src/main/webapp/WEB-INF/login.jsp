@@ -28,7 +28,7 @@
                                 <input type="password" class="form-control" id="password" name="password" required>
                             </div>
                             <div class="mb-3">
-                                <button type="submit" class="btn btn-primary w-100">Login</button>
+                                <button type="submit" class="btn btn-primary w-100">Login</button>                                
                             </div>
                             <div class="text-center">
                                 <a href="register.do">Don't have an account? Register here.</a>

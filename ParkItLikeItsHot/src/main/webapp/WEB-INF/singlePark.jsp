@@ -5,9 +5,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-   <title>Animals in Park</title>
+   <title>${park.name} Info</title>
 </head>
 <body>
+<jsp:include page="nav.jsp"/>
+<br>
+<br>
+<br>
+<br>
+  <h1><a href="comment.do?parkId=${park.id}">Comment Section</a></h1>
    
     <c:if test="${not empty park.animals}">
     <form action="singlePark.do" method="GET">
