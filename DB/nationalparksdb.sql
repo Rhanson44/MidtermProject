@@ -313,8 +313,8 @@ CREATE TABLE IF NOT EXISTS `trail_comment` (
   `last_update` DATETIME NULL,
   `content` TEXT NOT NULL,
   `image_url` VARCHAR(2000) NULL,
-  `user_id` INT NOT NULL,
-  `trail_id` INT NOT NULL,
+  `user_id` INT NULL,
+  `trail_id` INT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_trail_comment_user1_idx` (`user_id` ASC) VISIBLE,
   INDEX `fk_trail_comment_trail1_idx` (`trail_id` ASC) VISIBLE,
@@ -526,6 +526,27 @@ COMMIT;
 
 
 -- -----------------------------------------------------
+-- Data for table `national_park_has_animal`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `nationalparksdb`;
+INSERT INTO `national_park_has_animal` (`national_park_id`, `animal_id`) VALUES (1, 1);
+INSERT INTO `national_park_has_animal` (`national_park_id`, `animal_id`) VALUES (2, 2);
+INSERT INTO `national_park_has_animal` (`national_park_id`, `animal_id`) VALUES (3, 3);
+INSERT INTO `national_park_has_animal` (`national_park_id`, `animal_id`) VALUES (4, 4);
+INSERT INTO `national_park_has_animal` (`national_park_id`, `animal_id`) VALUES (5, 5);
+INSERT INTO `national_park_has_animal` (`national_park_id`, `animal_id`) VALUES (6, 6);
+INSERT INTO `national_park_has_animal` (`national_park_id`, `animal_id`) VALUES (7, 7);
+INSERT INTO `national_park_has_animal` (`national_park_id`, `animal_id`) VALUES (8, 8);
+INSERT INTO `national_park_has_animal` (`national_park_id`, `animal_id`) VALUES (9, 9);
+INSERT INTO `national_park_has_animal` (`national_park_id`, `animal_id`) VALUES (10, 10);
+INSERT INTO `national_park_has_animal` (`national_park_id`, `animal_id`) VALUES (11, 11);
+INSERT INTO `national_park_has_animal` (`national_park_id`, `animal_id`) VALUES (12, 12);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
 -- Data for table `mountain`
 -- -----------------------------------------------------
 START TRANSACTION;
@@ -633,10 +654,10 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `nationalparksdb`;
-INSERT INTO `trail_comment` (`id`, `create_date`, `last_update`, `content`, `image_url`, `user_id`, `trail_id`) VALUES (1, '2024-08-23', NULL, 'Bring a raincoat or poncho,beautiful views', 'https://cascadeloop.objects.liquidweb.services/photos/_dsc0730.jpg', 1, 1);
-INSERT INTO `trail_comment` (`id`, `create_date`, `last_update`, `content`, `image_url`, `user_id`, `trail_id`) VALUES (2, '2024-08-26', NULL, 'Absolutely incredible nice easy hike with beautiful views,the overcast and clouds made the colors pop like crazy', 'https://grandfather.com/wp-content/uploads/2022/02/hiking-grandfather.jpg', 2, 2);
-INSERT INTO `trail_comment` (`id`, `create_date`, `last_update`, `content`, `image_url`, `user_id`, `trail_id`) VALUES (3, '2024-08-26', NULL, 'Went sunrise to sunset.Switchbacks are beautiful but steep', 'https://uploads.alaska.org/destinations/sitka/_960xAUTO_fit_center-center_65_none/IMG_2952-Alainadestination-photos-aliana-brownalaska.org-sitka.jpg', 3, 3);
-INSERT INTO `trail_comment` (`id`, `create_date`, `last_update`, `content`, `image_url`, `user_id`, `trail_id`) VALUES (4, '2024-08-26', NULL, 'Very nicely maintained trail with a good diversity of views.Downhill for the first half,uphill for the second half,but stunning vistas along both legs', 'https://i0.wp.com/www.highrockiesliving.com/wp-content/uploads/2020/03/adventure-hiking-trails-scaled.jpg?fit=1140%2C1140&ssl=1', 4, 4);
+INSERT INTO `trail_comment` (`id`, `create_date`, `last_update`, `content`, `image_url`, `user_id`, `trail_id`) VALUES (1, '2024-08-23', NULL, 'Bring a raincoat or poncho,beautiful views', 'https://cascadeloop.objects.liquidweb.services/photos/_dsc0730.jpg', NULL, NULL);
+INSERT INTO `trail_comment` (`id`, `create_date`, `last_update`, `content`, `image_url`, `user_id`, `trail_id`) VALUES (2, '2024-08-26', NULL, 'Absolutely incredible nice easy hike with beautiful views,the overcast and clouds made the colors pop like crazy', 'https://grandfather.com/wp-content/uploads/2022/02/hiking-grandfather.jpg', NULL, NULL);
+INSERT INTO `trail_comment` (`id`, `create_date`, `last_update`, `content`, `image_url`, `user_id`, `trail_id`) VALUES (3, '2024-08-26', NULL, 'Went sunrise to sunset.Switchbacks are beautiful but steep', 'https://uploads.alaska.org/destinations/sitka/_960xAUTO_fit_center-center_65_none/IMG_2952-Alainadestination-photos-aliana-brownalaska.org-sitka.jpg', NULL, NULL);
+INSERT INTO `trail_comment` (`id`, `create_date`, `last_update`, `content`, `image_url`, `user_id`, `trail_id`) VALUES (4, '2024-08-26', NULL, 'Very nicely maintained trail with a good diversity of views.Downhill for the first half,uphill for the second half,but stunning vistas along both legs', 'https://i0.wp.com/www.highrockiesliving.com/wp-content/uploads/2020/03/adventure-hiking-trails-scaled.jpg?fit=1140%2C1140&ssl=1', NULL, NULL);
 
 COMMIT;
 
