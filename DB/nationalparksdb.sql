@@ -493,6 +493,27 @@ COMMIT;
 
 
 -- -----------------------------------------------------
+-- Data for table `national_park_has_flora`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `nationalparksdb`;
+INSERT INTO `national_park_has_flora` (`national_parks_id`, `flora_id`) VALUES (1, 1);
+INSERT INTO `national_park_has_flora` (`national_parks_id`, `flora_id`) VALUES (2, 2);
+INSERT INTO `national_park_has_flora` (`national_parks_id`, `flora_id`) VALUES (3, 3);
+INSERT INTO `national_park_has_flora` (`national_parks_id`, `flora_id`) VALUES (4, 4);
+INSERT INTO `national_park_has_flora` (`national_parks_id`, `flora_id`) VALUES (5, 5);
+INSERT INTO `national_park_has_flora` (`national_parks_id`, `flora_id`) VALUES (6, 6);
+INSERT INTO `national_park_has_flora` (`national_parks_id`, `flora_id`) VALUES (7, 7);
+INSERT INTO `national_park_has_flora` (`national_parks_id`, `flora_id`) VALUES (8, 8);
+INSERT INTO `national_park_has_flora` (`national_parks_id`, `flora_id`) VALUES (9, 9);
+INSERT INTO `national_park_has_flora` (`national_parks_id`, `flora_id`) VALUES (10, 10);
+INSERT INTO `national_park_has_flora` (`national_parks_id`, `flora_id`) VALUES (11, 11);
+INSERT INTO `national_park_has_flora` (`national_parks_id`, `flora_id`) VALUES (12, 12);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
 -- Data for table `animal_type`
 -- -----------------------------------------------------
 START TRANSACTION;
@@ -558,18 +579,17 @@ INSERT INTO `mountain` (`id`, `name`, `elevation_in_meters`, `average_snowfall_i
 INSERT INTO `mountain` (`id`, `name`, `elevation_in_meters`, `average_snowfall_in_inches`, `longitude`, `latitude`, `image_url`, `description`) VALUES (5, 'Mount Grinnell', 2982, '100', 48.7545, -113.6913, 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Mount_Grinnell.jpg/544px-Mount_Grinnell.jpg', 'A prominent peak in the Many Glacier region of Glacier National Park.');
 INSERT INTO `mountain` (`id`, `name`, `elevation_in_meters`, `average_snowfall_in_inches`, `longitude`, `latitude`, `image_url`, `description`) VALUES (6, 'Mount Gould', 2919, '95', 48.7539, -113.7454, 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Mount_Gould_Montana.jpg/544px-Mount_Gould_Montana.jpg', 'Located along the Continental Divide, offers stunning views of glaciers and lakes.');
 INSERT INTO `mountain` (`id`, `name`, `elevation_in_meters`, `average_snowfall_in_inches`, `longitude`, `latitude`, `image_url`, `description`) VALUES (7, 'Wotan\'s Throne', 2379, '30', 36.1613, -111.8901, 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Grand_Canyon_National_Park%2C_North_Rim%2C_Muted_Sunrise_From_Cape_Royal_0163_-_Flickr_-_Grand_Canyon_NPS.jpg/1920px-Grand_Canyon_National_Park%2C_North_Rim%2C_Muted_Sunrise_From_Cape_Royal_0163_-_Flickr_-_Grand_Canyon_NPS.jpg', 'A flat-topped mesa in the Grand Canyon, sacred in Native American traditions.');
-INSERT INTO `mountain` (`id`, `name`, `elevation_in_meters`, `average_snowfall_in_inches`, `longitude`, `latitude`, `image_url`, `description`) VALUES (9, 'Clingmans Dome', 2025, '85', 35.5629, -83.4986, 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Clingman%27s_Dome_Tower_on_a_Sunny%2C_Snowy_Day.JPG/1920px-Clingman%27s_Dome_Tower_on_a_Sunny%2C_Snowy_Day.JPG', 'The highest point in Tennessee, offering expansive views and a popular observation tower.');
-INSERT INTO `mountain` (`id`, `name`, `elevation_in_meters`, `average_snowfall_in_inches`, `longitude`, `latitude`, `image_url`, `description`) VALUES (10, 'Mount Le Conte', 2010, '80', 35.6544, -83.4366, 'https://upload.wikimedia.org/wikipedia/commons/2/2c/Mt._LeConte_Clingmans_Dome_05-31-20.jpg', 'A mountain with a rich history, featuring a lodge and numerous hiking trails.');
-INSERT INTO `mountain` (`id`, `name`, `elevation_in_meters`, `average_snowfall_in_inches`, `longitude`, `latitude`, `image_url`, `description`) VALUES (11, 'Cadillac Mountain', 466, '60', 44.3521, -68.2247, 'https://upload.wikimedia.org/wikipedia/commons/b/bb/Cadillac_Mountain_from_Champlain_Mountain_-_panoramio.jpg', 'The highest point on the eastern seaboard, known for its sunrise views.');
-INSERT INTO `mountain` (`id`, `name`, `elevation_in_meters`, `average_snowfall_in_inches`, `longitude`, `latitude`, `image_url`, `description`) VALUES (13, 'Mount Washburn', 3122, '150', 44.7972, -110.4371, 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/YELLOWSTONE-2014_98.jpg/2560px-YELLOWSTONE-2014_98.jpg', 'A popular hiking destination with panoramic views of the Yellowstone area.');
-INSERT INTO `mountain` (`id`, `name`, `elevation_in_meters`, `average_snowfall_in_inches`, `longitude`, `latitude`, `image_url`, `description`) VALUES (14, 'Electric Peak', 3342, '120', 45.0058, -110.835, 'https://upload.wikimedia.org/wikipedia/commons/7/76/Electric-peak-trees.jpg', 'The highest peak in the Gallatin Range, with challenging trails and electric storms.');
-INSERT INTO `mountain` (`id`, `name`, `elevation_in_meters`, `average_snowfall_in_inches`, `longitude`, `latitude`, `image_url`, `description`) VALUES (15, 'Mount Olympus', 2428, '220', 47.8011, -123.7105, 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Olympus_National_Park_30.jpg/2560px-Olympus_National_Park_30.jpg', 'The tallest peak in the Olympic Mountains, known for its glaciers.');
-INSERT INTO `mountain` (`id`, `name`, `elevation_in_meters`, `average_snowfall_in_inches`, `longitude`, `latitude`, `image_url`, `description`) VALUES (16, 'Hurricane Ridge', 1598, '400', 47.9701, -123.4985, 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Hurricane_Ridge_snow.jpg/2560px-Hurricane_Ridge_snow.jpg', 'Offers spectacular views and winter sports activities.');
-INSERT INTO `mountain` (`id`, `name`, `elevation_in_meters`, `average_snowfall_in_inches`, `longitude`, `latitude`, `image_url`, `description`) VALUES (17, 'Grand Teton', 4199, '500', 43.7414, -110.8022, 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Grand_Teton_GTNP1.jpg/1024px-Grand_Teton_GTNP1.jpg', 'The highest peak in the Teton Range, a centerpiece of the park.');
-INSERT INTO `mountain` (`id`, `name`, `elevation_in_meters`, `average_snowfall_in_inches`, `longitude`, `latitude`, `image_url`, `description`) VALUES (18, 'Mount Moran', 3842, '450', 43.8369, -110.7582, 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Aerial_image_of_Mount_Moran_%28view_from_the_east%29.jpg/2560px-Aerial_image_of_Mount_Moran_%28view_from_the_east%29.jpg', 'Known for its distinctive black dike, a favorite among climbers.');
-INSERT INTO `mountain` (`id`, `name`, `elevation_in_meters`, `average_snowfall_in_inches`, `longitude`, `latitude`, `image_url`, `description`) VALUES (19, 'Longs Peak', 4346, '200', 40.2549, -105.616, 'https://upload.wikimedia.org/wikipedia/commons/3/37/Fall05-LongsPeakCU_JPG_RSZ_md.jpg', 'The highest peak in Rocky Mountain National Park, popular with hikers and climbers.');
-INSERT INTO `mountain` (`id`, `name`, `elevation_in_meters`, `average_snowfall_in_inches`, `longitude`, `latitude`, `image_url`, `description`) VALUES (20, 'Hallett Peak', 3878, '180', 40.3037, -105.6836, 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Hallet%27s_Peak_reflected_in_Lake_Haiyaha_at_darn_in_Rocky_Mountain_National_Park._NPS-Debra_Miller_%2818659267056%29.jpg/2560px-Hallet%27s_Peak_reflected_in_Lake_Haiyaha_at_darn_in_Rocky_Mountain_National_Park._NPS-Debra_Miller_%2818659267056%29.jpg', 'Offers stunning views and a challenging ascent from Bear Lake.');
-INSERT INTO `mountain` (`id`, `name`, `elevation_in_meters`, `average_snowfall_in_inches`, `longitude`, `latitude`, `image_url`, `description`) VALUES (21, 'Elephant Butte', 1722, '10', 38.6958, -109.5521, 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Elephant_Butte_in_Arches_National_Park.jpg/1920px-Elephant_Butte_in_Arches_National_Park.jpg', 'The highest point in Arches National Park, known for its rock formations.');
+INSERT INTO `mountain` (`id`, `name`, `elevation_in_meters`, `average_snowfall_in_inches`, `longitude`, `latitude`, `image_url`, `description`) VALUES (8, 'Clingmans Dome', 2025, '85', 35.5629, -83.4986, 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Clingman%27s_Dome_Tower_on_a_Sunny%2C_Snowy_Day.JPG/1920px-Clingman%27s_Dome_Tower_on_a_Sunny%2C_Snowy_Day.JPG', 'The highest point in Tennessee, offering expansive views and a popular observation tower.');
+INSERT INTO `mountain` (`id`, `name`, `elevation_in_meters`, `average_snowfall_in_inches`, `longitude`, `latitude`, `image_url`, `description`) VALUES (9, 'Mount Le Conte', 2010, '80', 35.6544, -83.4366, 'https://upload.wikimedia.org/wikipedia/commons/2/2c/Mt._LeConte_Clingmans_Dome_05-31-20.jpg', 'A mountain with a rich history, featuring a lodge and numerous hiking trails.');
+INSERT INTO `mountain` (`id`, `name`, `elevation_in_meters`, `average_snowfall_in_inches`, `longitude`, `latitude`, `image_url`, `description`) VALUES (10, 'Cadillac Mountain', 466, '60', 44.3521, -68.2247, 'https://upload.wikimedia.org/wikipedia/commons/b/bb/Cadillac_Mountain_from_Champlain_Mountain_-_panoramio.jpg', 'The highest point on the eastern seaboard, known for its sunrise views.');
+INSERT INTO `mountain` (`id`, `name`, `elevation_in_meters`, `average_snowfall_in_inches`, `longitude`, `latitude`, `image_url`, `description`) VALUES (11, 'Mount Washburn', 3122, '150', 44.7972, -110.4371, 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/YELLOWSTONE-2014_98.jpg/2560px-YELLOWSTONE-2014_98.jpg', 'A popular hiking destination with panoramic views of the Yellowstone area.');
+INSERT INTO `mountain` (`id`, `name`, `elevation_in_meters`, `average_snowfall_in_inches`, `longitude`, `latitude`, `image_url`, `description`) VALUES (12, 'Electric Peak', 3342, '120', 45.0058, -110.835, 'https://upload.wikimedia.org/wikipedia/commons/7/76/Electric-peak-trees.jpg', 'The highest peak in the Gallatin Range, with challenging trails and electric storms.');
+INSERT INTO `mountain` (`id`, `name`, `elevation_in_meters`, `average_snowfall_in_inches`, `longitude`, `latitude`, `image_url`, `description`) VALUES (13, 'Mount Olympus', 2428, '220', 47.8011, -123.7105, 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Olympus_National_Park_30.jpg/2560px-Olympus_National_Park_30.jpg', 'The tallest peak in the Olympic Mountains, known for its glaciers.');
+INSERT INTO `mountain` (`id`, `name`, `elevation_in_meters`, `average_snowfall_in_inches`, `longitude`, `latitude`, `image_url`, `description`) VALUES (14, 'Hurricane Ridge', 1598, '400', 47.9701, -123.4985, 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Hurricane_Ridge_snow.jpg/2560px-Hurricane_Ridge_snow.jpg', 'Offers spectacular views and winter sports activities.');
+INSERT INTO `mountain` (`id`, `name`, `elevation_in_meters`, `average_snowfall_in_inches`, `longitude`, `latitude`, `image_url`, `description`) VALUES (15, 'Grand Teton', 4199, '500', 43.7414, -110.8022, 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Grand_Teton_GTNP1.jpg/1024px-Grand_Teton_GTNP1.jpg', 'The highest peak in the Teton Range, a centerpiece of the park.');
+INSERT INTO `mountain` (`id`, `name`, `elevation_in_meters`, `average_snowfall_in_inches`, `longitude`, `latitude`, `image_url`, `description`) VALUES (16, 'Mount Moran', 3842, '450', 43.8369, -110.7582, 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Aerial_image_of_Mount_Moran_%28view_from_the_east%29.jpg/2560px-Aerial_image_of_Mount_Moran_%28view_from_the_east%29.jpg', 'Known for its distinctive black dike, a favorite among climbers.');
+INSERT INTO `mountain` (`id`, `name`, `elevation_in_meters`, `average_snowfall_in_inches`, `longitude`, `latitude`, `image_url`, `description`) VALUES (17, 'Longs Peak', 4346, '200', 40.2549, -105.616, 'https://upload.wikimedia.org/wikipedia/commons/3/37/Fall05-LongsPeakCU_JPG_RSZ_md.jpg', 'The highest peak in Rocky Mountain National Park, popular with hikers and climbers.');
+INSERT INTO `mountain` (`id`, `name`, `elevation_in_meters`, `average_snowfall_in_inches`, `longitude`, `latitude`, `image_url`, `description`) VALUES (18, 'Hallett Peak', 3878, '180', 40.3037, -105.6836, 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Hallet%27s_Peak_reflected_in_Lake_Haiyaha_at_darn_in_Rocky_Mountain_National_Park._NPS-Debra_Miller_%2818659267056%29.jpg/2560px-Hallet%27s_Peak_reflected_in_Lake_Haiyaha_at_darn_in_Rocky_Mountain_National_Park._NPS-Debra_Miller_%2818659267056%29.jpg', 'Offers stunning views and a challenging ascent from Bear Lake.');
 
 COMMIT;
 
@@ -580,6 +600,23 @@ COMMIT;
 START TRANSACTION;
 USE `nationalparksdb`;
 INSERT INTO `national_park_has_mountain` (`national_park_id`, `mountain_id`) VALUES (1, 1);
+INSERT INTO `national_park_has_mountain` (`national_park_id`, `mountain_id`) VALUES (1, 2);
+INSERT INTO `national_park_has_mountain` (`national_park_id`, `mountain_id`) VALUES (2, 3);
+INSERT INTO `national_park_has_mountain` (`national_park_id`, `mountain_id`) VALUES (2, 4);
+INSERT INTO `national_park_has_mountain` (`national_park_id`, `mountain_id`) VALUES (3, 5);
+INSERT INTO `national_park_has_mountain` (`national_park_id`, `mountain_id`) VALUES (3, 6);
+INSERT INTO `national_park_has_mountain` (`national_park_id`, `mountain_id`) VALUES (3, 7);
+INSERT INTO `national_park_has_mountain` (`national_park_id`, `mountain_id`) VALUES (5, 8);
+INSERT INTO `national_park_has_mountain` (`national_park_id`, `mountain_id`) VALUES (5, 9);
+INSERT INTO `national_park_has_mountain` (`national_park_id`, `mountain_id`) VALUES (6, 10);
+INSERT INTO `national_park_has_mountain` (`national_park_id`, `mountain_id`) VALUES (7, 11);
+INSERT INTO `national_park_has_mountain` (`national_park_id`, `mountain_id`) VALUES (7, 12);
+INSERT INTO `national_park_has_mountain` (`national_park_id`, `mountain_id`) VALUES (8, 13);
+INSERT INTO `national_park_has_mountain` (`national_park_id`, `mountain_id`) VALUES (8, 14);
+INSERT INTO `national_park_has_mountain` (`national_park_id`, `mountain_id`) VALUES (9, 15);
+INSERT INTO `national_park_has_mountain` (`national_park_id`, `mountain_id`) VALUES (9, 16);
+INSERT INTO `national_park_has_mountain` (`national_park_id`, `mountain_id`) VALUES (10, 17);
+INSERT INTO `national_park_has_mountain` (`national_park_id`, `mountain_id`) VALUES (10, 18);
 
 COMMIT;
 
@@ -674,6 +711,7 @@ INSERT INTO `point_of_interest_type` (`id`, `name`, `description`, `image_url`) 
 INSERT INTO `point_of_interest_type` (`id`, `name`, `description`, `image_url`) VALUES (5, 'Pond', 'A pond is a small, shallow body of water, typically smaller than a lake. It can be natural or artificial and is often characterized by its relatively limited size and depth. Ponds often have a depth of less than 20 feet (6 meters). Their small size allows for the water to warm up more quickly compared to larger bodies of water. Ponds can form naturally through various processes, such as glacial activity, erosion, and spring or rainwater.', 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Cornjum%2C_Martenastate_010.jpg/2560px-Cornjum%2C_Martenastate_010.jpg\n6,Geyser,\"A geyser is a natural hot spring that periodically erupts, expelling a column of hot water and steam into the air. Geysers are fascinating geothermal features and are often found in volcanic or tectonically active regions. Geysers form in areas with significant geothermal activity. They have a cyclical eruption pattern, which can vary from minutes to several hours between eruptions and can vary in terms of their eruption style and frequency.\",https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Strokkur_geyser_eruption%2C_close-up_view.jpg/2560px-Strokkur_geyser_eruption%2C_close-up_view.jpg');
 INSERT INTO `point_of_interest_type` (`id`, `name`, `description`, `image_url`) VALUES (6, 'Beach', 'A beach is a landform along the shoreline of an ocean, sea, lake, or river where sediments such as sand, gravel, pebbles, cobblestones, or boulders accumulate. Beaches are dynamic environments shaped by the interaction of land and water, and they offer a range of ecological and recreational features. Beaches can consist of various types of sediments, including sand, pebbles, rocks, or shells. The composition often depends on the local geology and wave action. Waves and currents shape beaches by moving and depositing sediments. The action of waves breaking on the shore erodes materials from cliffs or riverbanks and deposits them along the coastline. Beaches provide crucial habitats for various wildlife, including birds, crabs, sea turtles, and plant species adapted to coastal conditions.', 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/20100726_Kalamitsi_Beach_Ionian_Sea_Lefkada_island_Greece.jpg/2560px-20100726_Kalamitsi_Beach_Ionian_Sea_Lefkada_island_Greece.jpg');
 INSERT INTO `point_of_interest_type` (`id`, `name`, `description`, `image_url`) VALUES (7, 'Lake', 'A lake is a sizable, enclosed body of standing water, typically surrounded by land. Lakes can vary widely in size, depth, and ecological characteristics. Lakes can form through various natural processes, including glacial activity, tectonic activity, volcanic activity, river meandering, and erosion. The depth of lakes can vary from shallow to very deep. Some lakes have depths exceeding 1,000 feet (300 meters). Lakes can be freshwater or saline. Freshwater lakes contain low concentrations of salts, while saline lakes (or salt lakes) have high concentrations of salts, often due to high evaporation rates and lack of outlets.', 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Gentau_Pic_du_Midi_Ossau.jpg/2560px-Gentau_Pic_du_Midi_Ossau.jpg');
+INSERT INTO `point_of_interest_type` (`id`, `name`, `description`, `image_url`) VALUES (8, 'Geyser', 'A geyser is a natural geothermal feature that periodically ejects a column of hot water and steam into the air. Geysers are a type of hot spring, but what distinguishes them is their explosive periodicity.', 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Strokkur_geyser_eruption%2C_close-up_view.jpg/2560px-Strokkur_geyser_eruption%2C_close-up_view.jpg');
 
 COMMIT;
 
@@ -684,6 +722,17 @@ COMMIT;
 START TRANSACTION;
 USE `nationalparksdb`;
 INSERT INTO `point_of_interest_has_type` (`point_of_interest_type_id`, `point_of_interest_id`) VALUES (1, 1);
+INSERT INTO `point_of_interest_has_type` (`point_of_interest_type_id`, `point_of_interest_id`) VALUES (2, 2);
+INSERT INTO `point_of_interest_has_type` (`point_of_interest_type_id`, `point_of_interest_id`) VALUES (3, 3);
+INSERT INTO `point_of_interest_has_type` (`point_of_interest_type_id`, `point_of_interest_id`) VALUES (4, 4);
+INSERT INTO `point_of_interest_has_type` (`point_of_interest_type_id`, `point_of_interest_id`) VALUES (4, 5);
+INSERT INTO `point_of_interest_has_type` (`point_of_interest_type_id`, `point_of_interest_id`) VALUES (5, 6);
+INSERT INTO `point_of_interest_has_type` (`point_of_interest_type_id`, `point_of_interest_id`) VALUES (8, 7);
+INSERT INTO `point_of_interest_has_type` (`point_of_interest_type_id`, `point_of_interest_id`) VALUES (6, 8);
+INSERT INTO `point_of_interest_has_type` (`point_of_interest_type_id`, `point_of_interest_id`) VALUES (7, 9);
+INSERT INTO `point_of_interest_has_type` (`point_of_interest_type_id`, `point_of_interest_id`) VALUES (7, 10);
+INSERT INTO `point_of_interest_has_type` (`point_of_interest_type_id`, `point_of_interest_id`) VALUES (2, 11);
+INSERT INTO `point_of_interest_has_type` (`point_of_interest_type_id`, `point_of_interest_id`) VALUES (4, 12);
 
 COMMIT;
 
