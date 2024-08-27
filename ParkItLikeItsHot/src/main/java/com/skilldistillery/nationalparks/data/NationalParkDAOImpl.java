@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.nationalparks.entities.Animal;
 import com.skilldistillery.nationalparks.entities.NationalPark;
 
 import jakarta.persistence.EntityManager;
@@ -27,4 +28,19 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 		return em.createQuery("SELECT n FROM NationalPark n", NationalPark.class).getResultList();
 	}
 
+//	@Override
+//	public Animal parkAnimal(Animal animal) {
+//		Animal parkAnimal = em.find(Animal.class, animal.getId());
+//		if(parkAnimal != null) {
+//			parkAnimal.getImageUrl();
+//			parkAnimal.getAnimalType();
+//			parkAnimal.getName();
+//			parkAnimal.getEndangered();
+//		}
+//		
+//		return parkAnimal;
+//		
+//
+//	}
+	
 }

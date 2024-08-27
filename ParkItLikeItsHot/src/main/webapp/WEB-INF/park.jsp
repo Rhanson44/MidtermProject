@@ -28,11 +28,12 @@
     </style>
 </head>
 <body>
+
 <jsp:include page="nav.jsp"/>
     <h1>National Parks</h1>
     <c:if test="${not empty parks}">
             <c:forEach var="park" items="${parks}">
-                <div class="park-item">
+                <div class="park-item"><center>
                     <h2>${park.name}</h2>
                     <a href="${park.websiteUrl}" target="_blank">
                         <img src="${park.imageUrl}" alt="${park.name}"/>
@@ -41,11 +42,14 @@
                     <p><strong>State:</strong> ${park.state}</p>
                     <p><strong>Established:</strong> ${park.year}</p>
                     <p><strong>Entry Price:</strong> ${park.price}</p>
-                </div>
+                    	<a href="singlePark.do?parkId=${park.id}" >View More Information</a>
+                    
+              </center>  </div>
             </c:forEach>
     </c:if>
    <c:if test="${empty parks}">
         <p>No parks found.</p>
     </c:if>
-</body>
+
+ </body>
 </html>
