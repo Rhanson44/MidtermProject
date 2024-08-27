@@ -53,6 +53,31 @@
     <c:if test="${empty park.flora}">
         <p>No flora found for this park.</p>
     </c:if>
+    <c:if test="${empty park.mountain}">
+        <p>No mountains found for this park.</p>
+    </c:if>
+     <c:if test="${not empty park.mountain}">
+    <form action="singlePark.do" method="GET">
+                <input type="hidden" name="id" value="${park.id}">
+			</form>
+        <ul>
+         <h1>Mountians in the ${park.name}</h1>
+    
+            <c:forEach var="mountain" items="${park.mountain}">
+                <li>
+                    <strong>Name:</strong> ${mountain.name} <br>
+                    <strong>Elevation (Meters):</strong> ${mountain.elevationInMeters} <br>
+                    <strong>Average Snowfall:</strong> ${mountain.averageSnowfall} <br>
+                    <strong>Description:</strong> ${mountain.description} <br>
+                    <img src="${mountain.imageUrl}" alt="${mountain.name}" style="width:200px;">
+                </li>
+            </c:forEach>
+        </ul>
+    </c:if>
+
+    <c:if test="${empty park.mountain}">
+        <p>No mountains found for this park.</p>
+    </c:if>
 </body>
 </html>
 </html>
