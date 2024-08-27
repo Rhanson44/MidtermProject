@@ -137,29 +137,10 @@ public class User {
 		return id == other.id;
 	}
 
-
-//	@Override
-//	public String toString() {
-//		StringBuilder builder = new StringBuilder();
-//		builder.append("User [id=");
-//		builder.append(id);
-//		builder.append(", username=");
-//		builder.append(username);
-//		builder.append(", password=");
-//		builder.append(password);
-//		builder.append(", enabled=");
-//		builder.append(enabled);
-//		builder.append(", role=");
-//		builder.append(role);
-//		builder.append(", nationalParks=");
-//		builder.append(nationalParks);
-//		builder.append(", interests=");
-//		builder.append(interests);
-//		builder.append(", trails=");
-//		builder.append(trails);
-//		builder.append("]");
-//		return builder.toString();
-//	}
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", enabled=" + enabled + "]";
+	}
 
 	
 }

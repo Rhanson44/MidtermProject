@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Account</h1>
+<jsp:include page="nav.jsp"/>
+<h1>User Info</h1>
 </body>
 </html>

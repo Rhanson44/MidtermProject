@@ -18,17 +18,29 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public User authenticateUser(String username, String password) {
-	    User user = null;
-	    String jpql = "SELECT u FROM User u WHERE u.username = :un AND u.password = :pw AND enabled = true";
-	    try {
-	        user = em.createQuery(jpql, User.class)
-	                .setParameter("un", username)
-	                .setParameter("pw", password)
-	                .getSingleResult();
-	    } catch (Exception e) {
-	        System.err.println("Invalid user");
-	    }
-	    return user;
+		User user = null;
+		String jpql = "SELECT u FROM User u WHERE u.username = :un AND u.password = :pw AND enabled = true";
+		try {
+			user = em.createQuery(jpql, User.class).setParameter("un", username).setParameter("pw", password)
+					.getSingleResult();
+		} catch (Exception e) {
+			System.err.println("Invalid user");
+		}
+		return user;
+	}
+
+	@Override
+	public User registerUser(User user) {
+		try {
+			user.setEnabled(true);
+			em.persist(user);
+			em.flush();
+		} catch (Exception e) {
+			System.err.println("Could not register user");
+			e.printStackTrace();
+			return null;
+		}
+		return user;
 	}
 	
 	@Override
@@ -59,8 +71,16 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public User getUserByUserNameAndPassword(String username, String password) {
-		// TODO Auto-generated method stub
-		return null;
+		User user = null;
+		String jpql = "SELECT u FROM User u WHERE u.username = :un AND u.password = :pw AND u.enabled = true";
+		try {
+			user = em.createQuery(jpql, User.class).setParameter("un", username).setParameter("pw", password)
+					.getSingleResult();
+		} catch (Exception e) {
+			System.err.println("Could not find user with the given username and password.");
+		}
+		return user;
+
 	}
 
 	@Override
