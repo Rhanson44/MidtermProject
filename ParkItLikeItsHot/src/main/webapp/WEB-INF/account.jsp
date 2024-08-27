@@ -23,23 +23,18 @@
     <div class="alert alert-info">
         <strong>Username:</strong> <c:out value="${sessionScope.username}" />
     </div>
-
-    <form action="updatePassword.do" method="post">
-        <div class="form-group">
-            <label for="currentPassword">Current Password:</label>
-            <input type="password" id="currentPassword" name="currentPassword" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label for="newPassword">New Password:</label>
-            <input type="password" id="newPassword" name="newPassword" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label for="confirmPassword">Confirm New Password:</label>
-            <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Change Password</button>
-    </form>
-</div>
+    <div class="alert alert-info">
+        <strong>Status:</strong> 
+        <c:choose>
+            <c:when test="${sessionScope.loggedInUser.enabled}">
+                Active
+            </c:when>
+            <c:otherwise>
+                Inactive
+            </c:otherwise>
+        </c:choose>
+    </div>
+	</div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
