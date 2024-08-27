@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="jakarta.tags.core" prefix="c" %>
-<nav class="navbar fixed-top navbar-light" style="background-color: #e3f2fd;">
+<nav class="navbar fixed-top navbar-light" style="background-color: #8fc1ad ;">
 <a class="navbar-brand" href="#">Park It Like It's Hot</a>
 <c:if test="${not empty loggedInUser}">
 	<a href="index.do">Home</a>
