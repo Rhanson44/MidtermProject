@@ -37,7 +37,6 @@ public class UserDAOImpl implements UserDAO {
 		} catch (Exception e) {
 			System.err.println("Could not register user");
 			e.printStackTrace();
-			return null;
 		}
 		return user;
 	}
