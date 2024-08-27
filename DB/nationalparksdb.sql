@@ -196,22 +196,6 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `user`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `user` ;
-
-CREATE TABLE IF NOT EXISTS `user` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `username` VARCHAR(45) NOT NULL,
-  `password` VARCHAR(45) NOT NULL,
-  `enabled` TINYINT NULL,
-  `role` VARCHAR(45) NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE INDEX `username_UNIQUE` (`username` ASC) VISIBLE)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `point_of_interest`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `point_of_interest` ;
@@ -224,23 +208,32 @@ CREATE TABLE IF NOT EXISTS `point_of_interest` (
   `latitude` DOUBLE NULL,
   `image_url` VARCHAR(2000) NULL,
   `national_park_id` INT NOT NULL,
-  `user_id` INT NULL,
   `create_date` DATETIME NULL,
   `last_update` DATETIME NULL,
   `enabled` TINYINT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_point_of_interest_national_park1_idx` (`national_park_id` ASC) VISIBLE,
-  INDEX `fk_point_of_interest_user1_idx` (`user_id` ASC) VISIBLE,
   CONSTRAINT `fk_point_of_interest_national_park1`
     FOREIGN KEY (`national_park_id`)
     REFERENCES `national_park` (`id`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_point_of_interest_user1`
-    FOREIGN KEY (`user_id`)
-    REFERENCES `user` (`id`)
-    ON DELETE NO ACTION
     ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `user`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `user` ;
+
+CREATE TABLE IF NOT EXISTS `user` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(45) NOT NULL,
+  `enabled` TINYINT NULL,
+  `role` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `username_UNIQUE` (`username` ASC) VISIBLE)
 ENGINE = InnoDB;
 
 
@@ -622,6 +615,27 @@ COMMIT;
 
 
 -- -----------------------------------------------------
+-- Data for table `point_of_interest`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `nationalparksdb`;
+INSERT INTO `point_of_interest` (`id`, `name`, `description`, `longitude`, `latitude`, `image_url`, `national_park_id`, `create_date`, `last_update`, `enabled`) VALUES (1, 'Mariposa Grove', 'Mariposa Grove of Giant Sequoias is a popular destination in Yosemite National Park\'s southern Valley, on the slopes of the Sierra Nevada Mountains. It\'s the largest of the park\'s three giant sequoia groves\', with about 500 mature trees, some of which may be thousands of years old. The grove is known for its magnificent trees, some with branches as large as a normal tree, and offers a variety of trails for all levels, including some accessible trails for visitors with disabilities.', 37.5098, -119.6047, 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Yellowstone_National_Park_%28WY%2C_USA%29%2C_Old_Faithful_Geyser_--_2022_--_2599.jpg/2560px-Yellowstone_National_Park_%28WY%2C_USA%29%2C_Old_Faithful_Geyser_--_2022_--_2599.jpg', 1, NULL, NULL, 1);
+INSERT INTO `point_of_interest` (`id`, `name`, `description`, `longitude`, `latitude`, `image_url`, `national_park_id`, `create_date`, `last_update`, `enabled`) VALUES (2, 'Angel’s Landing', 'Angels Landing is a famous hike in Zion National Park, Utah that leads to the top of a 1,488-foot rock formation. The trail is carved into the rock and climbs about 1,500 vertical feet along a narrow, exposed ridge to a summit elevation of 5,790 feet. The hike is considered strenuous and can take 1–5 hours, depending on the source. The trail has exposed edges and drop-offs of up to 1,000 feet, and in some places it\'s only wide enough for one person. Hikers must use chains for safety, watch their footing, and be prepared to yield to other hikers.', 37.2690, -112.9469, 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Angels_Landing_-_Zion_Canyon.jpg/544px-Angels_Landing_-_Zion_Canyon.jpg', 2, NULL, NULL, 1);
+INSERT INTO `point_of_interest` (`id`, `name`, `description`, `longitude`, `latitude`, `image_url`, `national_park_id`, `create_date`, `last_update`, `enabled`) VALUES (3, 'Logan Pass', 'Logan Pass is a popular destination in Glacier National Park, Montana that\'s the highest point on Going-to-the-Sun Road at 6,646 ft (2,026 m). It\'s located on the Continental Divide and above the tree line, and offers panoramic views in every direction.', 48.6966, -113.7182, 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Logan_Pass-27527.jpg/1920px-Logan_Pass-27527.jpg', 3, NULL, NULL, 1);
+INSERT INTO `point_of_interest` (`id`, `name`, `description`, `longitude`, `latitude`, `image_url`, `national_park_id`, `create_date`, `last_update`, `enabled`) VALUES (4, 'Mather Point', 'For many visitors coming to the South Rim, Mather Point offers the first glimpse of a world wonder. A short walk from the Grand Canyon Visitor Center and parking lots 1-4, Mather Point offers an expansive view of the canyon. On a clear day you can see 30+ miles (48 km) to the east and 60+ miles (96 km) to the west.', 36.0617, -112.1077, 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/0059_Grand_Canyon_Mather_Point_Improvements_%285373762649%29.jpg/560px-0059_Grand_Canyon_Mather_Point_Improvements_%285373762649%29.jpg', 4, NULL, NULL, 1);
+INSERT INTO `point_of_interest` (`id`, `name`, `description`, `longitude`, `latitude`, `image_url`, `national_park_id`, `create_date`, `last_update`, `enabled`) VALUES (5, 'Clingman’s Dome', 'Clingmans Dome is a 6,643 ft (2,025 m) peak in Great Smoky Mountains National Park, located near the Tennessee–North Carolina border. It\'s the highest point in Tennessee and the Appalachian Trail, and the third highest peak east of the Mississippi. The dome is half in North Carolina and half in Tennessee, and is situated along the state-line ridge.', 35.6550, -83.4980, 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Clingman%27s_Dome_Tower_on_a_Sunny%2C_Snowy_Day.JPG/1920px-Clingman%27s_Dome_Tower_on_a_Sunny%2C_Snowy_Day.JPG', 5, NULL, NULL, 1);
+INSERT INTO `point_of_interest` (`id`, `name`, `description`, `longitude`, `latitude`, `image_url`, `national_park_id`, `create_date`, `last_update`, `enabled`) VALUES (6, 'Jordan Pond', 'Jordan Pond is a 187-acre lake in Acadia National Park on Mount Desert Island, Maine that\'s known for its clear water, mountain scenery, and geological features.The pond is located in a steep valley carved by glaciers and is bordered by Penobscot and Pemetic mountains, as well as two rounded peaks called the Bubbles. The water is 150 feet deep and has visibility of up to 61 feet, which is the deepest and clearest in Maine.', 44.3341, -68.2571, 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Jordan_Pond_Reflections_%2819247942291%29.jpg/2560px-Jordan_Pond_Reflections_%2819247942291%29.jpg', 6, NULL, NULL, 1);
+INSERT INTO `point_of_interest` (`id`, `name`, `description`, `longitude`, `latitude`, `image_url`, `national_park_id`, `create_date`, `last_update`, `enabled`) VALUES (7, 'Old Faithful', 'Old Faithful is a famous geyser located in Yellowstone National Park in the United States. It\'s renowned for its predictable eruptions, which occur approximately every 90 minutes. The geyser shoots a column of boiling water and steam up to 180 feet (55 meters) into the air, and its eruptions can last from 1.5 to 5 minutes. Old Faithful is one of the most well-known and studied geysers in the world, and its consistent performance makes it a popular attraction for visitors.', 44.4605, -110.8281, 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Yellowstone_National_Park_%28WY%2C_USA%29%2C_Old_Faithful_Geyser_--_2022_--_2599.jpg/2560px-Yellowstone_National_Park_%28WY%2C_USA%29%2C_Old_Faithful_Geyser_--_2022_--_2599.jpg', 7, NULL, NULL, 1);
+INSERT INTO `point_of_interest` (`id`, `name`, `description`, `longitude`, `latitude`, `image_url`, `national_park_id`, `create_date`, `last_update`, `enabled`) VALUES (8, 'Rialto Beach', 'Rialto Beach is a stunning coastal destination located in Olympic National Park in Washington State. Known for its dramatic landscapes, the beach features rugged rock formations, large driftwood logs, and beautiful ocean views. It\'s situated along the Pacific Ocean and is part of the larger Olympic Peninsula, which is renowned for its diverse ecosystems, including temperate rainforests, alpine peaks, and coastal shores.', 47.9173, -124.6394, 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Rialto_Beach.jpg/2560px-Rialto_Beach.jpg', 8, NULL, NULL, 1);
+INSERT INTO `point_of_interest` (`id`, `name`, `description`, `longitude`, `latitude`, `image_url`, `national_park_id`, `create_date`, `last_update`, `enabled`) VALUES (9, 'Jenny Lake', 'Jenny Lake is a picturesque glacial lake located in Grand Teton National Park in Wyoming, USA. Nestled at the base of the Teton Range, the lake is a popular spot for outdoor activities and offers stunning views of the surrounding mountains. The lake covers about 1,200 acres (486 hectares) and is roughly 2.5 miles (4 kilometers) long and 1 mile (1.6 kilometers) wide. It has a distinctive, narrow shape, nestled in a glacially carved valley.', 43.7614, -110.7317, 'https://en.wikipedia.org/wiki/File:Aerial_image_of_Jenny_Lake_(view_from_the_east).jpg', 9, NULL, NULL, 1);
+INSERT INTO `point_of_interest` (`id`, `name`, `description`, `longitude`, `latitude`, `image_url`, `national_park_id`, `create_date`, `last_update`, `enabled`) VALUES (10, 'Lake Haiyaha', 'Nestled in the high elevations of the park, Lake Haiyaha is situated at around 10,200 feet (3,109 meters) above sea level, within the Bear Lake Corridor. The lake is known for its stunning, clear blue waters surrounded by rocky terrain and alpine forests. The backdrop features dramatic mountain views, including peaks like Longs Peak. The lake is accessible via a popular hiking trail that starts from the Bear Lake Trailhead. The hike is approximately 3.5 miles (5.6 kilometers) round-trip, offering scenic vistas and a moderate ascent.', 40.3046, -105.6621, 'https://uploads-ssl.webflow.com/5d1a54305a9e4f1f6feb89d6/635463e271b74ab17df9d8cf_Haiyaha1.jpg', 10, NULL, NULL, 1);
+INSERT INTO `point_of_interest` (`id`, `name`, `description`, `longitude`, `latitude`, `image_url`, `national_park_id`, `create_date`, `last_update`, `enabled`) VALUES (11, 'Delicate Arch', 'Delicate Arch is one of the most iconic and recognizable natural landmarks in Arches National Park, located in southeastern Utah.Delicate Arch is a natural arch formed from Entrada Sandstone. It is renowned for its striking, elegant shape, which resembles a delicate, arching window. The arch spans approximately 46 feet (14 meters) high and 32 feet (10 meters) wide. The arch is situated in a rugged, semi-desert landscape. It’s perched on a rock fin overlooking a broad expanse of the Utah desert, with panoramic views of the La Sal Mountains in the distance', 38.7436, -109.4993, 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Delicate_arch_sunset.jpg/500px-Delicate_arch_sunset.jpg', 11, NULL, NULL, 1);
+INSERT INTO `point_of_interest` (`id`, `name`, `description`, `longitude`, `latitude`, `image_url`, `national_park_id`, `create_date`, `last_update`, `enabled`) VALUES (12, 'Bryce Point', 'Bryce Point is one of the prominent viewpoints in Bryce Canyon National Park, located in southern Utah. It is situated at an elevation of approximately 8,300 feet (2,530 meters) above sea level, offering spectacular views of the Bryce Canyon amphitheater. From Bryce Point, visitors are treated to a breathtaking panoramic view of the park’s unique geological formations, including the park\'s signature hoodoos—tall, thin spires of rock that rise from the canyon floor. The viewpoint overlooks a dramatic landscape of colorful rock formations and intricate erosion patterns.', 38.7436, -109.4993, 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Delicate_arch_sunset.jpg/500px-Delicate_arch_sunset.jpg', 12, NULL, NULL, 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
 -- Data for table `user`
 -- -----------------------------------------------------
 START TRANSACTION;
@@ -630,27 +644,6 @@ INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (1, 
 INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (2, 'user', 'user', 1, 'user');
 INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (3, 't', 't', 1, 't');
 INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (4, 'nationalparksuser', 'nationalparksuser', 1, 'nationalparksuser');
-
-COMMIT;
-
-
--- -----------------------------------------------------
--- Data for table `point_of_interest`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `nationalparksdb`;
-INSERT INTO `point_of_interest` (`id`, `name`, `description`, `longitude`, `latitude`, `image_url`, `national_park_id`, `user_id`, `create_date`, `last_update`, `enabled`) VALUES (1, 'Mariposa Grove', 'Mariposa Grove of Giant Sequoias is a popular destination in Yosemite National Park\'s southern Valley, on the slopes of the Sierra Nevada Mountains. It\'s the largest of the park\'s three giant sequoia groves\', with about 500 mature trees, some of which may be thousands of years old. The grove is known for its magnificent trees, some with branches as large as a normal tree, and offers a variety of trails for all levels, including some accessible trails for visitors with disabilities.', 37.5098, -119.6047, 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Yellowstone_National_Park_%28WY%2C_USA%29%2C_Old_Faithful_Geyser_--_2022_--_2599.jpg/2560px-Yellowstone_National_Park_%28WY%2C_USA%29%2C_Old_Faithful_Geyser_--_2022_--_2599.jpg', 1, NULL, NULL, NULL, 1);
-INSERT INTO `point_of_interest` (`id`, `name`, `description`, `longitude`, `latitude`, `image_url`, `national_park_id`, `user_id`, `create_date`, `last_update`, `enabled`) VALUES (2, 'Angel’s Landing', 'Angels Landing is a famous hike in Zion National Park, Utah that leads to the top of a 1,488-foot rock formation. The trail is carved into the rock and climbs about 1,500 vertical feet along a narrow, exposed ridge to a summit elevation of 5,790 feet. The hike is considered strenuous and can take 1–5 hours, depending on the source. The trail has exposed edges and drop-offs of up to 1,000 feet, and in some places it\'s only wide enough for one person. Hikers must use chains for safety, watch their footing, and be prepared to yield to other hikers.', 37.2690, -112.9469, 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Angels_Landing_-_Zion_Canyon.jpg/544px-Angels_Landing_-_Zion_Canyon.jpg', 2, NULL, NULL, NULL, 1);
-INSERT INTO `point_of_interest` (`id`, `name`, `description`, `longitude`, `latitude`, `image_url`, `national_park_id`, `user_id`, `create_date`, `last_update`, `enabled`) VALUES (3, 'Logan Pass', 'Logan Pass is a popular destination in Glacier National Park, Montana that\'s the highest point on Going-to-the-Sun Road at 6,646 ft (2,026 m). It\'s located on the Continental Divide and above the tree line, and offers panoramic views in every direction.', 48.6966, -113.7182, 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Logan_Pass-27527.jpg/1920px-Logan_Pass-27527.jpg', 3, NULL, NULL, NULL, 1);
-INSERT INTO `point_of_interest` (`id`, `name`, `description`, `longitude`, `latitude`, `image_url`, `national_park_id`, `user_id`, `create_date`, `last_update`, `enabled`) VALUES (4, 'Mather Point', 'For many visitors coming to the South Rim, Mather Point offers the first glimpse of a world wonder. A short walk from the Grand Canyon Visitor Center and parking lots 1-4, Mather Point offers an expansive view of the canyon. On a clear day you can see 30+ miles (48 km) to the east and 60+ miles (96 km) to the west.', 36.0617, -112.1077, 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/0059_Grand_Canyon_Mather_Point_Improvements_%285373762649%29.jpg/560px-0059_Grand_Canyon_Mather_Point_Improvements_%285373762649%29.jpg', 4, NULL, NULL, NULL, 1);
-INSERT INTO `point_of_interest` (`id`, `name`, `description`, `longitude`, `latitude`, `image_url`, `national_park_id`, `user_id`, `create_date`, `last_update`, `enabled`) VALUES (5, 'Clingman’s Dome', 'Clingmans Dome is a 6,643 ft (2,025 m) peak in Great Smoky Mountains National Park, located near the Tennessee–North Carolina border. It\'s the highest point in Tennessee and the Appalachian Trail, and the third highest peak east of the Mississippi. The dome is half in North Carolina and half in Tennessee, and is situated along the state-line ridge.', 35.6550, -83.4980, 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Clingman%27s_Dome_Tower_on_a_Sunny%2C_Snowy_Day.JPG/1920px-Clingman%27s_Dome_Tower_on_a_Sunny%2C_Snowy_Day.JPG', 5, NULL, NULL, NULL, 1);
-INSERT INTO `point_of_interest` (`id`, `name`, `description`, `longitude`, `latitude`, `image_url`, `national_park_id`, `user_id`, `create_date`, `last_update`, `enabled`) VALUES (6, 'Jordan Pond', 'Jordan Pond is a 187-acre lake in Acadia National Park on Mount Desert Island, Maine that\'s known for its clear water, mountain scenery, and geological features.The pond is located in a steep valley carved by glaciers and is bordered by Penobscot and Pemetic mountains, as well as two rounded peaks called the Bubbles. The water is 150 feet deep and has visibility of up to 61 feet, which is the deepest and clearest in Maine.', 44.3341, -68.2571, 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Jordan_Pond_Reflections_%2819247942291%29.jpg/2560px-Jordan_Pond_Reflections_%2819247942291%29.jpg', 6, NULL, NULL, NULL, 1);
-INSERT INTO `point_of_interest` (`id`, `name`, `description`, `longitude`, `latitude`, `image_url`, `national_park_id`, `user_id`, `create_date`, `last_update`, `enabled`) VALUES (7, 'Old Faithful', 'Old Faithful is a famous geyser located in Yellowstone National Park in the United States. It\'s renowned for its predictable eruptions, which occur approximately every 90 minutes. The geyser shoots a column of boiling water and steam up to 180 feet (55 meters) into the air, and its eruptions can last from 1.5 to 5 minutes. Old Faithful is one of the most well-known and studied geysers in the world, and its consistent performance makes it a popular attraction for visitors.', 44.4605, -110.8281, 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Yellowstone_National_Park_%28WY%2C_USA%29%2C_Old_Faithful_Geyser_--_2022_--_2599.jpg/2560px-Yellowstone_National_Park_%28WY%2C_USA%29%2C_Old_Faithful_Geyser_--_2022_--_2599.jpg', 7, NULL, NULL, NULL, 1);
-INSERT INTO `point_of_interest` (`id`, `name`, `description`, `longitude`, `latitude`, `image_url`, `national_park_id`, `user_id`, `create_date`, `last_update`, `enabled`) VALUES (8, 'Rialto Beach', 'Rialto Beach is a stunning coastal destination located in Olympic National Park in Washington State. Known for its dramatic landscapes, the beach features rugged rock formations, large driftwood logs, and beautiful ocean views. It\'s situated along the Pacific Ocean and is part of the larger Olympic Peninsula, which is renowned for its diverse ecosystems, including temperate rainforests, alpine peaks, and coastal shores.', 47.9173, -124.6394, 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Rialto_Beach.jpg/2560px-Rialto_Beach.jpg', 8, NULL, NULL, NULL, 1);
-INSERT INTO `point_of_interest` (`id`, `name`, `description`, `longitude`, `latitude`, `image_url`, `national_park_id`, `user_id`, `create_date`, `last_update`, `enabled`) VALUES (9, 'Jenny Lake', 'Jenny Lake is a picturesque glacial lake located in Grand Teton National Park in Wyoming, USA. Nestled at the base of the Teton Range, the lake is a popular spot for outdoor activities and offers stunning views of the surrounding mountains. The lake covers about 1,200 acres (486 hectares) and is roughly 2.5 miles (4 kilometers) long and 1 mile (1.6 kilometers) wide. It has a distinctive, narrow shape, nestled in a glacially carved valley.', 43.7614, -110.7317, 'https://en.wikipedia.org/wiki/File:Aerial_image_of_Jenny_Lake_(view_from_the_east).jpg', 9, NULL, NULL, NULL, 1);
-INSERT INTO `point_of_interest` (`id`, `name`, `description`, `longitude`, `latitude`, `image_url`, `national_park_id`, `user_id`, `create_date`, `last_update`, `enabled`) VALUES (10, 'Lake Haiyaha', 'Nestled in the high elevations of the park, Lake Haiyaha is situated at around 10,200 feet (3,109 meters) above sea level, within the Bear Lake Corridor. The lake is known for its stunning, clear blue waters surrounded by rocky terrain and alpine forests. The backdrop features dramatic mountain views, including peaks like Longs Peak. The lake is accessible via a popular hiking trail that starts from the Bear Lake Trailhead. The hike is approximately 3.5 miles (5.6 kilometers) round-trip, offering scenic vistas and a moderate ascent.', 40.3046, -105.6621, 'https://uploads-ssl.webflow.com/5d1a54305a9e4f1f6feb89d6/635463e271b74ab17df9d8cf_Haiyaha1.jpg', 10, NULL, NULL, NULL, 1);
-INSERT INTO `point_of_interest` (`id`, `name`, `description`, `longitude`, `latitude`, `image_url`, `national_park_id`, `user_id`, `create_date`, `last_update`, `enabled`) VALUES (11, 'Delicate Arch', 'Delicate Arch is one of the most iconic and recognizable natural landmarks in Arches National Park, located in southeastern Utah.Delicate Arch is a natural arch formed from Entrada Sandstone. It is renowned for its striking, elegant shape, which resembles a delicate, arching window. The arch spans approximately 46 feet (14 meters) high and 32 feet (10 meters) wide. The arch is situated in a rugged, semi-desert landscape. It’s perched on a rock fin overlooking a broad expanse of the Utah desert, with panoramic views of the La Sal Mountains in the distance', 38.7436, -109.4993, 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Delicate_arch_sunset.jpg/500px-Delicate_arch_sunset.jpg', 11, NULL, NULL, NULL, 1);
-INSERT INTO `point_of_interest` (`id`, `name`, `description`, `longitude`, `latitude`, `image_url`, `national_park_id`, `user_id`, `create_date`, `last_update`, `enabled`) VALUES (12, 'Bryce Point', 'Bryce Point is one of the prominent viewpoints in Bryce Canyon National Park, located in southern Utah. It is situated at an elevation of approximately 8,300 feet (2,530 meters) above sea level, offering spectacular views of the Bryce Canyon amphitheater. From Bryce Point, visitors are treated to a breathtaking panoramic view of the park’s unique geological formations, including the park\'s signature hoodoos—tall, thin spires of rock that rise from the canyon floor. The viewpoint overlooks a dramatic landscape of colorful rock formations and intricate erosion patterns.', 38.7436, -109.4993, 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Delicate_arch_sunset.jpg/500px-Delicate_arch_sunset.jpg', 12, NULL, NULL, NULL, 1);
 
 COMMIT;
 
