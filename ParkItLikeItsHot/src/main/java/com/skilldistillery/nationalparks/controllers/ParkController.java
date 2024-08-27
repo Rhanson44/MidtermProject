@@ -1,5 +1,8 @@
 package com.skilldistillery.nationalparks.controllers;
 
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.skilldistillery.nationalparks.data.NationalParkDAO;
 import com.skilldistillery.nationalparks.entities.NationalPark;
+import com.skilldistillery.nationalparks.entities.NationalParkComment;
 import com.skilldistillery.nationalparks.entities.User;
 
 import jakarta.servlet.http.HttpSession;
@@ -16,42 +20,34 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class ParkController {
 
-	@Autowired
-	private NationalParkDAO parkDAO;
-	
-	@RequestMapping("park.do")
-	public String home(Model model) {
-		model.addAttribute("parks", parkDAO.findAll());
-		return "park";
-	}
+    @Autowired
+    private NationalParkDAO parkDAO;
+
+    @RequestMapping("park.do")
+    public String home(Model model) {
+        model.addAttribute("parks", parkDAO.findAll());
+        return "park";
+    }
+
     @RequestMapping("comment.do")
     public String parkComments(@RequestParam("parkId") int parkId, HttpSession session, Model model) {
         User loggedInUser = (User) session.getAttribute("loggedInUser");
         NationalPark park = parkDAO.findById(parkId);
         model.addAttribute("park", park);
-        model.addAttribute("comments", park.getParkComments()); 
+        model.addAttribute("comments", park.getParkComments());
         model.addAttribute("loggedInUser", loggedInUser);
-        return "comment"; 
-	
-}
+        return "comment";
+    }
+
     @RequestMapping(value = "postComment.do", method = RequestMethod.POST)
-    public String postComment(
-            @RequestParam("parkId") int parkId,
-            @RequestParam("content") String content,
-            @RequestParam(value = "imageUrl", required = false) 
-            HttpSession session,
-            Model model
-    ) {
+    public String postComment(@RequestParam("parkId")int parkId, NationalParkComment comment, HttpSession session) {
         User loggedInUser = (User) session.getAttribute("loggedInUser");
         if (loggedInUser == null) {
-            return "login.do"; 
+            return "login";
         }
+        
+        parkDAO.addComment(comment, parkId, loggedInUser.getId());
 
-        NationalPark park = parkDAO.findById(parkId);
-        if (park == null) {
-            return "No Park found"; 
-        }
-		return "comment";
+        return "redirect:comment.do?parkId=" + parkId;
     }
-    
 }

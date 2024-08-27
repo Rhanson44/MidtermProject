@@ -53,8 +53,8 @@ class NationalParkCommentTest {
 	}
 		@Test
 		void test_comment_np_mapping() {
-			assertNotNull(npComment.getNationalParks().getName());
-			assertEquals("Rocky Mountain",npComment.getNationalParks().getName());
+			assertNotNull(npComment.getNationalPark().getName());
+			assertEquals("Rocky Mountain",npComment.getNationalPark().getName());
 		}
 
 }

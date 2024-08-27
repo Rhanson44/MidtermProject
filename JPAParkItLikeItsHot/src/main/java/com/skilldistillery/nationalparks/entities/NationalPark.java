@@ -51,7 +51,7 @@ public class NationalPark {
 	@OneToMany(mappedBy="nationalParks")
 	private List<Trail> trails;
 	
-	@OneToMany(mappedBy="nationalParks")
+	@OneToMany(mappedBy="nationalPark")
 	private List<NationalParkComment> parkComments;
 	
 
