@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.skilldistillery.nationalparks.data.NationalParkDAO;
@@ -33,4 +34,24 @@ public class ParkController {
         return "comment"; 
 	
 }
+    @RequestMapping(value = "postComment.do", method = RequestMethod.POST)
+    public String postComment(
+            @RequestParam("parkId") int parkId,
+            @RequestParam("content") String content,
+            @RequestParam(value = "imageUrl", required = false) 
+            HttpSession session,
+            Model model
+    ) {
+        User loggedInUser = (User) session.getAttribute("loggedInUser");
+        if (loggedInUser == null) {
+            return "login.do"; 
+        }
+
+        NationalPark park = parkDAO.findById(parkId);
+        if (park == null) {
+            return "No Park found"; 
+        }
+		return "comment";
+    }
+    
 }

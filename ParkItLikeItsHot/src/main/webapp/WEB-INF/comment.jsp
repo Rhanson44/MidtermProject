@@ -9,6 +9,8 @@
     <title>Comment Section</title>
 </head>
 <body>
+<jsp:include page="nav.jsp"/>
+
     <c:if test="${not empty loggedInUser}">
 
         <section style="background-color: #f7f6f6;"> 
@@ -27,12 +29,12 @@
                             </div>
                         </div>
                         
-                        <c:forEach items="${comments}" var="comment">
+                        <c:forEach var="comment" items= "${comments}">
                             <div class="card mb-3">
                                 <div class="card-body">
                                     <div class="d-flex flex-start">
                                         <img class="rounded-circle shadow-1-strong me-3"
-                                            src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(14).webp" alt="avatar" width="40"
+                                            src="https://static.wikia.nocookie.net/smiling-friends/images/e/e6/Glep_%28SF%29.png/revision/latest/thumbnail/width/360/height/360?cb=20240204175445" alt="avatar" width="40"
                                             height="40" />
                                         <div class="w-100">
                                             <div class="d-flex justify-content-between align-items-center mb-3">
@@ -47,11 +49,24 @@
                                                         <a href="#!" class="link-grey">Remove</a> •
                                                     </c:if>
                                                     <c:if test="${not empty loggedInUser}">
-                                                        <a href="#!" class="link-grey">Reply</a> •
+
+             <%--            <form action="postComment.do" method="POST">
+                            <input type="hidden" name="parkId" value="${park.id}">
+                            <textarea name="content" rows="4" placeholder="Write your comment here..." required></textarea>
+                            <button type="submit" class="btn btn-primary mt-2">Post a Comment</button>
+                        </form>
+                                        --%>                 
                                                     </c:if>
                                                 </p>
                                                 <div class="d-flex flex-row">
                                                     <i class="far fa-check-circle text-primary"></i>
+                                                         <c:if test="${empty loggedInUser}">
+    <div class="container text-center">
+        <p>Please Log in to view and post comments.</p>
+        <a class="btn btn-primary" href="login.do">Login</a>
+        <a class="btn btn-secondary" href="registerForm.do">Register</a>
+    </div>
+</c:if>
                                                 </div>
                                             </div>
                                         </div>
