@@ -10,5 +10,6 @@ public interface UserDAO {
 	Object findUserById(int id);
 	
 	User registerUser(User user);
+
 	
 }

@@ -21,7 +21,7 @@ public class FloraType {
 	private int id;
 	
 	private String name;
-	private Boolean	description;
+	private String	description;
 	@Column(name = "image_url")
 	private String imageUrl;
 	
@@ -49,11 +49,11 @@ public class FloraType {
 		this.name = name;
 	}
 
-	public Boolean getDescription() {
+	public String getDescription() {
 		return description;
 	}
 
-	public void setDescription(Boolean description) {
+	public void setDescription(String description) {
 		this.description = description;
 	}
 

@@ -34,6 +34,7 @@ public class LoginController {
 			session.setAttribute("loginTime", lt);
 			session.setAttribute("loggedInUser", user);
 			return "account";
+
 		} else {
 			return "login";
 		}
@@ -50,7 +51,7 @@ public class LoginController {
 
 	}
 
-	@RequestMapping(path = "account.do")
+	@RequestMapping(path = "account.do", method = RequestMethod.POST)
 	public String displayAcct(HttpSession session) {
 		LocalDateTime loginTime = (LocalDateTime) session.getAttribute("loginTime");
 		if (loginTime != null) {
