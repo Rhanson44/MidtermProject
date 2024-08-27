@@ -27,14 +27,13 @@ public class LoginController {
 
 	@RequestMapping(path = "login.do", method = RequestMethod.POST)
 	public String loginUser(User user, HttpSession session) {
-
 		user = dao.getUserByUserNameAndPassword(user.getUsername(), user.getPassword());
 		LocalDateTime lt = LocalDateTime.now();
 
-		if (dao.findUserById(user.getId()) != null) {
+		if (user != null) {
 			session.setAttribute("loginTime", lt);
 			session.setAttribute("loggedInUser", user);
-			return "index";
+			return "account";
 		} else {
 			return "login";
 		}
