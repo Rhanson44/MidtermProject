@@ -30,6 +30,18 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 	}
 
 	@Override
+	public Animal create(Animal newAnimal) {
+	
+			
+			em.persist(newAnimal);
+			em.flush();
+			return newAnimal;
+		
+		}
+
+	}
+
+
 	public void addComment(NationalParkComment comment, int parkId, int userId) {
 		 NationalPark park = em.find(NationalPark.class, parkId);
 		 User foundUser = em.find(User.class, userId);
@@ -54,3 +66,4 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 	
 	
 }
+

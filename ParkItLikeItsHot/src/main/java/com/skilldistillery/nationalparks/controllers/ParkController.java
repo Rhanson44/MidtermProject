@@ -36,6 +36,16 @@ public class ParkController {
         model.addAttribute("park", park);
         model.addAttribute("comments", park.getParkComments());
         model.addAttribute("loggedInUser", loggedInUser);
+        return "comment"; 
+	
+}
+    @RequestMapping(value = "postComment.do", method = RequestMethod.POST)
+    public String postComment(
+            @RequestParam("parkId") int parkId,
+            @RequestParam("content") String content,
+            HttpSession session,
+            Model model
+    ) {
         return "parkComment";
     }
 
