@@ -2,6 +2,7 @@ package com.skilldistillery.nationalparks.data;
 
 import java.util.List;
 
+import com.skilldistillery.nationalparks.entities.Animal;
 import com.skilldistillery.nationalparks.entities.NationalPark;
 import com.skilldistillery.nationalparks.entities.NationalParkComment;
 import com.skilldistillery.nationalparks.entities.PointOfInterest;
@@ -22,10 +23,20 @@ public interface NationalParkDAO {
 //	Animal parkAnimal(Animal animal);
 
 	NationalParkComment getCommentById(int commentId);
+<<<<<<< HEAD
 	Trail findByTrailId(int trailId);
 	PointOfInterest findByPoiId(int poiId);
+=======
+
+	Trail findByTrailId(int trailId);
+>>>>>>> dea740b3e336f0a959d6b5e9133c04a7a3d12e63
 
 	Trail update(int trailId, Trail updatedTrail);
+	
+	Animal findByAnimalId(int animalId);
+	
+	Animal update(int animalId, Animal updatedAnimal);
+
 
 	TrailComment addTrailComment(TrailComment comment, int trailId, int id);
 
