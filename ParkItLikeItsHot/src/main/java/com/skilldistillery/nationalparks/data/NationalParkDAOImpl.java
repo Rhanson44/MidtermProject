@@ -197,6 +197,12 @@ Flora flora = em.find(Flora.class, updatedFlora.getId());
 		return em.find(PointOfInterest.class, poiId);
 	}
 
+	@Override
+	public Animal update(int animalTypeId, Animal updatedAnimal) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 }
 
