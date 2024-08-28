@@ -28,7 +28,7 @@ public interface NationalParkDAO {
 	
 	Animal findByAnimalId(int animalId);
 	
-	Animal update(int animalId, Animal updatedAnimal);
+	Animal update(int animalTypeId, Animal updatedAnimal);
 
 
 }

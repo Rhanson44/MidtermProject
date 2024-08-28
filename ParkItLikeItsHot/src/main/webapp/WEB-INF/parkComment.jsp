@@ -40,6 +40,7 @@
 									<input type="text" class="form-control" name="imageUrl"
 										placeholder="Optional: Image URL">
 								</div> -->
+								
 								<button type="submit" class="btn btn-primary mt-2">Post
 									a Comment</button>
 							</form>
