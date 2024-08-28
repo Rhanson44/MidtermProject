@@ -42,11 +42,6 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 //		
 //		}
 
-<<<<<<< HEAD
-	
-
-=======
->>>>>>> d0416e0a82c3be76f4301bae8030d6fb3e57d692
 
 	@Override
 	public void addComment(NationalParkComment comment, int parkId, int userId) {
@@ -55,7 +50,6 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 		 comment.setNationalPark(park);
 	     comment.setUser(foundUser);
 		 em.persist(comment);
-	}
 	}
 
 	@Override

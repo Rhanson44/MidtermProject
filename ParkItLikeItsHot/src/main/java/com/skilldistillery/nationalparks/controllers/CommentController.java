@@ -18,7 +18,7 @@ import com.skilldistillery.nationalparks.entities.User;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
-public class ParkController {
+public class CommentController {
 
     @Autowired
     private NationalParkDAO parkDAO;
@@ -38,7 +38,8 @@ public class ParkController {
         model.addAttribute("loggedInUser", loggedInUser);
         return "parkComment"; 
 	
-}
+    }
+    
     @RequestMapping(value = "postComment.do", method = RequestMethod.POST)
     public String postComment(
             @RequestParam("parkId") int parkId,
@@ -58,6 +59,8 @@ public class ParkController {
         parkDAO.addComment(comment, parkId, loggedInUser.getId());
         return "redirect:comment.do?parkId=" + parkId;
     }
+    
+    
     
     @RequestMapping(value = "deleteParkComment.do", method = RequestMethod.POST)
     public String deleteComment(@RequestParam("parkId") int parkId,@RequestParam("commentId") int commentId, NationalParkComment comment, HttpSession session) {
