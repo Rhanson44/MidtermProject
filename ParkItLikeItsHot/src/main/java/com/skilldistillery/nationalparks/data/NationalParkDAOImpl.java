@@ -195,14 +195,12 @@ Flora flora = em.find(Flora.class, updatedFlora.getId());
 
 	@Override
 	public PointOfInterest findByPoiId(int poiId) {
+		return em.find(PointOfInterest.class, poiId);
 		// TODO Auto-generated method stub
 		return null;
+
 	}
 
-	@Override
-	public Animal update(int animalTypeId, Animal updatedAnimal) {
-		return null;
-	}
 
 	
 }
