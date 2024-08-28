@@ -14,6 +14,7 @@ import com.skilldistillery.nationalparks.data.NationalParkDAO;
 import com.skilldistillery.nationalparks.entities.Animal;
 import com.skilldistillery.nationalparks.entities.AnimalType;
 import com.skilldistillery.nationalparks.entities.NationalPark;
+import com.skilldistillery.nationalparks.entities.User;
 
 @Controller
 public class NationalParkController {
@@ -43,6 +44,7 @@ public class NationalParkController {
 
 		return "singlePark";
 	}
+<<<<<<< HEAD
 //	@RequestMapping(path = { "success.do" }, method = RequestMethod.POST)
 //	public ModelAndView newAnimal(Animal animal) {
 //	    ModelAndView mv = new ModelAndView();
@@ -61,5 +63,22 @@ public class NationalParkController {
 //	}
 //		return mv;
 //	}
+=======
+	@RequestMapping(path = { "addAnimal.do" }, method = RequestMethod.POST)
+	public ModelAndView newAnimal(@RequestParam("parkId") int parkId, Animal animal) {
+		NationalPark park = parkDAO.findById(parkId);
+		ModelAndView mv = new ModelAndView();
+		try {
+		parkDAO.create(animal);
+		mv.addObject("park", park);
+		mv.setViewName("success");
+		
+		} catch (Exception e) {
+			
+		mv.addObject("message", "Failed to add the animal");
+	}
+		return mv;
+	}
+>>>>>>> d0416e0a82c3be76f4301bae8030d6fb3e57d692
 
 }

@@ -26,7 +26,6 @@
                 <a href="comment.do?parkId=${park.id}" class="btn btn-primary">Comment Section</a>
             </h1>
 
-            <!-- Animals Section -->
             <c:if test="${not empty park.animals}">
                 <div class="my-4">
                     <h2>Animals in the ${park.name}</h2>
@@ -40,6 +39,12 @@
                                         <p><strong>Type:</strong> ${animal.animalType.name}</p>
                                         <p><strong>Description:</strong> ${animal.animalType.description}</p>
                                         <p><strong>Endangered:</strong> ${animal.endangered}</p>
+                                        <a href="updateAnimal.do?animalId=${animal.id}&parkId=${park.id}" class="btn btn-primary btn-sm">Update</a>
+                                        <form action="deleteAnimal.do" method="post" style="display: inline;">
+                                            <input type="hidden" name="animalId" value="${animal.id}" />
+                                            <input type="hidden" name="parkId" value="${park.id}" />
+                                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -60,7 +65,7 @@
  <table>
             <tr>
                 <td><label for="animalName">Name:</label></td>
-                <td><input type="text" id="animalName" name="name" required></td>
+                <td><input type="text" id="animalName" name="animalName" required></td>
             </tr>
             <tr>
                 <td><label for="animalDescription">Description:</label></td>
@@ -113,6 +118,12 @@
                                         <p><strong>Species:</strong> ${flora.species}</p>
                                         <p><strong>Type:</strong> ${flora.floraType.name}</p>
                                         <p><strong>Description:</strong> ${flora.floraType.description}</p>
+                                        <a href="updateFlora.do?floraId=${flora.id}&parkId=${park.id}" class="btn btn-primary btn-sm">Update</a>
+                                        <form action="deleteFlora.do" method="post" style="display: inline;">
+                                            <input type="hidden" name="floraId" value="${flora.id}" />
+                                            <input type="hidden" name="parkId" value="${park.id}" />
+                                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -139,6 +150,7 @@
                                         <p><strong>Elevation (Meters):</strong> ${mountain.elevationInMeters}</p>
                                         <p><strong>Average Snowfall:</strong> ${mountain.averageSnowfall}</p>
                                         <p><strong>Description:</strong> ${mountain.description}</p>
+                                        <a href="updateMountain.do?mountainId=${mountain.id}&parkId=${park.id}" class="btn btn-primary btn-sm">Update</a>
                                     </div>
                                 </div>
                             </div>
@@ -165,6 +177,7 @@
                                         <p><strong>Description:</strong> ${interest.description}</p>
                                         <p><strong>Longitude:</strong> ${interest.longitude}</p>
                                         <p><strong>Latitude:</strong> ${interest.latitude}</p>
+                                        <a href="updateInterest.do?interestId=${interest.id}&parkId=${park.id}" class="btn btn-primary btn-sm">Update</a>
                                     </div>
                                 </div>
                             </div>
@@ -193,6 +206,7 @@
                                         <p><strong>Length (Miles):</strong> ${trail.lengthInMiles}</p>
                                         <p><strong>Longitude:</strong> ${trail.longitude}</p>
                                         <p><strong>Latitude:</strong> ${trail.latitude}</p>
+                                        <a href="updateTrail.do?trailId=${trail.id}&parkId=${park.id}" class="btn btn-primary btn-sm">Update</a>
                                     </div>
                                 </div>
                             </div>

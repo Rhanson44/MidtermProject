@@ -22,14 +22,18 @@ public class UserController {
 		model.addAttribute("SMOKETEST", userDAO.authenticateUser("admin", "test"));
 		return "home";
 	}
+	
+	@RequestMapping(path = "register.do", method = RequestMethod.POST)
+	public String register(User user, Model model) {
+		userDAO.registerUser(user);
+		model.addAttribute("User", user);
+		return "login";
+	}
 
 	@RequestMapping("registerForm.do")
 	public String registerForm() {
 		return "register";
 	}
-
-	
-
 	
 	@RequestMapping(path = "updatePassword.do", method = RequestMethod.POST)
 	public String updatePassword(User user, String password, Model model) {

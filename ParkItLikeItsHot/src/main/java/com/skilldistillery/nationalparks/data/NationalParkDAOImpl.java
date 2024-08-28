@@ -42,9 +42,13 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 //		
 //		}
 
+<<<<<<< HEAD
 	
 
+=======
+>>>>>>> d0416e0a82c3be76f4301bae8030d6fb3e57d692
 
+	@Override
 	public void addComment(NationalParkComment comment, int parkId, int userId) {
 		 NationalPark park = em.find(NationalPark.class, parkId);
 		 User foundUser = em.find(User.class, userId);
@@ -54,4 +58,20 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 	}
 	}
 
+	@Override
+	public void deleteComment(NationalParkComment comment, int commentId, int userId) {
+	    NationalParkComment managedComment = em.find(NationalParkComment.class, commentId);
+	    if (managedComment != null) {
+	        em.remove(managedComment);
+	    }
+	}
+
+
+	@Override
+	public NationalParkComment getCommentById(int commentId) {
+		return em.find(NationalParkComment.class, commentId);
+	}
+	
+	
+}
 
