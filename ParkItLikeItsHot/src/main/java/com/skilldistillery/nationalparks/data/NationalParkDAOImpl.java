@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.skilldistillery.nationalparks.entities.Animal;
 import com.skilldistillery.nationalparks.entities.NationalPark;
 import com.skilldistillery.nationalparks.entities.NationalParkComment;
+import com.skilldistillery.nationalparks.entities.Trail;
 import com.skilldistillery.nationalparks.entities.User;
 
 import jakarta.persistence.EntityManager;
@@ -52,6 +52,7 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 		 em.persist(comment);
 	}
 
+
 	@Override
 	public void deleteComment(NationalParkComment comment, int commentId, int userId) {
 	    NationalParkComment managedComment = em.find(NationalParkComment.class, commentId);
@@ -65,6 +66,29 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 	public NationalParkComment getCommentById(int commentId) {
 		return em.find(NationalParkComment.class, commentId);
 	}
+
+	@Override
+	public Trail update(int trailId, Trail updatedTrail) {
+		Trail trail = em.find(Trail.class, updatedTrail.getId());
+		
+		if(trail != null) {
+			trail.setName(updatedTrail.getName());
+			trail.setDescription(updatedTrail.getDescription());
+			trail.setLatitude(updatedTrail.getLatitude());
+			trail.setLongitude(updatedTrail.getLongitude());
+			trail.setLengthInMiles(updatedTrail.getLengthInMiles());
+			trail.setTrailDifficulty(updatedTrail.getTrailDifficulty());
+		   em.merge(trail); 
+		em.flush();
+		}
+		return trail;
+	}
+	@Override
+	public Trail findByTrailId(int trailId) {
+		return em.find(Trail.class, trailId);
+	}
+
+
 	
 	
 }

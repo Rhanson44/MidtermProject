@@ -179,6 +179,15 @@ public class Trail {
 		return id == other.id;
 	}
 
+	@Override
+	public String toString() {
+		return "Trail [id=" + id + ", name=" + name + ", lengthInMiles=" + lengthInMiles + ", trailDifficulty="
+				+ trailDifficulty + ", trailMap=" + trailMap + ", description=" + description + ", longitude="
+				+ longitude + ", latitude=" + latitude + ", createDate=" + createDate + ", lastUpdate=" + lastUpdate
+				+ ", nationalParks=" + nationalParks + ", enabled=" + enabled + "]";
+	}
+	
+
 //	@Override
 //	public String toString() {
 //		StringBuilder builder = new StringBuilder();

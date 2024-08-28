@@ -207,6 +207,7 @@
                                         <p><strong>Longitude:</strong> ${trail.longitude}</p>
                                         <p><strong>Latitude:</strong> ${trail.latitude}</p>
                                         <a href="updateTrail.do?trailId=${trail.id}&parkId=${park.id}" class="btn btn-primary btn-sm">Update</a>
+	
                                     </div>
                                 </div>
                             </div>
@@ -214,7 +215,6 @@
                     </div>
                 </div>
             </c:if>
-
             <c:if test="${empty park.trails}">
                 <p>No trails found for this park.</p>
             </c:if>
