@@ -4,13 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Success</title>
+<title>Error</title>
 </head>
 <body>
-<h1>Success</h1>
+<h1>Error</h1>
     <p><strong>${message}</strong></p>
-
     <a href="home.do">Return to Home</a>
-
 </body>
 </html>

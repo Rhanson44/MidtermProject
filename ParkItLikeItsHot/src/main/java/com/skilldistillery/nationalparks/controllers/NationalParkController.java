@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.skilldistillery.nationalparks.data.NationalParkDAO;
 import com.skilldistillery.nationalparks.entities.Animal;
 import com.skilldistillery.nationalparks.entities.NationalPark;
+import com.skilldistillery.nationalparks.entities.Trail;
 
 @Controller
 public class NationalParkController {
@@ -43,41 +44,75 @@ public class NationalParkController {
 
 		return "singlePark";
 	}
-	@RequestMapping(path = { "success.do" }, method = RequestMethod.POST)
-	public ModelAndView newAnimal(Animal animal) {
-		
-		ModelAndView mv = new ModelAndView();
-		try {
-		parkDAO.create(animal);
-		mv.setViewName("success");
-		
-		} catch (Exception e) {
-			
-		mv.addObject("message", "Failed to add the animal");
-	}
-		return mv;
-	}
-	
-	@RequestMapping(path = "updateAnimal.do", method = RequestMethod.GET)
-	public ModelAndView updateAnimal(@ModelAttribute("animal") Animal animal) {
+	@RequestMapping(path = "updateTrail.do", method = RequestMethod.POST)
+	public ModelAndView updateTrail( Trail trail) {
 		ModelAndView mv = new ModelAndView();
 
-		try {
-			Animal updatedAnimal = parkDAO.updateAnimal(animal);
-			if (updatedAnimal != null) {
-				mv.addObject("animal", updatedAnimal);
-				mv.setViewName("WEB-INF/updateanimal.jsp");
+		try {		
+			Trail updatedTrail =  parkDAO.update(trail.getId(), trail);
+			System.out.println(updatedTrail);
+			if (updatedTrail != null) {
+				mv.addObject("trail", updatedTrail);
+				mv.setViewName("redirect:singlePark.do?parkId=" + updatedTrail.getNationalParks().getId());
 			} else {
-				mv.addObject("message", "Failed to update the animal.");
-				mv.setViewName("WEB-INF/error.jsp");
+				mv.addObject("message", "Failed to update the Trail.");
+				mv.setViewName("error");
 			}
 		} catch (Exception e) {
-			mv.addObject("message", "Error occurred while updating the film.");
-			mv.setViewName("WEB-INF/error.jsp");
+			mv.addObject("message", "Error occurred while updating the Trail.");
+			mv.setViewName("error");
 			e.printStackTrace();
 		}
 
 		return mv;
 	}
+	@RequestMapping(path="updateTrail.do", method=RequestMethod.GET)
+	public ModelAndView showUpdateForm(@RequestParam("trailId") int trailId) {
+		ModelAndView mv = new ModelAndView();
+//		NationalPark park = parkDAO.findById(parkId);
+		Trail updateTrail = parkDAO.findByTrailId(trailId);
+		mv.addObject("updatedTrail", updateTrail);
+		mv.setViewName("updateTrail");
+		return mv;
+		
+	}
+	
+
+//	@RequestMapping(path = { "success.do" }, method = RequestMethod.POST)
+//	public ModelAndView newAnimal(Animal animal) {
+//	    ModelAndView mv = new ModelAndView();
+//
+//	    
+//		try {
+//			
+//	        
+//		parkDAO.create(animal);
+//		mv.setViewName("success");
+//        mv.addObject("message", "Animal added successfully");
+//		} catch (Exception e) {
+//			
+//			mv.setViewName("error");
+//		mv.addObject("message", "Failed to add the animal");
+//	}
+//		return mv;
+//	}
+
+//	@RequestMapping(path = { "addAnimal.do" }, method = RequestMethod.POST)
+//	public ModelAndView newAnimal(@RequestParam("parkId") int parkId, Animal animal) {
+//		NationalPark park = parkDAO.findById(parkId);
+//		ModelAndView mv = new ModelAndView();
+//		try {
+//		parkDAO.create(animal);
+//		mv.addObject("park", park);
+//		mv.setViewName("success");
+//		
+//		} catch (Exception e) {
+//			
+//		mv.addObject("message", "Failed to add the animal");
+//	}
+//		return mv;
+//	}
+
+
 
 }

@@ -26,7 +26,6 @@
                 <a href="comment.do?parkId=${park.id}" class="btn btn-primary">Comment Section</a>
             </h1>
 
-            <!-- Animals Section -->
             <c:if test="${not empty park.animals}">
                 <div class="my-4">
                     <h2>Animals in the ${park.name}</h2>
@@ -57,6 +56,8 @@
             <c:if test="${empty park.animals}">
                 <p>No animals found for this park.</p>
             </c:if>
+            
+           <%--  
 			<center><h3>Did you see an animal not listed? </h3>
 			<h4>Add an animal below! </h4></center>
 			
@@ -64,19 +65,19 @@
  <table>
             <tr>
                 <td><label for="animalName">Name:</label></td>
-                <td><input type="text" id="animalName" name="name" required></td>
+                <td><input type="text" id="animalName" name="animalName" required></td>
             </tr>
             <tr>
                 <td><label for="animalDescription">Description:</label></td>
-                <td><input type="text" id="animalDescription" name="description"></td>
+                <td><input type="text" id="animalDescription" name="description" required></td>
             </tr>
-            <tr>
-                <td><label for="animalType">Type of Animal:</label></td>
-                <td><input type="text" id="animalType" name="type"></td>
+         <tr>
+                <td><label for="animalTypeId">Animal Type Id (1 = Mammal, 2 = Bird, 3 = Amphibian):</label></td>
+                <td><input type="number" id="animalTypeId" name="animalTypeId" required></td>
             </tr>
-           <tr> 
+           <tr>
           <td><label for="animalImageUrl">Insert an image URL:</label></td>
-                <td><input type="text" id="animalImageUrl" name="imageUrl"></td>
+                <td><input type="text" id="animalImageUrl" name="imageUrl" required></td>
             </tr>
                  <tr>
                 <td colspan="2" style="text-align: center;">
@@ -101,7 +102,7 @@
             }
         });
     </script>
-       
+        --%>
   
             <!-- Flora Section -->
             <c:if test="${not empty park.flora}">
@@ -206,6 +207,7 @@
                                         <p><strong>Longitude:</strong> ${trail.longitude}</p>
                                         <p><strong>Latitude:</strong> ${trail.latitude}</p>
                                         <a href="updateTrail.do?trailId=${trail.id}&parkId=${park.id}" class="btn btn-primary btn-sm">Update</a>
+	
                                     </div>
                                 </div>
                             </div>
@@ -213,7 +215,6 @@
                     </div>
                 </div>
             </c:if>
-
             <c:if test="${empty park.trails}">
                 <p>No trails found for this park.</p>
             </c:if>

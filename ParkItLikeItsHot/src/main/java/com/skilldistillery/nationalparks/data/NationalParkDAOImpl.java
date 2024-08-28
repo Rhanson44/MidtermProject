@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.skilldistillery.nationalparks.entities.Animal;
 import com.skilldistillery.nationalparks.entities.NationalPark;
 import com.skilldistillery.nationalparks.entities.NationalParkComment;
+import com.skilldistillery.nationalparks.entities.Trail;
 import com.skilldistillery.nationalparks.entities.User;
 
 import jakarta.persistence.EntityManager;
@@ -30,18 +30,20 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 		return em.createQuery("SELECT n FROM NationalPark n", NationalPark.class).getResultList();
 	}
 
+//	@Override
+//	public Animal create(Animal newAnimal) {
+//		
+//        newAnimal.setName(newAnimal.getName());
+//        newAnimal.getAnimalType().setDescription(newAnimal.getAnimalType().getDescription());
+//        newAnimal.getAnimalType().setId(newAnimal.getAnimalType().getId());
+//			em.persist(newAnimal);
+//			em.flush();
+//			return newAnimal;
+//		
+//		}
+
+
 	@Override
-	public Animal create(Animal newAnimal) {
-	
-			
-			em.persist(newAnimal);
-			em.flush();
-			return newAnimal;
-		
-		}
-
-
-
 	public void addComment(NationalParkComment comment, int parkId, int userId) {
 		 NationalPark park = em.find(NationalPark.class, parkId);
 		 User foundUser = em.find(User.class, userId);
@@ -49,6 +51,7 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 	     comment.setUser(foundUser);
 		 em.persist(comment);
 	}
+
 
 	@Override
 	public void deleteComment(NationalParkComment comment, int commentId, int userId) {
@@ -65,9 +68,28 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 	}
 
 	@Override
-    public Animal updateAnimal(Animal animal) {
-        return em.merge(animal); 
-    }
+	public Trail update(int trailId, Trail updatedTrail) {
+		Trail trail = em.find(Trail.class, updatedTrail.getId());
+		
+		if(trail != null) {
+			trail.setName(updatedTrail.getName());
+			trail.setDescription(updatedTrail.getDescription());
+			trail.setLatitude(updatedTrail.getLatitude());
+			trail.setLongitude(updatedTrail.getLongitude());
+			trail.setLengthInMiles(updatedTrail.getLengthInMiles());
+			trail.setTrailDifficulty(updatedTrail.getTrailDifficulty());
+		   em.merge(trail); 
+		em.flush();
+		}
+		return trail;
+	}
+	@Override
+	public Trail findByTrailId(int trailId) {
+		return em.find(Trail.class, trailId);
+	}
+
+
+
 	
 	
 }
