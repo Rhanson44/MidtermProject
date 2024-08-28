@@ -38,9 +38,18 @@ public class User {
 	@OneToMany(mappedBy="user")
 	private List<TrailComment> trailComments;
 	
-
+	@OneToMany(mappedBy="user")
+	private List<PointOfInterestComment> poiComments;
 
 	
+	public List<PointOfInterestComment> getPoiComments() {
+		return poiComments;
+	}
+
+	public void setPoiComments(List<PointOfInterestComment> poiComments) {
+		this.poiComments = poiComments;
+	}
+
 	public int getId() {
 		return id;
 	}

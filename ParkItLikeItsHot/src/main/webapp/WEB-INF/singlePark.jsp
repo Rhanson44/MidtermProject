@@ -15,15 +15,18 @@
         .card-body {
             min-height: 120px;
         }
+        
     </style>
+    
 </head>
 <body>
     <jsp:include page="nav.jsp"/>
 	<br>
+	
     <div class="container">
         <div class="my-4">
             <h1 class="text-center mb-4">
-                <a href="comment.do?parkId=${park.id}" class="btn btn-primary">Comment Section</a>
+                <a href="parkComment.do?parkId=${park.id}" class="btn btn-primary" style="background-color: #42755b; border-color: #09331d;">Comment Section</a>
             </h1>
 
             <c:if test="${not empty park.animals}">
@@ -57,8 +60,8 @@
                 <p>No animals found for this park.</p>
             </c:if>
             
-           <%--  
-			<center><h3>Did you see an animal not listed? </h3>
+           
+<%-- 			<center><h3>Did you see an animal not listed? </h3>
 			<h4>Add an animal below! </h4></center>
 			
 	<form action="success.do" method="POST">
@@ -72,8 +75,9 @@
                 <td><input type="text" id="animalDescription" name="description" required></td>
             </tr>
          <tr>
+         
                 <td><label for="animalTypeId">Animal Type Id (1 = Mammal, 2 = Bird, 3 = Amphibian):</label></td>
-                <td><input type="number" id="animalTypeId" name="animalTypeId" required></td>
+                <td><input type="number" id="animalTypeId=${animal.animalTypeId}" name="animalTypeId" required></td>
             </tr>
            <tr>
           <td><label for="animalImageUrl">Insert an image URL:</label></td>
@@ -85,24 +89,9 @@
                 </td>
             </tr>
         </table>
-    </form>
+    </form> --%>
     
-    <div id="imagePreviewContainer" style="text-align: center; margin-top: 20px;">
-        <img id="imagePreview" class="image-preview" src="" alt="Image preview will appear here">
-    </div>
-
-    <script>
-        document.getElementById('animalImageUrl').addEventListener('input', function() {
-            const imageUrl = this.value;
-            const imagePreview = document.getElementById('imagePreview');
-            if (imageUrl) {
-                imagePreview.src = imageUrl;
-            } else {
-                imagePreview.src = '';
-            }
-        });
-    </script>
-        --%>
+        
   
             <!-- Flora Section -->
             <c:if test="${not empty park.flora}">
@@ -178,6 +167,7 @@
                                         <p><strong>Longitude:</strong> ${interest.longitude}</p>
                                         <p><strong>Latitude:</strong> ${interest.latitude}</p>
                                         <a href="updateInterest.do?interestId=${interest.id}&parkId=${park.id}" class="btn btn-primary btn-sm">Update</a>
+           								<a href="poiComment.do?poiId=${interest.id}" class="btn btn-primary btn-sm">Point of Interest Comments</a>
                                     </div>
                                 </div>
                             </div>
@@ -208,6 +198,7 @@
                                         <p><strong>Latitude:</strong> ${trail.latitude}</p>
                                         <a href="updateTrail.do?trailId=${trail.id}&parkId=${park.id}" class="btn btn-primary btn-sm">Update</a>
 	
+			           					<a href="trailComment.do?trailId=${trail.id}" class="btn btn-primary btn-sm">Trail Comments</a>
                                     </div>
                                 </div>
                             </div>

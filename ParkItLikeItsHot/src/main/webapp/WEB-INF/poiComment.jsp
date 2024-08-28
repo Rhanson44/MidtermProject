@@ -14,24 +14,18 @@
 <title>Comment Section</title>
 </head>
 <body>
-
-<!-- Background image -->
 	<jsp:include page="nav.jsp" />
 	<br>
 	<c:if test="${not empty loggedInUser}">
 
-		<section   class="bg-image" 
-  style= "background-image: url('https://mdbcdn.b-cdn.net/img/new/fluid/nature/012.webp');
-    height: 100vh;" >
-      <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
-    
-			<h1 class="text-center my-4" style="color: #FFFFFF;">${park.name} Comment Section</h1>
+		<section style="background-color: #f7f6f6;">
+			<h1 class="text-center my-4">${poi.name} Comment Section</h1>
 			<div class="container my-5 py-5 text-body">
 				<div class="row d-flex justify-content-center">
 					<div class="col-md-12 col-lg-10 col-xl-8">
 						<c:if test="${not empty loggedInUser}">
-							<form action="postParkComment.do" method="POST">
-								<input type="hidden" name="parkId" value="${park.id}">
+							<form action="postPoiComment.do" method="POST">
+								<input type="hidden" name="poiId" value="${poi.id}">
 								<div class="form-group">
 									<textarea class="form-control" name="content" rows="4"
 										placeholder="Write your comment here..." required></textarea>
@@ -40,7 +34,6 @@
 									<input type="text" class="form-control" name="imageUrl"
 										placeholder="Optional: Image URL">
 								</div> -->
-								
 								<button type="submit" class="btn btn-primary mt-2">Post
 									a Comment</button>
 							</form>
@@ -61,9 +54,9 @@
 												</div>
 												<p class="mb-0">${comment.content}</p>
 												<c:if test="${loggedInUser.username == 'admin' || comment.user.username == loggedInUser.username}">
-													<form action="deleteParkComment.do" method="POST"
+													<form action="deletePoiComment.do" method="POST"
 														onsubmit="return confirm('Are you sure you want to delete this comment?');">
-														<input type="hidden" name="parkId" value="${park.id}">
+														<input type="hidden" name="poiId" value="${poi.id}">
 														<input type="hidden" name="commentId"
 															value="${comment.id}">
 														<button type="submit" class="btn btn-danger btn-sm">Delete</button>

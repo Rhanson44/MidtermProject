@@ -8,7 +8,10 @@ import com.skilldistillery.nationalparks.entities.Animal;
 import com.skilldistillery.nationalparks.entities.Flora;
 import com.skilldistillery.nationalparks.entities.NationalPark;
 import com.skilldistillery.nationalparks.entities.NationalParkComment;
+import com.skilldistillery.nationalparks.entities.PointOfInterest;
+import com.skilldistillery.nationalparks.entities.PointOfInterestComment;
 import com.skilldistillery.nationalparks.entities.Trail;
+import com.skilldistillery.nationalparks.entities.TrailComment;
 import com.skilldistillery.nationalparks.entities.User;
 
 import jakarta.persistence.EntityManager;
@@ -35,9 +38,7 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 //	@Override
 //	public Animal create(Animal newAnimal) {
 //		
-//        newAnimal.setName(newAnimal.getName());
-//        newAnimal.getAnimalType().setDescription(newAnimal.getAnimalType().getDescription());
-//        newAnimal.getAnimalType().setId(newAnimal.getAnimalType().getId());
+//        newAnimal.getAnimalType()(newAnimal.getAnimalType().getId());;
 //			em.persist(newAnimal);
 //			em.flush();
 //			return newAnimal;
@@ -63,12 +64,37 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 	    }
 	}
 
+	@Override
+	public void deletePoiComment(PointOfInterestComment comment, int commentId, int userId) {
+		PointOfInterestComment managedComment = em.find(PointOfInterestComment.class, commentId);
+		if (managedComment != null) {
+			em.remove(managedComment);
+		}
+	}
 
+	@Override
+	public void deleteTrailComment(TrailComment comment, int commentId, int userId) {
+		TrailComment managedComment = em.find(TrailComment.class, commentId);
+		if (managedComment != null) {
+			em.remove(managedComment);
+		}
+	}
+	
 	@Override
 	public NationalParkComment getCommentById(int commentId) {
 		return em.find(NationalParkComment.class, commentId);
 	}
 
+	@Override
+	public PointOfInterestComment getPoiCommentById(int commentId) {
+		return em.find(PointOfInterestComment.class, commentId);
+	}
+	
+	@Override
+	public TrailComment getTrailCommentById(int commentId) {
+		return em.find(TrailComment.class, commentId);
+	}
+	
 	public Trail update(int trailId, Trail updatedTrail) {
 		Trail trail = em.find(Trail.class, updatedTrail.getId());
 		
@@ -84,6 +110,7 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 		}
 		return trail;
 	}
+	
 	@Override
 	public Trail findByTrailId(int trailId) {
 		return em.find(Trail.class, trailId);
@@ -139,7 +166,32 @@ Flora flora = em.find(Flora.class, updatedFlora.getId());
 	}
 
 
-	
+	@Override
+	public TrailComment addTrailComment(TrailComment comment, int trailId, int userId) {
+	    User foundUser = em.find(User.class, userId);
+	    if (foundUser == null) {
+	        throw new RuntimeException("User not found");
+	    }
+	    comment.setUser(foundUser);
+	    comment.setTrail(em.find(Trail.class, trailId));
+	    em.persist(comment);
+	    return comment;
+	}
+
+	@Override
+
+	public PointOfInterestComment addPoiComment(PointOfInterestComment comment, int poiId, int userId) {
+		User foundUser = em.find(User.class, userId);
+		if (foundUser == null) {
+			throw new RuntimeException("User not found");
+		}
+		comment.setUser(foundUser);
+		PointOfInterest poi = em.find(PointOfInterest.class, poiId);
+		comment.setInterests(poi);
+		em.persist(comment);
+		return comment;
+	}
+
 	
 }
 

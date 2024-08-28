@@ -38,9 +38,6 @@ public class UserController {
 	@RequestMapping("account.do")
 	public String accountPage(Model model, HttpSession session) {
 		User user = (User)session.getAttribute("loggedInUser");
-		System.out.println("**************");
-		System.out.println(user);
-		System.out.println("**************");
 		if (user == null) {
 			return "redirect:home.do";
 		} else {
