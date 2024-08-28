@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.nationalparks.entities.Animal;
 import com.skilldistillery.nationalparks.entities.NationalPark;
 import com.skilldistillery.nationalparks.entities.NationalParkComment;
 import com.skilldistillery.nationalparks.entities.Trail;
@@ -67,7 +68,6 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 		return em.find(NationalParkComment.class, commentId);
 	}
 
-	@Override
 	public Trail update(int trailId, Trail updatedTrail) {
 		Trail trail = em.find(Trail.class, updatedTrail.getId());
 		
@@ -86,6 +86,25 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 	@Override
 	public Trail findByTrailId(int trailId) {
 		return em.find(Trail.class, trailId);
+	}
+	
+	public Animal update(int animalId, Animal updatedAnimal) {
+		Animal animal = em.find(Animal.class, updatedAnimal.getId());
+		
+		if(animal != null) {
+			animal.setName(updatedAnimal.getName());
+			animal.setAnimalType(updatedAnimal.getAnimalType());
+			animal.setEndangered(updatedAnimal.getEndangered());
+			animal.setImageUrl(updatedAnimal.getImageUrl());
+			em.merge(animal);
+			em.flush();
+		}
+		return animal;
+	}
+
+	@Override
+	public Animal findByAnimalId(int animalId) {
+		return em.find(Animal.class, animalId);
 	}
 
 

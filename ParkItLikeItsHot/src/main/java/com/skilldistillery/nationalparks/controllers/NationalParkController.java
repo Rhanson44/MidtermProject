@@ -77,6 +77,38 @@ public class NationalParkController {
 		
 	}
 	
+	@RequestMapping(path = "updateAnimal.do", method = RequestMethod.POST)
+	public ModelAndView updateAnimal(Animal animal) {
+		ModelAndView mv = new ModelAndView();
+		
+		try {		
+			Animal updatedAnimal =  parkDAO.update(animal.getId(), animal);
+			System.out.println(updatedAnimal);
+			if (updatedAnimal != null) {
+				mv.addObject("animal", updatedAnimal);
+				mv.setViewName("redirect:singlePark.do?parkId=" + ((Animal) updatedAnimal.getNationalParks()).getId());
+			} else {
+				mv.addObject("message", "Failed to update the Trail.");
+				mv.setViewName("error");
+			}
+		} catch (Exception e) {
+			mv.addObject("message", "Error occurred while updating the Trail.");
+			mv.setViewName("error");
+			e.printStackTrace();
+		}
+		
+		return mv;
+	}
+	@RequestMapping(path="updateAnimal.do", method=RequestMethod.GET)
+	public ModelAndView showUpdateAnimalForm(@RequestParam("animalId") int animalId) {
+		ModelAndView mv = new ModelAndView();
+//		NationalPark park = parkDAO.findById(parkId);
+		Animal updateAnimal = parkDAO.findByAnimalId(animalId);
+		mv.addObject("updatedAnimal", updateAnimal);
+		mv.setViewName("updateAnimal");
+		return mv;
+		
+	}
 
 //	@RequestMapping(path = { "success.do" }, method = RequestMethod.POST)
 //	public ModelAndView newAnimal(Animal animal) {
