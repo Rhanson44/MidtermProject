@@ -18,13 +18,14 @@
     <input type="text" id="animalName" name="name" value="${updatedAnimal.name}"><br><br>
 
     <label for="animalType">Animal Type:</label>
-    <input type="text" id="animalType" name="type" value="${updatedAnimal.animalType.name}"><br><br>
+    <input type="text" id="animalType" name="animalType.id" value="${updatedAnimal.animalType.id}"><br><br>
+<!-- TODO: add a select list named animalType.id with options by iterating over items in ${animalTypes} -->
 
     <label for="animalEndangered">Endangered:</label>
     <input type="text" id="animalEndangered" name="endangered" value="${updatedAnimal.endangered}"><br><br>
     
     <label for="animalImageUrl">Image URL:</label>
-    <input type="text" id="animalImageUrl" name="image" value="${updatedAnimal.imageUrl}"><br><br>
+    <input type="text" id="animalImageUrl" name="imageUrl" value="${updatedAnimal.imageUrl}"><br><br>
             <br>
             <br>
             <button type="submit">Update Animal</button>

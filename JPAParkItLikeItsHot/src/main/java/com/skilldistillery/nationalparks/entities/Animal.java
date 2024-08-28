@@ -14,6 +14,11 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 @Entity
 public class Animal {
+	
+	public Animal() {
+		super();
+	}
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -34,9 +39,7 @@ public class Animal {
 	private AnimalType animalType;
 	
 	
-	public Animal() {
-		super();
-	}
+
 
 	public int getId() {
 		return id;
@@ -110,7 +113,11 @@ public class Animal {
 //				+ ", nationalParks=" + nationalParks + ", animalType=" + animalType + "]";
 //	}
 
-	
+	@Override
+	public String toString() {
+		return "Animal [id=" + id + ", name=" + name + ", endangered=" + endangered + ", imageUrl=" + imageUrl
+				+ ", animalType=" + animalType + "]";
+	}
 
 	
 }

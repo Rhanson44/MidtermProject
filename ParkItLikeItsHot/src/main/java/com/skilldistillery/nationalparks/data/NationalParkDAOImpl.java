@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.nationalparks.entities.Animal;
+import com.skilldistillery.nationalparks.entities.Flora;
 import com.skilldistillery.nationalparks.entities.NationalPark;
 import com.skilldistillery.nationalparks.entities.NationalParkComment;
 import com.skilldistillery.nationalparks.entities.Trail;
@@ -88,14 +89,16 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 		return em.find(Trail.class, trailId);
 	}
 	
-	public Animal update(int animalId, Animal updatedAnimal) {
-		Animal animal = em.find(Animal.class, updatedAnimal.getId());
+	public Animal updateAnimal(int animalId, Animal updatedAnimal) {
+		Animal animal = em.find(Animal.class, animalId);
 		
 		if(animal != null) {
+			System.out.println(updatedAnimal);
 			animal.setName(updatedAnimal.getName());
 			animal.setAnimalType(updatedAnimal.getAnimalType());
 			animal.setEndangered(updatedAnimal.getEndangered());
 			animal.setImageUrl(updatedAnimal.getImageUrl());
+			System.out.println(animal);
 			em.merge(animal);
 			em.flush();
 		}
@@ -106,7 +109,34 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 	public Animal findByAnimalId(int animalId) {
 		return em.find(Animal.class, animalId);
 	}
+	
+	@Override
+	public List<Animal> findAllAnimalTypes() {
+		String jpql = "SELECT  FROM AnimalType t ORDER BY t.name";
+		return em.createQuery(jpql, Animal.class).getResultList();
+	}
 
+
+	@Override
+	public Flora update(int floraId, Flora updatedFlora) {
+Flora flora = em.find(Flora.class, updatedFlora.getId());
+		
+		if(flora != null) {
+			flora.setName(updatedFlora.getName());
+			flora.setFloraType(updatedFlora.getFloraType());
+			flora.setImageUrl(updatedFlora.getImageUrl());
+			flora.setSpecies(updatedFlora.getSpecies());
+			em.merge(flora);
+			em.flush();
+		}
+		return flora;
+	}
+	
+
+	@Override
+	public Flora findByFloraId(int floraId) {
+		return em.find(Flora.class, floraId);
+	}
 
 
 	
