@@ -56,7 +56,52 @@
             <c:if test="${empty park.animals}">
                 <p>No animals found for this park.</p>
             </c:if>
+			<center><h3>Did you see an animal not listed? </h3>
+			<h4>Add an animal below! </h4></center>
+			
+	<form action="success.do" method="POST">
+ <table>
+            <tr>
+                <td><label for="animalName">Name:</label></td>
+                <td><input type="text" id="animalName" name="name" required></td>
+            </tr>
+            <tr>
+                <td><label for="animalDescription">Description:</label></td>
+                <td><input type="text" id="animalDescription" name="description"></td>
+            </tr>
+            <tr>
+                <td><label for="animalType">Type of Animal:</label></td>
+                <td><input type="text" id="animalType" name="type"></td>
+            </tr>
+           <tr> 
+          <td><label for="animalImageUrl">Insert an image URL:</label></td>
+                <td><input type="text" id="animalImageUrl" name="imageUrl"></td>
+            </tr>
+                 <tr>
+                <td colspan="2" style="text-align: center;">
+                    <button type="submit">Add Animal</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+    
+    <div id="imagePreviewContainer" style="text-align: center; margin-top: 20px;">
+        <img id="imagePreview" class="image-preview" src="" alt="Image preview will appear here">
+    </div>
 
+    <script>
+        document.getElementById('animalImageUrl').addEventListener('input', function() {
+            const imageUrl = this.value;
+            const imagePreview = document.getElementById('imagePreview');
+            if (imageUrl) {
+                imagePreview.src = imageUrl;
+            } else {
+                imagePreview.src = '';
+            }
+        });
+    </script>
+       
+  
             <!-- Flora Section -->
             <c:if test="${not empty park.flora}">
                 <div class="my-4">

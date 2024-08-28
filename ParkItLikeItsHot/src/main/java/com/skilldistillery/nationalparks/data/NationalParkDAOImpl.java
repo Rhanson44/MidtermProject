@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.nationalparks.entities.Animal;
 import com.skilldistillery.nationalparks.entities.NationalPark;
 import com.skilldistillery.nationalparks.entities.NationalParkComment;
 import com.skilldistillery.nationalparks.entities.User;
@@ -30,6 +31,17 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 	}
 
 	@Override
+	public Animal create(Animal newAnimal) {
+	
+			
+			em.persist(newAnimal);
+			em.flush();
+			return newAnimal;
+		
+		}
+
+
+
 	public void addComment(NationalParkComment comment, int parkId, int userId) {
 		 NationalPark park = em.find(NationalPark.class, parkId);
 		 User foundUser = em.find(User.class, userId);
@@ -38,5 +50,20 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 		 em.persist(comment);
 	}
 
+	@Override
+	public void deleteComment(NationalParkComment comment, int commentId, int userId) {
+	    NationalParkComment managedComment = em.find(NationalParkComment.class, commentId);
+	    if (managedComment != null) {
+	        em.remove(managedComment);
+	    }
+	}
 
+
+	@Override
+	public NationalParkComment getCommentById(int commentId) {
+		return em.find(NationalParkComment.class, commentId);
+	}
+	
+	
 }
+
