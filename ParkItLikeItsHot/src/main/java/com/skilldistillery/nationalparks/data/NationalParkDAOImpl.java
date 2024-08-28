@@ -63,6 +63,11 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 	public NationalParkComment getCommentById(int commentId) {
 		return em.find(NationalParkComment.class, commentId);
 	}
+
+	@Override
+    public Animal updateAnimal(Animal animal) {
+        return em.merge(animal); 
+    }
 	
 	
 }

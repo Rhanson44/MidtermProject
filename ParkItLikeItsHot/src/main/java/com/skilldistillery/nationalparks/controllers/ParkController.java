@@ -36,7 +36,7 @@ public class ParkController {
         model.addAttribute("park", park);
         model.addAttribute("comments", park.getParkComments());
         model.addAttribute("loggedInUser", loggedInUser);
-        return "comment"; 
+        return "parkComment"; 
 	
 }
     @RequestMapping(value = "postComment.do", method = RequestMethod.POST)

@@ -21,4 +21,6 @@ public interface NationalParkDAO {
 
 	NationalParkComment getCommentById(int commentId);
 	
+	Animal updateAnimal(Animal animal);
+	
 }

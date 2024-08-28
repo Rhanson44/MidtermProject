@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -54,6 +55,28 @@ public class NationalParkController {
 			
 		mv.addObject("message", "Failed to add the animal");
 	}
+		return mv;
+	}
+	
+	@RequestMapping(path = "updateAnimal.do", method = RequestMethod.GET)
+	public ModelAndView updateAnimal(@ModelAttribute("animal") Animal animal) {
+		ModelAndView mv = new ModelAndView();
+
+		try {
+			Animal updatedAnimal = parkDAO.updateAnimal(animal);
+			if (updatedAnimal != null) {
+				mv.addObject("animal", updatedAnimal);
+				mv.setViewName("WEB-INF/updateanimal.jsp");
+			} else {
+				mv.addObject("message", "Failed to update the animal.");
+				mv.setViewName("WEB-INF/error.jsp");
+			}
+		} catch (Exception e) {
+			mv.addObject("message", "Error occurred while updating the film.");
+			mv.setViewName("WEB-INF/error.jsp");
+			e.printStackTrace();
+		}
+
 		return mv;
 	}
 
