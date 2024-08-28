@@ -135,10 +135,6 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 	}
 
 
-	@Override
-	public PointOfInterest findByPoiId(int poiId) {
-		return em.find(PointOfInterest.class, poiId);
-	}
 
 	@Override
 	public TrailComment addTrailComment(TrailComment comment, int trailId, int userId) {
@@ -153,6 +149,7 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 	}
 
 	@Override
+
 	public PointOfInterestComment addPoiComment(PointOfInterestComment comment, int poiId, int userId) {
 		User foundUser = em.find(User.class, userId);
 		if (foundUser == null) {
@@ -164,7 +161,7 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 		em.persist(comment);
 		return comment;
 	}
-	
+
 	
 }
 

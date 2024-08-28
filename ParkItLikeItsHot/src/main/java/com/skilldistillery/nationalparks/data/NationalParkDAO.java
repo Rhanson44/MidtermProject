@@ -24,10 +24,10 @@ public interface NationalParkDAO {
 //	Animal parkAnimal(Animal animal);
 
 	NationalParkComment getCommentById(int commentId);
-
-	Trail findByTrailId(int trailId);
 	PointOfInterest findByPoiId(int poiId);
 
+
+	Trail findByTrailId(int trailId);
 
 	Trail update(int trailId, Trail updatedTrail);
 	
