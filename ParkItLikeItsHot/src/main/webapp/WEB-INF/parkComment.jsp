@@ -6,7 +6,6 @@
 	rel="stylesheet"
 	integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
 	crossorigin="anonymous">
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,10 +30,10 @@
 									<textarea class="form-control" name="content" rows="4"
 										placeholder="Write your comment here..." required></textarea>
 								</div>
-								<div class="form-group mt-2">
+								<!-- <div class="form-group mt-2">
 									<input type="text" class="form-control" name="imageUrl"
 										placeholder="Optional: Image URL">
-								</div>
+								</div> -->
 								<button type="submit" class="btn btn-primary mt-2">Post
 									a Comment</button>
 							</form>

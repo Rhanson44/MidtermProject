@@ -51,7 +51,7 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 	     comment.setUser(foundUser);
 		 em.persist(comment);
 	}
-	
+
 
 	@Override
 	public void deleteComment(NationalParkComment comment, int commentId, int userId) {

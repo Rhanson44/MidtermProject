@@ -35,6 +35,11 @@ public class UserController {
 		return "register";
 	}
 	
+	@RequestMapping("account.do")
+	public String accountPage() {
+		return "account";
+	}
+	
 	@RequestMapping(path = "updatePassword.do", method = RequestMethod.POST)
 	public String updatePassword(User user, String password, Model model) {
 		if (user == null) {
