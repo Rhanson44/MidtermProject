@@ -38,10 +38,10 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 			em.flush();
 			return newAnimal;
 		
-		}
+	}
 
 
-
+	@Override
 	public void addComment(NationalParkComment comment, int parkId, int userId) {
 		 NationalPark park = em.find(NationalPark.class, parkId);
 		 User foundUser = em.find(User.class, userId);
