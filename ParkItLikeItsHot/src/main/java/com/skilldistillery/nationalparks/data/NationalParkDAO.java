@@ -2,9 +2,9 @@ package com.skilldistillery.nationalparks.data;
 
 import java.util.List;
 
-import com.skilldistillery.nationalparks.entities.Animal;
 import com.skilldistillery.nationalparks.entities.NationalPark;
 import com.skilldistillery.nationalparks.entities.NationalParkComment;
+import com.skilldistillery.nationalparks.entities.Trail;
 
 public interface NationalParkDAO {
 
@@ -20,5 +20,9 @@ public interface NationalParkDAO {
 //	Animal parkAnimal(Animal animal);
 
 	NationalParkComment getCommentById(int commentId);
-	
+	Trail findByTrailId(int trailId);
+
+
+	Trail update(int trailId, Trail updatedTrail);
+
 }

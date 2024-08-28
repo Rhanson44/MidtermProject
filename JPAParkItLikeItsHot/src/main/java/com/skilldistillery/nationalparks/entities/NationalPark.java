@@ -175,6 +175,13 @@ public class NationalPark {
 		return id == other.id;
 	}
 
+	@Override
+	public String toString() {
+		return "NationalPark [id=" + id + ", name=" + name + ", description=" + description + ", state=" + state
+				+ ", year=" + year + ", imageUrl=" + imageUrl + ", latitude=" + latitude + ", longitude=" + longitude
+				+ ", price=" + price + ", websiteUrl=" + websiteUrl + "]";
+	}
+
 
 //	@Override
 //	public String toString() {
