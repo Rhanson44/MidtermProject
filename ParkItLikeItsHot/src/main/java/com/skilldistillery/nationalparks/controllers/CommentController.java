@@ -11,6 +11,7 @@ import com.skilldistillery.nationalparks.data.NationalParkDAO;
 import com.skilldistillery.nationalparks.entities.NationalPark;
 import com.skilldistillery.nationalparks.entities.NationalParkComment;
 import com.skilldistillery.nationalparks.entities.PointOfInterest;
+import com.skilldistillery.nationalparks.entities.PointOfInterestComment;
 import com.skilldistillery.nationalparks.entities.Trail;
 import com.skilldistillery.nationalparks.entities.TrailComment;
 import com.skilldistillery.nationalparks.entities.User;
@@ -35,7 +36,7 @@ public class CommentController {
         NationalPark park = parkDAO.findById(parkId);
         model.addAttribute("park", park);
         model.addAttribute("comments", park.getParkComments());
-        model.addAttribute("loggedInUser", loggedInUser);
+//        model.addAttribute("loggedInUser", loggedInUser);
         return "parkComment"; 
 	
     }
@@ -82,12 +83,12 @@ public class CommentController {
     }
     
     @RequestMapping(value = "postPoiComment.do", method = RequestMethod.POST)
-    public String postPoiComment(@RequestParam("poiId")int poiId, NationalParkComment comment, HttpSession session) {
+    public String postPoiComment(@RequestParam("poiId")int poiId, PointOfInterestComment comment, HttpSession session) {
         User loggedInUser = (User) session.getAttribute("loggedInUser");
         if (loggedInUser == null) {
             return "login";
         }
-        parkDAO.addComment(comment, poiId, loggedInUser.getId());
+        parkDAO.addPoiComment(comment, poiId, loggedInUser.getId());
         return "redirect:poiComment.do?poiId=" + poiId;
     }
 
@@ -127,7 +128,38 @@ public class CommentController {
         }
 
         parkDAO.deleteComment(comment, commentId, loggedInUser.getId());
-        return "redirect:comment.do?parkId=" + parkId;
+        return "redirect:parkComment.do?parkId=" + parkId;
+    }
+    
+    @RequestMapping(value = "deleteTrailComment.do", method = RequestMethod.POST)
+    public String deleteTrailComment(@RequestParam("trailId") int trailId,@RequestParam("commentId") int commentId, TrailComment comment, HttpSession session) {
+    	User loggedInUser = (User) session.getAttribute("loggedInUser");
+    	if (loggedInUser == null) {
+    		return "login";
+    	}
+    	
+    	comment = parkDAO.getTrailCommentById(commentId);
+    	if (comment == null || comment.getUser().getId() != loggedInUser.getId()) {
+    		return "error";
+    	}
+    	
+    	parkDAO.deleteTrailComment(comment, commentId, loggedInUser.getId());
+    	return "redirect:trailComment.do?trailId=" + trailId;
     }
 
+    @RequestMapping(value = "deletePoiComment.do", method = RequestMethod.POST)
+    public String deletePoiComment(@RequestParam("poiId") int poiId,@RequestParam("commentId") int commentId, PointOfInterestComment comment, HttpSession session) {
+    	User loggedInUser = (User) session.getAttribute("loggedInUser");
+    	if (loggedInUser == null) {
+    		return "login";
+    	}
+    	
+    	comment = parkDAO.getPoiCommentById(commentId);
+    	if (comment == null || comment.getUser().getId() != loggedInUser.getId()) {
+    		return "error";
+    	}
+    	
+    	parkDAO.deletePoiComment(comment, commentId, loggedInUser.getId());
+    	return "redirect:poiComment.do?poiId=" + poiId;
+    }
 }

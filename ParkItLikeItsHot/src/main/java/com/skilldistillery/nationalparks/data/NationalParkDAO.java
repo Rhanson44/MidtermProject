@@ -6,6 +6,7 @@ import com.skilldistillery.nationalparks.entities.Animal;
 import com.skilldistillery.nationalparks.entities.NationalPark;
 import com.skilldistillery.nationalparks.entities.NationalParkComment;
 import com.skilldistillery.nationalparks.entities.PointOfInterest;
+import com.skilldistillery.nationalparks.entities.PointOfInterestComment;
 import com.skilldistillery.nationalparks.entities.Trail;
 import com.skilldistillery.nationalparks.entities.TrailComment;
 
@@ -23,13 +24,10 @@ public interface NationalParkDAO {
 //	Animal parkAnimal(Animal animal);
 
 	NationalParkComment getCommentById(int commentId);
-<<<<<<< HEAD
-	Trail findByTrailId(int trailId);
-	PointOfInterest findByPoiId(int poiId);
-=======
 
 	Trail findByTrailId(int trailId);
->>>>>>> dea740b3e336f0a959d6b5e9133c04a7a3d12e63
+	PointOfInterest findByPoiId(int poiId);
+
 
 	Trail update(int trailId, Trail updatedTrail);
 	
@@ -39,5 +37,15 @@ public interface NationalParkDAO {
 
 
 	TrailComment addTrailComment(TrailComment comment, int trailId, int id);
+
+	PointOfInterestComment addPoiComment(PointOfInterestComment comment, int poiId, int userId);
+
+	PointOfInterestComment getPoiCommentById(int commentId);
+
+	void deletePoiComment(PointOfInterestComment comment, int commentId, int userId);
+
+	void deleteTrailComment(TrailComment comment, int commentId, int userId);
+
+	TrailComment getTrailCommentById(int commentId);
 
 }
