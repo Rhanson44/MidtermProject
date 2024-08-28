@@ -37,9 +37,7 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 //	@Override
 //	public Animal create(Animal newAnimal) {
 //		
-//        newAnimal.setName(newAnimal.getName());
-//        newAnimal.getAnimalType().setDescription(newAnimal.getAnimalType().getDescription());
-//        newAnimal.getAnimalType().setId(newAnimal.getAnimalType().getId());
+//        newAnimal.getAnimalType()(newAnimal.getAnimalType().getId());;
 //			em.persist(newAnimal);
 //			em.flush();
 //			return newAnimal;

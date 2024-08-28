@@ -128,14 +128,16 @@ public class NationalParkController {
 //	}
 //		return mv;
 //	}
-
+//
 //	@RequestMapping(path = { "addAnimal.do" }, method = RequestMethod.POST)
-//	public ModelAndView newAnimal(@RequestParam("parkId") int parkId, Animal animal) {
-//		NationalPark park = parkDAO.findById(parkId);
+//	public ModelAndView newAnimal(@RequestParam("animalTypeId") int animalTypeId, Animal animal) {
+////		NationalPark park = parkDAO.findById(parkId);
 //		ModelAndView mv = new ModelAndView();
 //		try {
+//		parkDAO.findByAnimalId(animalTypeId);
 //		parkDAO.create(animal);
-//		mv.addObject("park", park);
+//		mv.addObject("animal", animal);
+//		mv.addObject("animalTypeId", animalTypeId);
 //		mv.setViewName("success");
 //		
 //		} catch (Exception e) {
