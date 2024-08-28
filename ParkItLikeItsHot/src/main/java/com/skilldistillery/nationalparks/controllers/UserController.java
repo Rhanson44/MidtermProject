@@ -36,8 +36,17 @@ public class UserController {
 	}
 	
 	@RequestMapping("account.do")
-	public String accountPage() {
-		return "account";
+	public String accountPage(Model model, HttpSession session) {
+		User user = (User)session.getAttribute("loggedInUser");
+		System.out.println("**************");
+		System.out.println(user);
+		System.out.println("**************");
+		if (user == null) {
+			return "redirect:home.do";
+		} else {
+			model.addAttribute("user", userDAO.findUserById(user.getId()));
+			return "account";
+		}
 	}
 	
 	@RequestMapping(path = "updatePassword.do", method = RequestMethod.POST)

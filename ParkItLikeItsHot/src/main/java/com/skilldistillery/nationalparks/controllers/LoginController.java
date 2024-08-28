@@ -34,7 +34,7 @@ public class LoginController {
 			session.setAttribute("loginTime", lt);
 			session.setAttribute("loggedInUser", user);
 			session.setAttribute("username", user.getUsername());
-			return "account";
+			return "redirect:account.do";
 
 		} else {
 			return "login";

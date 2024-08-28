@@ -36,6 +36,21 @@
             </c:otherwise>
         </c:choose>
     </div>
+    <div>
+    <h3>Park Comments</h3>
+    <c:choose>
+    <c:when test="${not empty user.nationalParkComments}">
+        <ul>
+            <c:forEach var="comment" items="${user.nationalParkComments}">
+                <li>${comment.content}</li>
+            </c:forEach>
+        </ul>
+    </c:when>
+    <c:otherwise>
+        <p>No comments available.</p>
+    </c:otherwise>
+	</c:choose>
+    </div>
 	</div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
