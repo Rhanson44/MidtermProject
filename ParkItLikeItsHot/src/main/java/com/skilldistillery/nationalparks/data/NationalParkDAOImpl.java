@@ -162,6 +162,11 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 		return comment;
 	}
 
+	@Override
+	public PointOfInterest findByPoiId(int poiId) {
+		return em.find(PointOfInterest.class, poiId);
+	}
+
 	
 }
 
