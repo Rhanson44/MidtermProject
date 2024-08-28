@@ -14,12 +14,18 @@
 <title>Comment Section</title>
 </head>
 <body>
+
+<!-- Background image -->
 	<jsp:include page="nav.jsp" />
 	<br>
 	<c:if test="${not empty loggedInUser}">
 
-		<section style="background-color: #f7f6f6;">
-			<h1 class="text-center my-4">${park.name} Comment Section</h1>
+		<section   class="bg-image" 
+  style= "background-image: url('https://mdbcdn.b-cdn.net/img/new/fluid/nature/012.webp');
+    height: 100vh;" >
+      <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+    
+			<h1 class="text-center my-4" style="color: #FFFFFF;">${park.name} Comment Section</h1>
 			<div class="container my-5 py-5 text-body">
 				<div class="row d-flex justify-content-center">
 					<div class="col-md-12 col-lg-10 col-xl-8">
