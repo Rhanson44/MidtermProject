@@ -167,6 +167,7 @@
                                         <p><strong>Longitude:</strong> ${interest.longitude}</p>
                                         <p><strong>Latitude:</strong> ${interest.latitude}</p>
                                         <a href="updateInterest.do?interestId=${interest.id}&parkId=${park.id}" class="btn btn-primary btn-sm">Update</a>
+           								<a href="poiComment.do?poiId=${interest.id}" class="btn btn-primary btn-sm">Point of Interest Comments</a>
                                     </div>
                                 </div>
                             </div>
@@ -197,6 +198,7 @@
                                         <p><strong>Latitude:</strong> ${trail.latitude}</p>
                                         <a href="updateTrail.do?trailId=${trail.id}&parkId=${park.id}" class="btn btn-primary btn-sm">Update</a>
 	
+			           					<a href="trailComment.do?trailId=${trail.id}" class="btn btn-primary btn-sm">Trail Comments</a>
                                     </div>
                                 </div>
                             </div>

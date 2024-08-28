@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 import com.skilldistillery.nationalparks.entities.Animal;
 import com.skilldistillery.nationalparks.entities.NationalPark;
 import com.skilldistillery.nationalparks.entities.NationalParkComment;
+import com.skilldistillery.nationalparks.entities.PointOfInterest;
 import com.skilldistillery.nationalparks.entities.Trail;
+import com.skilldistillery.nationalparks.entities.TrailComment;
 import com.skilldistillery.nationalparks.entities.User;
 
 import jakarta.persistence.EntityManager;
@@ -81,6 +83,7 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 		}
 		return trail;
 	}
+	
 	@Override
 	public Trail findByTrailId(int trailId) {
 		return em.find(Trail.class, trailId);
@@ -106,6 +109,22 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 	}
 
 
+	@Override
+	public PointOfInterest findByPoiId(int poiId) {
+		return em.find(PointOfInterest.class, poiId);
+	}
+
+	@Override
+	public TrailComment addTrailComment(TrailComment comment, int trailId, int userId) {
+	    User foundUser = em.find(User.class, userId);
+	    if (foundUser == null) {
+	        throw new RuntimeException("User not found");
+	    }
+	    comment.setUser(foundUser);
+	    comment.setTrail(em.find(Trail.class, trailId));
+	    em.persist(comment);
+	    return comment;
+	}
 
 	
 	

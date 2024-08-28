@@ -31,8 +31,9 @@ public class PointOfInterestComment {
     @Column(name="image_url")
     private String imageUrl;
 
-    @Column(name="user_id", insertable = false, updatable = false)
-    private int userId;
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    private User user;
 
     @ManyToOne
     @JoinColumn(name="point_of_interest_id")
@@ -80,12 +81,12 @@ public class PointOfInterestComment {
         this.imageUrl = imageUrl;
     }
 
-    public int getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public PointOfInterest getInterests() {
