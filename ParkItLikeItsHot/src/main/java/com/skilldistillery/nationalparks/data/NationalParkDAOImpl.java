@@ -50,4 +50,20 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 		 em.persist(comment);
 	}
 
+	@Override
+	public void deleteComment(NationalParkComment comment, int commentId, int userId) {
+	    NationalParkComment managedComment = em.find(NationalParkComment.class, commentId);
+	    if (managedComment != null) {
+	        em.remove(managedComment);
+	    }
+	}
+
+
+	@Override
+	public NationalParkComment getCommentById(int commentId) {
+		return em.find(NationalParkComment.class, commentId);
+	}
+	
+	
+}
 

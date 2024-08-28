@@ -15,6 +15,9 @@ public interface NationalParkDAO {
 	
 	void addComment(NationalParkComment comment, int parkId, int userId);
 
+	void deleteComment(NationalParkComment comment, int parkId, int userId);
 //	Animal parkAnimal(Animal animal);
+
+	NationalParkComment getCommentById(int commentId);
 	
 }

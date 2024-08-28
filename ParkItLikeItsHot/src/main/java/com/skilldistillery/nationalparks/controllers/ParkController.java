@@ -58,4 +58,21 @@ public class ParkController {
         parkDAO.addComment(comment, parkId, loggedInUser.getId());
         return "redirect:comment.do?parkId=" + parkId;
     }
+    
+    @RequestMapping(value = "deleteParkComment.do", method = RequestMethod.POST)
+    public String deleteComment(@RequestParam("parkId") int parkId,@RequestParam("commentId") int commentId, NationalParkComment comment, HttpSession session) {
+        User loggedInUser = (User) session.getAttribute("loggedInUser");
+        if (loggedInUser == null) {
+            return "login";
+        }
+        
+        comment = parkDAO.getCommentById(commentId);
+        if (comment == null || comment.getUser().getId() != loggedInUser.getId()) {
+            return "error";
+        }
+
+        parkDAO.deleteComment(comment, commentId, loggedInUser.getId());
+        return "redirect:comment.do?parkId=" + parkId;
+    }
+
 }
