@@ -19,7 +19,7 @@
 	<c:if test="${not empty loggedInUser}">
 
 		<section style="background-color: #f7f6f6;">
-			<h1 class="text-center my-4">${park.name}CommentSection</h1>
+			<h1 class="text-center my-4">${park.name} Comment Section</h1>
 			<div class="container my-5 py-5 text-body">
 				<div class="row d-flex justify-content-center">
 					<div class="col-md-12 col-lg-10 col-xl-8">
@@ -53,18 +53,14 @@
 													<p class="mb-0">${comment.createDate}</p>
 												</div>
 												<p class="mb-0">${comment.content}</p>
-												<c:if test="${loggedInUser.username == 'admin'}">
+												<c:if test="${loggedInUser.username == 'admin' || comment.user.username == loggedInUser.username}">
 													<form action="deleteParkComment.do" method="POST"
 														onsubmit="return confirm('Are you sure you want to delete this comment?');">
 														<input type="hidden" name="parkId" value="${park.id}">
 														<input type="hidden" name="commentId"
 															value="${comment.id}">
-														<button type="submit">Delete</button>
+														<button type="submit" class="btn btn-danger btn-sm">Delete</button>
 													</form>
-
-													<c:if
-														test="${loggedInUser.username == 'admin' || comment.user.username == loggedInUser.username}">
-													</c:if>
 												</c:if>
 											</div>
 										</div>
