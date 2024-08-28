@@ -31,7 +31,7 @@
                                 <button type="submit" class="btn btn-primary w-100">Login</button>                                
                             </div>
                             <div class="text-center">
-                                <a href="register.do">Don't have an account? Register here.</a>
+                                <a href="registerForm.do">Don't have an account? Register here.</a>
                             </div>
                         </form>
                     </div>
