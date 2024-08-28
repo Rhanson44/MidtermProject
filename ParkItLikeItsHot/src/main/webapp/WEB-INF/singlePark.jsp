@@ -26,7 +26,6 @@
                 <a href="comment.do?parkId=${park.id}" class="btn btn-primary">Comment Section</a>
             </h1>
 
-            <!-- Animals Section -->
             <c:if test="${not empty park.animals}">
                 <div class="my-4">
                     <h2>Animals in the ${park.name}</h2>
@@ -58,7 +57,7 @@
  <table>
             <tr>
                 <td><label for="animalName">Name:</label></td>
-                <td><input type="text" id="animalName" name="name" required></td>
+                <td><input type="text" id="animalName" name="animalName" required></td>
             </tr>
             <tr>
                 <td><label for="animalDescription">Description:</label></td>

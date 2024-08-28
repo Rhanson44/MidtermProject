@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.skilldistillery.nationalparks.data.NationalParkDAO;
 import com.skilldistillery.nationalparks.entities.Animal;
 import com.skilldistillery.nationalparks.entities.NationalPark;
+import com.skilldistillery.nationalparks.entities.User;
 
 @Controller
 public class NationalParkController {
@@ -42,12 +43,13 @@ public class NationalParkController {
 
 		return "singlePark";
 	}
-	@RequestMapping(path = { "success.do" }, method = RequestMethod.POST)
-	public ModelAndView newAnimal(Animal animal) {
-		
+	@RequestMapping(path = { "addAnimal.do" }, method = RequestMethod.POST)
+	public ModelAndView newAnimal(@RequestParam("parkId") int parkId, Animal animal) {
+		NationalPark park = parkDAO.findById(parkId);
 		ModelAndView mv = new ModelAndView();
 		try {
 		parkDAO.create(animal);
+		mv.addObject("park", park);
 		mv.setViewName("success");
 		
 		} catch (Exception e) {
