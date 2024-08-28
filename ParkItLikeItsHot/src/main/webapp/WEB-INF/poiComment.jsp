@@ -25,7 +25,7 @@
 					<div class="col-md-12 col-lg-10 col-xl-8">
 						<c:if test="${not empty loggedInUser}">
 							<form action="postPoiComment.do" method="POST">
-								<input type="hidden" name="poiId" value="${interest.id}">
+								<input type="hidden" name="poiId" value="${poi.id}">
 								<div class="form-group">
 									<textarea class="form-control" name="content" rows="4"
 										placeholder="Write your comment here..." required></textarea>
@@ -54,9 +54,9 @@
 												</div>
 												<p class="mb-0">${comment.content}</p>
 												<c:if test="${loggedInUser.username == 'admin' || comment.user.username == loggedInUser.username}">
-													<form action="deleteParkComment.do" method="POST"
+													<form action="deletePoiComment.do" method="POST"
 														onsubmit="return confirm('Are you sure you want to delete this comment?');">
-														<input type="hidden" name="parkId" value="${park.id}">
+														<input type="hidden" name="poiId" value="${poi.id}">
 														<input type="hidden" name="commentId"
 															value="${comment.id}">
 														<button type="submit" class="btn btn-danger btn-sm">Delete</button>

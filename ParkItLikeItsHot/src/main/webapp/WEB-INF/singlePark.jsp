@@ -26,7 +26,7 @@
     <div class="container">
         <div class="my-4">
             <h1 class="text-center mb-4">
-                <a href="comment.do?parkId=${park.id}" class="btn btn-primary" style="background-color: #42755b; border-color: #09331d;">Comment Section</a>
+                <a href="parkComment.do?parkId=${park.id}" class="btn btn-primary" style="background-color: #42755b; border-color: #09331d;">Comment Section</a>
             </h1>
 
             <c:if test="${not empty park.animals}">

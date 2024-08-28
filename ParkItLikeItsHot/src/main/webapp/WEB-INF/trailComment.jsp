@@ -54,9 +54,9 @@
 												</div>
 												<p class="mb-0">${comment.content}</p>
 												<c:if test="${loggedInUser.username == 'admin' || comment.user.username == loggedInUser.username}">
-													<form action="deleteParkComment.do" method="POST"
+													<form action="deleteTrailComment.do" method="POST"
 														onsubmit="return confirm('Are you sure you want to delete this comment?');">
-														<input type="hidden" name="parkId" value="${park.id}">
+														<input type="hidden" name="trailId" value="${trail.id}">
 														<input type="hidden" name="commentId"
 															value="${comment.id}">
 														<button type="submit" class="btn btn-danger btn-sm">Delete</button>
