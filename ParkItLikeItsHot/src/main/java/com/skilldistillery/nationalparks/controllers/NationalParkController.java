@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.nationalparks.data.NationalParkDAO;
 import com.skilldistillery.nationalparks.entities.Animal;
+import com.skilldistillery.nationalparks.entities.AnimalType;
 import com.skilldistillery.nationalparks.entities.NationalPark;
 
 @Controller
@@ -42,19 +43,23 @@ public class NationalParkController {
 
 		return "singlePark";
 	}
-	@RequestMapping(path = { "success.do" }, method = RequestMethod.POST)
-	public ModelAndView newAnimal(Animal animal) {
-		
-		ModelAndView mv = new ModelAndView();
-		try {
-		parkDAO.create(animal);
-		mv.setViewName("success");
-		
-		} catch (Exception e) {
-			
-		mv.addObject("message", "Failed to add the animal");
-	}
-		return mv;
-	}
+//	@RequestMapping(path = { "success.do" }, method = RequestMethod.POST)
+//	public ModelAndView newAnimal(Animal animal) {
+//	    ModelAndView mv = new ModelAndView();
+//
+//	    
+//		try {
+//			
+//	        
+//		parkDAO.create(animal);
+//		mv.setViewName("success");
+//        mv.addObject("message", "Animal added successfully");
+//		} catch (Exception e) {
+//			
+//			mv.setViewName("error");
+//		mv.addObject("message", "Failed to add the animal");
+//	}
+//		return mv;
+//	}
 
 }

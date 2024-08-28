@@ -7,67 +7,100 @@
 <head>
     <meta charset="UTF-8">
     <title>Comment Section</title>
+    <style>
+      .gradient-background {
+        position: fixed; /* Fixed position for the background */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #a18cd1;
+
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: -webkit-linear-gradient(
+          45deg,
+          rgba(29, 236, 197, 0.6),
+          rgba(91, 14, 214, 0.6) 100%
+        );
+        
+
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background: linear-gradient(
+          45deg,
+          rgba(29, 236, 197, 0.6),
+          rgba(91, 14, 214, 0.6) 100%
+        );
+
+        z-index: -1; /* Ensure it stays behind the content */
+      }
+      
+    </style>
+    
 </head>
 <body>
-<jsp:include page="nav.jsp"/>
-<br>
-<c:if test="${not empty loggedInUser}">
 
-    <section style="background-color: #f7f6f6;"> 
-        <h1 class="text-center my-4">${park.name} Comment Section</h1>
-        <div class="container my-5 py-5 text-body">
-            <div class="row d-flex justify-content-center">
-                <div class="col-md-12 col-lg-10 col-xl-8">
-                    <c:if test="${not empty loggedInUser}">
-                        <form action="postParkComment.do" method="POST">
-                            <input type="hidden" name="parkId" value="${park.id}">
-                            <div class="form-group">
-                                <textarea class="form-control" name="content" rows="4" placeholder="Write your comment here..." required></textarea>
-                            </div>
-                            <div class="form-group mt-2">
-                                <input type="text" class="form-control" name="imageUrl" placeholder="Optional: Image URL">
-                            </div>
-                            <button type="submit" class="btn btn-primary mt-2">Post a Comment</button>
-                        </form>
-                    </c:if>
-                    <div class="my-4">
-                        <c:forEach var="comment" items="${comments}">
-                            <div class="card mb-3">
-                                <div class="card-body">
-                                    <div class="d-flex flex-start">
-                                        <img class="rounded-circle shadow-1-strong me-3"
-                                            src="https://static.wikia.nocookie.net/smiling-friends/images/e/e6/Glep_%28SF%29.png/revision/latest/thumbnail/width/360/height/360?cb=20240204175445" alt="avatar" width="40"
-                                            height="40" />
-                                        <div class="w-100">
-                                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                                <h6 class="text-primary fw-bold mb-0">${comment.user.username}</h6>
-                                                <p class="mb-0">${comment.createDate}</p>
+ 
+
+    <jsp:include page="nav.jsp"/>
+    <br>
+    <c:if test="${not empty loggedInUser}">
+
+        <section style=".gradient-background"> 
+        
+            <h1 class="text-center my-4">${park.name} Comment Section</h1>
+            <div class="container my-5 py-5 text-body">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-12 col-lg-10 col-xl-8">
+                        <c:if test="${not empty loggedInUser}">
+                            <form action="postParkComment.do" method="POST">
+                                <input type="hidden" name="parkId" value="${park.id}">
+                                <div class="form-group">
+                                    <textarea class="form-control" name="content" rows="4" placeholder="Write your comment here..." required></textarea>
+                                </div>
+                                <div class="form-group mt-2">
+                                    <input type="text" class="form-control" name="imageUrl" placeholder="Optional: Image URL">
+                                </div>
+                                <button type="submit" class="btn btn-primary mt-2">Post a Comment</button>
+                            </form>
+                        </c:if>
+                        <div class="my-4">
+                            <c:forEach var="comment" items="${comments}">
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <div class="d-flex flex-start">
+                                            <img class="rounded-circle shadow-1-strong me-3"
+                                                src="https://static.wikia.nocookie.net/smiling-friends/images/e/e6/Glep_%28SF%29.png/revision/latest/thumbnail/width/360/height/360?cb=20240204175445" alt="avatar" width="40"
+                                                height="40" />
+                                            <div class="w-100">
+                                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                                    <h6 class="text-primary fw-bold mb-0">${comment.user.username}</h6>
+                                                    <p class="mb-0">${comment.createDate}</p>
+                                                </div>
+                                                <p class="mb-0">${comment.content}</p>
+                                                <c:if test="${loggedInUser.username == 'admin'}">
+                                                    <a href="#!" class="link-grey">Remove</a>
+                                                </c:if>
                                             </div>
-                                            <p class="mb-0">${comment.content}</p>
-                                            <c:if test="${loggedInUser.username == 'admin'}">
-                                                <a href="#!" class="link-grey">Remove</a>
-                                            </c:if>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </c:forEach>
+                            </c:forEach>
+                        </div>
                     </div>
                 </div>
             </div>
+        </section>
+    </c:if>
+
+    <c:if test="${empty loggedInUser}">
+        <div class="container text-center my-5">
+            <p>Please Log in to view and post comments.</p>
+            <a class="btn btn-primary" href="login.do">Login</a>
+            <a class="btn btn-secondary" href="registerForm.do">Register</a>
         </div>
-    </section>
-</c:if>
+    </c:if>
 
-<c:if test="${empty loggedInUser}">
-    <div class="container text-center my-5">
-        <p>Please Log in to view and post comments.</p>
-        <a class="btn btn-primary" href="login.do">Login</a>
-        <a class="btn btn-secondary" href="registerForm.do">Register</a>
-    </div>
-</c:if>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 </body>
 </html>
