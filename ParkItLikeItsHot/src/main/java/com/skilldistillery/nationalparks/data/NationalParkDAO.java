@@ -3,6 +3,7 @@ package com.skilldistillery.nationalparks.data;
 import java.util.List;
 
 import com.skilldistillery.nationalparks.entities.Animal;
+import com.skilldistillery.nationalparks.entities.AnimalType;
 import com.skilldistillery.nationalparks.entities.Flora;
 import com.skilldistillery.nationalparks.entities.NationalPark;
 import com.skilldistillery.nationalparks.entities.NationalParkComment;
@@ -41,7 +42,7 @@ public interface NationalParkDAO {
 	
 	Flora update(int floraId, Flora updatedFlora);
 
-	List<Animal> findAllAnimalTypes();
+	List<AnimalType> findAllAnimalTypes();
 
 	
 	
