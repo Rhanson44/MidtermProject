@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.nationalparks.entities.Animal;
 import com.skilldistillery.nationalparks.entities.NationalPark;
 import com.skilldistillery.nationalparks.entities.NationalParkComment;
 import com.skilldistillery.nationalparks.entities.User;
@@ -39,7 +40,6 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 		
 		}
 
-	}
 
 
 	public void addComment(NationalParkComment comment, int parkId, int userId) {
