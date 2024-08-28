@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.nationalparks.entities.Animal;
+import com.skilldistillery.nationalparks.entities.AnimalType;
 import com.skilldistillery.nationalparks.entities.Flora;
 import com.skilldistillery.nationalparks.entities.NationalPark;
 import com.skilldistillery.nationalparks.entities.NationalParkComment;
@@ -138,9 +139,9 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 	}
 	
 	@Override
-	public List<Animal> findAllAnimalTypes() {
-		String jpql = "SELECT  FROM AnimalType t ORDER BY t.name";
-		return em.createQuery(jpql, Animal.class).getResultList();
+	public List<AnimalType> findAllAnimalTypes() {
+		String jpql = "SELECT t FROM AnimalType t ORDER BY t.name";
+		return em.createQuery(jpql, AnimalType.class).getResultList();
 	}
 
 
@@ -195,13 +196,11 @@ Flora flora = em.find(Flora.class, updatedFlora.getId());
 	@Override
 	public PointOfInterest findByPoiId(int poiId) {
 		return em.find(PointOfInterest.class, poiId);
-	}
-
-	@Override
-	public Animal update(int animalTypeId, Animal updatedAnimal) {
 		// TODO Auto-generated method stub
 		return null;
+
 	}
+
 
 	
 }
