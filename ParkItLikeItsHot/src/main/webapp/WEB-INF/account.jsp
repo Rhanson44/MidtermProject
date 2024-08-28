@@ -36,22 +36,6 @@
             </c:otherwise>
         </c:choose>
     </div>
-    <h3>Track National Parks</h3>
-    <ul class="list-group">
-        <c:forEach var="park" items="${nationalParks}">
-            <li class="list-group-item">
-                <c:choose>
-                    <c:when test="${nationalParks.contains(park.id)}">
-                        <span class="visited" onclick="toggleVisit('${park.id}')">${park.name} (Visited)</span>
-                    </c:when>
-                    <c:otherwise>
-                        <span onclick="toggleVisit('${park.id}')">${park.name}</span>
-                    </c:otherwise>
-                </c:choose>
-            </li>
-        </c:forEach>
-    </ul>
-</div>
 	</div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

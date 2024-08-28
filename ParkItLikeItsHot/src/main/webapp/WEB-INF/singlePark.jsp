@@ -40,6 +40,11 @@
                                         <p><strong>Type:</strong> ${animal.animalType.name}</p>
                                         <p><strong>Description:</strong> ${animal.animalType.description}</p>
                                         <p><strong>Endangered:</strong> ${animal.endangered}</p>
+                                        <form action="deleteAnimal.do" method="post" style="display: inline;">
+                                            <input type="hidden" name="animalId" value="${animal.id}" />
+                                            <input type="hidden" name="parkId" value="${park.id}" />
+                                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
