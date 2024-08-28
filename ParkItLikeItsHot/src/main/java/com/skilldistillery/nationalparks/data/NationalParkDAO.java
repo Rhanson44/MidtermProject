@@ -3,6 +3,7 @@ package com.skilldistillery.nationalparks.data;
 import java.util.List;
 
 import com.skilldistillery.nationalparks.entities.Animal;
+import com.skilldistillery.nationalparks.entities.Flora;
 import com.skilldistillery.nationalparks.entities.NationalPark;
 import com.skilldistillery.nationalparks.entities.NationalParkComment;
 import com.skilldistillery.nationalparks.entities.PointOfInterest;
@@ -33,6 +34,18 @@ public interface NationalParkDAO {
 	
 	Animal findByAnimalId(int animalId);
 	
+
+	Animal updateAnimal(int animalId, Animal updatedAnimal);
+	
+	Flora findByFloraId(int floraId);
+	
+	Flora update(int floraId, Flora updatedFlora);
+
+	List<Animal> findAllAnimalTypes();
+
+	
+	
+
 	Animal update(int animalTypeId, Animal updatedAnimal);
 
 
@@ -45,6 +58,7 @@ public interface NationalParkDAO {
 	void deletePoiComment(PointOfInterestComment comment, int commentId, int userId);
 
 	void deleteTrailComment(TrailComment comment, int commentId, int userId);
+
 
 	TrailComment getTrailCommentById(int commentId);
 

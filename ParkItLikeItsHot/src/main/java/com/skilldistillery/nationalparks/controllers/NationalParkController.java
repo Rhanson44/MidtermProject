@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.nationalparks.data.NationalParkDAO;
 import com.skilldistillery.nationalparks.entities.Animal;
+import com.skilldistillery.nationalparks.entities.Flora;
 import com.skilldistillery.nationalparks.entities.NationalPark;
 import com.skilldistillery.nationalparks.entities.Trail;
 
@@ -82,17 +82,17 @@ public class NationalParkController {
 		ModelAndView mv = new ModelAndView();
 		
 		try {		
-			Animal updatedAnimal =  parkDAO.update(animal.getId(), animal);
+			Animal updatedAnimal =  parkDAO.updateAnimal(animal.getId(), animal);
 			System.out.println(updatedAnimal);
 			if (updatedAnimal != null) {
 				mv.addObject("animal", updatedAnimal);
-				mv.setViewName("redirect:singlePark.do?parkId=" + ((Animal) updatedAnimal.getNationalParks()).getId());
+				mv.setViewName("redirect:parks.do" );
 			} else {
-				mv.addObject("message", "Failed to update the Trail.");
+				mv.addObject("message", "Failed to update the Animal.");
 				mv.setViewName("error");
 			}
 		} catch (Exception e) {
-			mv.addObject("message", "Error occurred while updating the Trail.");
+			mv.addObject("message", "Error occurred while updating the Animal.");
 			mv.setViewName("error");
 			e.printStackTrace();
 		}
@@ -102,12 +102,42 @@ public class NationalParkController {
 	@RequestMapping(path="updateAnimal.do", method=RequestMethod.GET)
 	public ModelAndView showUpdateAnimalForm(@RequestParam("animalId") int animalId) {
 		ModelAndView mv = new ModelAndView();
-//		NationalPark park = parkDAO.findById(parkId);
 		Animal updateAnimal = parkDAO.findByAnimalId(animalId);
+		mv.addObject("animalTypes", parkDAO.findAllAnimalTypes());
 		mv.addObject("updatedAnimal", updateAnimal);
 		mv.setViewName("updateAnimal");
 		return mv;
+	}
+	
+	@RequestMapping(path = "updateFlora.do", method = RequestMethod.POST)
+	public ModelAndView updateFlora(Flora flora) {
+		ModelAndView mv = new ModelAndView();
 		
+		try {		
+			Flora updatedFlora =  parkDAO.update(flora.getId(), flora);
+			System.out.println(updatedFlora);
+			if (updatedFlora != null) {
+				mv.addObject("flora", updatedFlora);
+				mv.setViewName("redirect:singlePark.do?parkId=" + (updatedFlora.getNationalParks()));
+			} else {
+				mv.addObject("message", "Failed to update the Flora.");
+				mv.setViewName("error");
+			}
+		} catch (Exception e) {
+			mv.addObject("message", "Error occurred while updating the Flora.");
+			mv.setViewName("error");
+			e.printStackTrace();
+		}
+		
+		return mv;
+	}
+	@RequestMapping(path="updateFlora.do", method=RequestMethod.GET)
+	public ModelAndView showUpdateFloraForm(@RequestParam("floraId") int floraId) {
+		ModelAndView mv = new ModelAndView();
+		Flora updateFlora = parkDAO.findByFloraId(floraId);
+		mv.addObject("updatedFlora", updateFlora);
+		mv.setViewName("updateFlora");
+		return mv;
 	}
 
 //	@RequestMapping(path = { "success.do" }, method = RequestMethod.POST)
