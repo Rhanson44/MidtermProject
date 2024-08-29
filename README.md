@@ -14,6 +14,18 @@
 * Adrian Vidal
 * Destinee Kennedy
 
+## How to Run
+* As a non-logged in user I can view a list of 12 National Parks and it's features with the option to update:
+  * Animals in the park
+  * Flora in the park
+  * Trails in the park
+  * Mountains in the park
+  * Points of Interests at the park
+
+* As a logged in user I can add comments to the park's comment section, the park's trails, and the points of interest section.
+* As a logged in user my comments are tracked and displayed on my account page, I also have the availability to delete any of my comments.
+* As the admin of the page, I can delete any comments.
+
 ## Project Structure
 * Development Tools
   * GitHub: For version control and collaborative development. All source code and project documentation are hosted here
