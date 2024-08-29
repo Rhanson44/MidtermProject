@@ -7,13 +7,18 @@
 <head>
     <title>${park.name} Info</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/style.css">
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/singlePark.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/singlePark.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
     <jsp:include page="nav.jsp"/>
+    
+    <!-- Side Panels -->
+    <div class="side-panel left-panel"></div>
+    <div class="side-panel right-panel"></div>
+
     <div class="container">
-    	<br>
+        <br>
         <h1 class="section-title">${park.name} Info</h1>
 
         <!-- Animals Section -->

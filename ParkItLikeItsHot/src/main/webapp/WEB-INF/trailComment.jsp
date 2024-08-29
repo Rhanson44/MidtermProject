@@ -19,7 +19,7 @@
 	<jsp:include page="nav.jsp" />
 	<c:if test="${not empty loggedInUser}">
 	<main>
-		<section   class="bg-image" 
+		<section class="bg-image" 
   style= "background-image: url('https://mdbcdn.b-cdn.net/img/new/fluid/nature/012.webp');
     height: 100vh;" >
       <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">

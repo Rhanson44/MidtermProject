@@ -36,3 +36,23 @@
 .container {
 	margin-top: 40px;
 }
+
+.side-panel {
+	position: fixed;
+	top: 0;
+	width: 160px;
+	height: 100%;
+	background:
+		url('https://st2.depositphotos.com/7893620/44723/v/450/depositphotos_447235653-stock-illustration-abstract-contemporary-nature-background-design.jpg')
+		no-repeat center center;
+	background-size: cover;
+	z-index: 1000;
+}
+
+.left-panel {
+	left: 0;
+}
+
+.right-panel {
+	right: 0;
+}
