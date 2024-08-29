@@ -1,49 +1,39 @@
 @charset "UTF-8";
 
 .account {
-    padding: 20px;
-    background-color: #f8f9fa;
+	padding: 30px;
+	background-color: #f8f9fa;
 }
 
-.accordion-button {
-    color: #0056b3;
-    font-weight: bold;
+.card-header {
+	background-color: #f8f9fa; 
+	color: #6fa08d;
+	font-size : 18px;
+	font-weight: bold;
+	font-size: 18px;
+	font-family: 'Slate';
 }
 
-.accordion-button:not(.collapsed) {
-    color: #003d7a;
-    background-color: #e9ecef;
-    border-color: #0056b3;
+.card-body {
+	padding: 20px;
 }
 
-.accordion-button::after {
-    filter: invert(40%);
+.section-content ul {
+	list-style-type: none;
+	padding: 0;
 }
 
-.accordion-body {
-    padding: 1.25rem;
-    background-color: #ffffff;
-    border-top: 1px solid #dee2e6;
+.section-content li {
+	margin-bottom: 5px;
+	font-family: 'Slate';
 }
 
-.accordion-item {
-    margin-bottom: 0.5rem;
-    border: 1px solid #dee2e6;
-    border-radius: 0.25rem;
-}
-
-.accordion-header {
-    padding: 0.5rem 1rem;
-}
-
-.accordion-collapse {
-    transition: height 0.35s ease;
-}
-
-.accordion-collapse.collapse {
-    display: none;
-}
-
-.accordion-collapse.show {
-    display: block;
+.image-banner {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 200px;
+    background: url('https://media.istockphoto.com/id/493536446/photo/panoramic-aerial-view-on-spacious-pine-forest-at-sunrise.jpg?s=612x612&w=0&k=20&c=dq7uaRvBkVUTLHDJ_yrP9slgCSW7CrijfdxO44Ts8Uc=') no-repeat center center;
+    background-size: cover;
+    z-index: 1000;
 }
