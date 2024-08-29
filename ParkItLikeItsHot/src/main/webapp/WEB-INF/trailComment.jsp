@@ -24,6 +24,7 @@
     height: 100vh;" >
       <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
 		<br>
+		<br>
 			<h1 class="text-center my-4 title">${trail.name} Comment Section</h1>
 			<div class="container my-5 py-5 text-body">
 				<div class="row d-flex justify-content-center">

@@ -20,6 +20,8 @@
     background-position: center;
   ">
 	<br>
+	<br>
+	<br>
     <h1>National Parks</h1>
     
     <div class="container mt-4">
