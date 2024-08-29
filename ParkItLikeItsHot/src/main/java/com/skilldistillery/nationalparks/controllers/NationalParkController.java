@@ -114,11 +114,11 @@ public class NationalParkController {
 		ModelAndView mv = new ModelAndView();
 		
 		try {		
-			Flora updatedFlora =  parkDAO.update(flora.getId(), flora);
+			Flora updatedFlora = parkDAO.updateFlora(flora.getId(), flora);
 			System.out.println(updatedFlora);
 			if (updatedFlora != null) {
 				mv.addObject("flora", updatedFlora);
-				mv.setViewName("redirect:singlePark.do?parkId=" + (updatedFlora.getNationalParks()));
+				mv.setViewName("redirect:parks.do");
 			} else {
 				mv.addObject("message", "Failed to update the Flora.");
 				mv.setViewName("error");
@@ -135,6 +135,7 @@ public class NationalParkController {
 	public ModelAndView showUpdateFloraForm(@RequestParam("floraId") int floraId) {
 		ModelAndView mv = new ModelAndView();
 		Flora updateFlora = parkDAO.findByFloraId(floraId);
+		mv.addObject("floraTypes", parkDAO.findAllFloraTypes());
 		mv.addObject("updatedFlora", updateFlora);
 		mv.setViewName("updateFlora");
 		return mv;

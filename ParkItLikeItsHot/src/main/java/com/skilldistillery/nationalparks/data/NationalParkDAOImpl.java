@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.skilldistillery.nationalparks.entities.Animal;
 import com.skilldistillery.nationalparks.entities.AnimalType;
 import com.skilldistillery.nationalparks.entities.Flora;
+import com.skilldistillery.nationalparks.entities.FloraType;
 import com.skilldistillery.nationalparks.entities.NationalPark;
 import com.skilldistillery.nationalparks.entities.NationalParkComment;
 import com.skilldistillery.nationalparks.entities.PointOfInterest;
@@ -139,6 +140,11 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 	}
 	
 	@Override
+	public Animal update(int animalTypeId, Animal updatedAnimal) {
+		return null;
+	}
+	
+	@Override
 	public List<AnimalType> findAllAnimalTypes() {
 		String jpql = "SELECT t FROM AnimalType t ORDER BY t.name";
 		return em.createQuery(jpql, AnimalType.class).getResultList();
@@ -146,14 +152,15 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 
 
 	@Override
-	public Flora update(int floraId, Flora updatedFlora) {
-Flora flora = em.find(Flora.class, updatedFlora.getId());
+	public Flora updateFlora(int floraId, Flora updatedFlora) {
+		Flora flora = em.find(Flora.class, floraId);
 		
 		if(flora != null) {
 			flora.setName(updatedFlora.getName());
 			flora.setFloraType(updatedFlora.getFloraType());
 			flora.setImageUrl(updatedFlora.getImageUrl());
 			flora.setSpecies(updatedFlora.getSpecies());
+			System.out.println(flora);
 			em.merge(flora);
 			em.flush();
 		}
@@ -164,6 +171,17 @@ Flora flora = em.find(Flora.class, updatedFlora.getId());
 	@Override
 	public Flora findByFloraId(int floraId) {
 		return em.find(Flora.class, floraId);
+	}
+	
+	@Override
+	public Flora update(int floraTypeId, Flora updatedFlora) {
+		return null;
+	}
+	
+	@Override
+	public List<FloraType> findAllFloraTypes(){
+		String jpql = "SELECT ft FROM FloraType ft ORDER BY ft.name";
+		return em.createQuery(jpql, FloraType.class).getResultList();
 	}
 
 
@@ -196,10 +214,9 @@ Flora flora = em.find(Flora.class, updatedFlora.getId());
 	@Override
 	public PointOfInterest findByPoiId(int poiId) {
 		return em.find(PointOfInterest.class, poiId);
-		// TODO Auto-generated method stub
-		return null;
 
 	}
+
 
 
 	
