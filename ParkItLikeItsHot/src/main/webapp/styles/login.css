@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+body {
+	background: linear-gradient(to bottom, #a0d6ff, #698c2e);
+	margin: 0;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.card-container {
+	max-width: 400px;
+	margin: 0 auto;
+	padding: 1rem;
+	background-color: #f0f0f0;
+	border: 1px solid #698c2e;
+}
+
+.card-title {
+	color: #698c2e;
+}
+
+.form-label {
+	color: #333;
+}
+
+.form-control {
+	background-color: #fff;
+}
+
+.btn-primary {
+	background-color: #698c2e;
+	border-color: #698c2e;
+}
+
+.btn-primary:hover {
+	background-color: #4a6520;
+	border-color: #4a6520;
+}
