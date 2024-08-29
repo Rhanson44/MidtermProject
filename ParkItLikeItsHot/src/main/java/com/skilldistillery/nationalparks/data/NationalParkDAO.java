@@ -6,6 +6,7 @@ import com.skilldistillery.nationalparks.entities.Animal;
 import com.skilldistillery.nationalparks.entities.AnimalType;
 import com.skilldistillery.nationalparks.entities.Flora;
 import com.skilldistillery.nationalparks.entities.FloraType;
+import com.skilldistillery.nationalparks.entities.Mountain;
 import com.skilldistillery.nationalparks.entities.NationalPark;
 import com.skilldistillery.nationalparks.entities.NationalParkComment;
 import com.skilldistillery.nationalparks.entities.PointOfInterest;
@@ -35,12 +36,19 @@ public interface NationalParkDAO {
 	
 	List<FloraType> findAllFloraTypes();
 
-
 	Flora findByFloraId(int floraId);
+	
 	Flora update(int floraId, Flora updatedFlora);
 
-	
 	Flora updateFlora(int floraId, Flora updatedFlora);
+	
+	List<Mountain> findAllMountains();
+	
+	Mountain findByMountainId(int mountainId);
+	
+	Mountain updateMountain(int mountainId, Mountain updatedMountain);
+	
+	Mountain update(String mountainName, Mountain updatedMountain);
 	
 
 	TrailComment addTrailComment(TrailComment comment, int trailId, int id);

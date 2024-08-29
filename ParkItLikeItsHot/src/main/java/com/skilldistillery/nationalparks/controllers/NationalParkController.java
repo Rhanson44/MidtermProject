@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.skilldistillery.nationalparks.data.NationalParkDAO;
 import com.skilldistillery.nationalparks.entities.Animal;
 import com.skilldistillery.nationalparks.entities.Flora;
+import com.skilldistillery.nationalparks.entities.Mountain;
 import com.skilldistillery.nationalparks.entities.NationalPark;
 import com.skilldistillery.nationalparks.entities.Trail;
 
@@ -141,6 +142,36 @@ public class NationalParkController {
 		return mv;
 	}
 
+	@RequestMapping(path = "updateMountain.do", method = RequestMethod.POST)
+	public ModelAndView updateMountain(Mountain mountain) {
+		ModelAndView mv = new ModelAndView();
+		
+		try {		
+			Mountain updatedMountain = parkDAO.updateMountain(mountain.getId(), mountain);
+			System.out.println(updatedMountain);
+			if (updatedMountain != null) {
+				mv.addObject("mountain", updatedMountain);
+				mv.setViewName("redirect:parks.do");
+			} else {
+				mv.addObject("message", "Failed to update the Mountain.");
+				mv.setViewName("error");
+			}
+		} catch (Exception e) {
+			mv.addObject("message", "Error occurred while updating the Mountain.");
+			mv.setViewName("error");
+			e.printStackTrace();
+		}
+		
+		return mv;
+	}
+	@RequestMapping(path="updateMountain.do", method=RequestMethod.GET)
+	public ModelAndView showUpdateMountainForm(@RequestParam("mountainId") int mountainId) {
+		ModelAndView mv = new ModelAndView();
+		Mountain updateMountain = parkDAO.findByMountainId(mountainId);
+		mv.addObject("updatedMountain", updateMountain);
+		mv.setViewName("updateMountain");
+		return mv;
+	}
 //	@RequestMapping(path = { "success.do" }, method = RequestMethod.POST)
 //	public ModelAndView newAnimal(Animal animal) {
 //	    ModelAndView mv = new ModelAndView();

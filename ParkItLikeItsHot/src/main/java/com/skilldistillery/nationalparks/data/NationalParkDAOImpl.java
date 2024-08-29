@@ -8,6 +8,7 @@ import com.skilldistillery.nationalparks.entities.Animal;
 import com.skilldistillery.nationalparks.entities.AnimalType;
 import com.skilldistillery.nationalparks.entities.Flora;
 import com.skilldistillery.nationalparks.entities.FloraType;
+import com.skilldistillery.nationalparks.entities.Mountain;
 import com.skilldistillery.nationalparks.entities.NationalPark;
 import com.skilldistillery.nationalparks.entities.NationalParkComment;
 import com.skilldistillery.nationalparks.entities.PointOfInterest;
@@ -208,9 +209,39 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 
 
 	}
+	
+	@Override
+	public List<Mountain> findAllMountains() {
+		return em.createQuery("SELECT m FROM Mountain m", Mountain.class).getResultList();
+	}
 
+	@Override
+	public Mountain findByMountainId(int mountainId) {
+		return em.find(Mountain.class, mountainId);
+	}
+	
+	@Override
+	public Mountain updateMountain(int mountainId, Mountain updatedMountain) {
+		Mountain mountain = em.find(Mountain.class, mountainId);
+		
+		if(mountain != null) {
+			mountain.setName(updatedMountain.getName());
+			mountain.setElevation(updatedMountain.getElevation());
+			mountain.setAverageSnowfall(updatedMountain.getAverageSnowfall());
+			mountain.setDescription(updatedMountain.getDescription());
+			mountain.setImageUrl(updatedMountain.getImageUrl());
+			System.out.println(mountain);
+			em.merge(mountain);
+			em.flush();
+		}
+		return mountain;
+	}
 
-
+	@Override
+	public Mountain update(String mountainName, Mountain updatedMountain) {
+		return null;
+	}
+	
 
 //	@Override
 //	public Animal create(Animal newAnimal) {

@@ -32,8 +32,5 @@
     <c:otherwise>
     </c:otherwise>
 </c:choose>
-
-    <a href="home.do">Return to Home</a>
-
 </body>
 </html>
