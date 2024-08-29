@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/style.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/comment.css">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -15,18 +17,17 @@
 </head>
 <body>
 
-<!-- Background image -->
 	<jsp:include page="nav.jsp" />
 	<br>
 	<c:if test="${not empty loggedInUser}">
-
+	<main>
 		<section   class="bg-image" 
   style= "background-image: url('https://mdbcdn.b-cdn.net/img/new/fluid/nature/012.webp');
     height: 100vh;" >
       <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
-    
-			<h1 class="text-center my-4" style="color: #FFFFFF;">${park.name} Comment Section</h1>
-			<div class="container my-5 py-5 text-body">
+    		<br>
+			<h1 class="text-center my-4 title">${park.name} Comment Section</h1>
+			<div class="comment-section container my-5 py-5 text-body">
 				<div class="row d-flex justify-content-center">
 					<div class="col-md-12 col-lg-10 col-xl-8">
 						<c:if test="${not empty loggedInUser}">
@@ -77,15 +78,18 @@
 						</div>
 					</div>
 				</div>
+				</div>
 			</div>
 		</section>
+		</main>
 	</c:if>
-
 	<c:if test="${empty loggedInUser}">
+		<div class="reroute">
 		<div class="container text-center my-5">
 			<p>Please Log in to view and post comments.</p>
 			<a class="btn btn-primary" href="login.do">Login</a> <a
 				class="btn btn-secondary" href="registerForm.do">Register</a>
+		</div>
 		</div>
 	</c:if>
 
