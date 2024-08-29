@@ -20,10 +20,10 @@
     <input type="text" id="floraSpecies" name="species" value="${updatedFlora.species}"><br><br>
 
     <label for="floraType">Type:</label>
-    <input type="text" id="floraType" name="type" value="${updatedFlora.floraType.name}"><br><br>
+    <input type="text" id="floraType" name="floraType.id" value="${updatedFlora.floraType.id}"><br><br>
 
     <label for="floraImageUrl">Image URL:</label>
-    <input type="text" id="floraImageUrl" name="image" value="${updatedFlora.imageUrl}" ><br><br>
+    <input type="text" id="floraImageUrl" name="imageUrl" value="${updatedFlora.imageUrl}" ><br><br>
             <br>
             <br>
             <button type="submit">Update Flora</button>

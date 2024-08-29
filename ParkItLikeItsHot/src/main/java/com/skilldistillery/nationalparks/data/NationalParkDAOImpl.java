@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.skilldistillery.nationalparks.entities.Animal;
 import com.skilldistillery.nationalparks.entities.AnimalType;
 import com.skilldistillery.nationalparks.entities.Flora;
+import com.skilldistillery.nationalparks.entities.FloraType;
 import com.skilldistillery.nationalparks.entities.NationalPark;
 import com.skilldistillery.nationalparks.entities.NationalParkComment;
 import com.skilldistillery.nationalparks.entities.PointOfInterest;
@@ -36,15 +37,6 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 		return em.createQuery("SELECT n FROM NationalPark n", NationalPark.class).getResultList();
 	}
 
-//	@Override
-//	public Animal create(Animal newAnimal) {
-//		
-//        newAnimal.getAnimalType()(newAnimal.getAnimalType().getId());;
-//			em.persist(newAnimal);
-//			em.flush();
-//			return newAnimal;
-//		
-//		}
 
 
 	@Override
@@ -117,6 +109,17 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 		return em.find(Trail.class, trailId);
 	}
 	
+	@Override
+	public TrailComment addTrailComment(TrailComment comment, int trailId, int userId) {
+		User foundUser = em.find(User.class, userId);
+		if (foundUser == null) {
+			throw new RuntimeException("User not found");
+		}
+		comment.setUser(foundUser);
+		comment.setTrail(em.find(Trail.class, trailId));
+		em.persist(comment);
+		return comment;
+	}
 	public Animal updateAnimal(int animalId, Animal updatedAnimal) {
 		Animal animal = em.find(Animal.class, animalId);
 		
@@ -139,6 +142,11 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 	}
 	
 	@Override
+	public Animal update(int animalTypeId, Animal updatedAnimal) {
+		return null;
+	}
+	
+	@Override
 	public List<AnimalType> findAllAnimalTypes() {
 		String jpql = "SELECT t FROM AnimalType t ORDER BY t.name";
 		return em.createQuery(jpql, AnimalType.class).getResultList();
@@ -146,14 +154,15 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 
 
 	@Override
-	public Flora update(int floraId, Flora updatedFlora) {
-Flora flora = em.find(Flora.class, updatedFlora.getId());
+	public Flora updateFlora(int floraId, Flora updatedFlora) {
+		Flora flora = em.find(Flora.class, floraId);
 		
 		if(flora != null) {
 			flora.setName(updatedFlora.getName());
 			flora.setFloraType(updatedFlora.getFloraType());
 			flora.setImageUrl(updatedFlora.getImageUrl());
 			flora.setSpecies(updatedFlora.getSpecies());
+			System.out.println(flora);
 			em.merge(flora);
 			em.flush();
 		}
@@ -165,19 +174,19 @@ Flora flora = em.find(Flora.class, updatedFlora.getId());
 	public Flora findByFloraId(int floraId) {
 		return em.find(Flora.class, floraId);
 	}
-
-
+	
 	@Override
-	public TrailComment addTrailComment(TrailComment comment, int trailId, int userId) {
-	    User foundUser = em.find(User.class, userId);
-	    if (foundUser == null) {
-	        throw new RuntimeException("User not found");
-	    }
-	    comment.setUser(foundUser);
-	    comment.setTrail(em.find(Trail.class, trailId));
-	    em.persist(comment);
-	    return comment;
+	public Flora update(int floraTypeId, Flora updatedFlora) {
+		return null;
 	}
+	
+	@Override
+	public List<FloraType> findAllFloraTypes(){
+		String jpql = "SELECT ft FROM FloraType ft ORDER BY ft.name";
+		return em.createQuery(jpql, FloraType.class).getResultList();
+	}
+
+
 
 	@Override
 
@@ -196,7 +205,7 @@ Flora flora = em.find(Flora.class, updatedFlora.getId());
 	@Override
 	public PointOfInterest findByPoiId(int poiId) {
 		return em.find(PointOfInterest.class, poiId);
-		// TODO Auto-generated method stub
+
 
 	}
 
@@ -206,6 +215,17 @@ Flora flora = em.find(Flora.class, updatedFlora.getId());
 		return null;
 	}
 
+
+
+//	@Override
+//	public Animal create(Animal newAnimal) {
+//		
+//        newAnimal.getAnimalType()(newAnimal.getAnimalType().getId());;
+//			em.persist(newAnimal);
+//			em.flush();
+//			return newAnimal;
+//		
+//		}
 
 	
 }
