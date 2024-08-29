@@ -209,11 +209,6 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 
 	}
 
-	@Override
-	public Animal update(int animalTypeId, Animal updatedAnimal) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 
 
