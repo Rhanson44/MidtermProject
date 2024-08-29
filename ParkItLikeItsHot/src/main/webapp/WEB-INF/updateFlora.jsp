@@ -42,15 +42,6 @@
         </div>
     </section>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <label for="floraImageUrl">Image URL:</label>
-    <input type="text" id="floraImageUrl" name="imageUrl" value="${updatedFlora.imageUrl}" ><br><br>
-            <br>
-            <br>
-            <button type="submit">Update Flora</button>
-        </form>
-    </c:when>
-    <c:otherwise>
-    </c:otherwise>
-</c:choose>
+  
 </body>
 </html>
