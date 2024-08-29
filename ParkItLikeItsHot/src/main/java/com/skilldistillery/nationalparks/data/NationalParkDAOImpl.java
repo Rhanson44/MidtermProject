@@ -193,6 +193,12 @@ Flora flora = em.find(Flora.class, updatedFlora.getId());
 	@Override
 	public Animal update(int animalTypeId, Animal updatedAnimal) {
 		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public Animal update(int animalTypeId, Animal updatedAnimal) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

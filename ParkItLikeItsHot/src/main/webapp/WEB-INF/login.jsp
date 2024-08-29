@@ -6,49 +6,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/style.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/login.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <style>
-        body {
-            background: linear-gradient(to bottom, #a0d6ff, #698c2e);
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .card-container {
-            max-width: 400px;
-            margin: 0 auto;
-            padding: 1rem;
-            background-color: #f0f0f0;
-            border: 1px solid #698c2e;
-        }
-        .card-title, .card-subtitle {
-            color: #698c2e;
-        }
-        .form-label {
-            color: #333;
-        }
-        .form-control {
-            background-color: #fff;
-        }
-        .btn-primary {
-            background-color: #698c2e;
-            border-color: #698c2e;
-        }
-        .btn-primary:hover {
-            background-color: #4a6520;
-            border-color: #4a6520;
-        }
-        .text-success {
-            color: #28a745;
-        }
-        .text-danger {
-            color: #dc3545;
-        }
-    </style>
 </head>
 <body>
+<main class="login">
     <jsp:include page="nav.jsp"/>
     <div class="card-container">
         <div class="card-header text-center card-title">
@@ -72,9 +35,9 @@
                 </div>
             </form>
         </div>
-    </div>
-
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9oyzG5u3gk4QY1e1lARk8tOStOyz5OHbbzyJ4+HkSl5cZGyxGSAw" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-mQ93wJ6EYSHq6bqB6J9k2qEpxMivbJ0yJ8IGIm5yZdYkFJ8iR7O5wCk0SgtE0oHw" crossorigin="anonymous"></script>
+  	</div>
+  	</main>
 </body>
 </html>
