@@ -121,12 +121,10 @@ public class CommentController {
         if (loggedInUser == null) {
             return "login";
         }
-        
         comment = parkDAO.getCommentById(commentId);
         if (comment == null || comment.getUser().getId() != loggedInUser.getId()) {
             return "error";
         }
-
         parkDAO.deleteComment(comment, commentId, loggedInUser.getId());
         return "redirect:parkComment.do?parkId=" + parkId;
     }
