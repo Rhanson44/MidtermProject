@@ -13,6 +13,7 @@ import com.skilldistillery.nationalparks.entities.NationalPark;
 import com.skilldistillery.nationalparks.entities.NationalParkComment;
 import com.skilldistillery.nationalparks.entities.PointOfInterest;
 import com.skilldistillery.nationalparks.entities.PointOfInterestComment;
+import com.skilldistillery.nationalparks.entities.PointOfInterestType;
 import com.skilldistillery.nationalparks.entities.Trail;
 import com.skilldistillery.nationalparks.entities.TrailComment;
 import com.skilldistillery.nationalparks.entities.User;
@@ -240,6 +241,41 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 	@Override
 	public Mountain update(String mountainName, Mountain updatedMountain) {
 		return null;
+	}
+
+	
+
+	@Override
+	public List<PointOfInterestType> findAllPointOfInterestTypes() {
+		String jpql = "SELECT pt FROM PointOfInterestType pt ORDER BY pt.name";
+		return em.createQuery(jpql, PointOfInterestType.class).getResultList();
+	}
+	
+	@Override
+	public PointOfInterest findByPointOfInterestId(int pointOfInterestId) {
+		return em.find(PointOfInterest.class, pointOfInterestId);
+	}
+
+	@Override
+	public PointOfInterest update(int pointOfInterestId, PointOfInterest updatedPointOfInterest) {
+		return null;
+	}
+
+	@Override
+	public PointOfInterest updatePointOfInterest(int pointOfInterestId, PointOfInterest updatedPointOfInterest) {
+		PointOfInterest pointOfInterest = em.find(PointOfInterest.class, pointOfInterestId);
+		
+		if(pointOfInterest != null) {
+			pointOfInterest.setName(updatedPointOfInterest.getName());
+			pointOfInterest.setDescription(updatedPointOfInterest.getDescription());
+			pointOfInterest.setLongitude(updatedPointOfInterest.getLongitude());
+			pointOfInterest.setLatitude(updatedPointOfInterest.getLatitude());
+			pointOfInterest.setImageUrl(updatedPointOfInterest.getImageUrl());
+			System.out.println(pointOfInterest);
+			em.merge(pointOfInterest);
+			em.flush();
+		}
+		return pointOfInterest;
 	}
 	
 
