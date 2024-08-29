@@ -15,6 +15,7 @@ import com.skilldistillery.nationalparks.entities.Animal;
 import com.skilldistillery.nationalparks.entities.Flora;
 import com.skilldistillery.nationalparks.entities.Mountain;
 import com.skilldistillery.nationalparks.entities.NationalPark;
+import com.skilldistillery.nationalparks.entities.PointOfInterest;
 import com.skilldistillery.nationalparks.entities.Trail;
 
 @Controller
@@ -170,6 +171,38 @@ public class NationalParkController {
 		Mountain updateMountain = parkDAO.findByMountainId(mountainId);
 		mv.addObject("updatedMountain", updateMountain);
 		mv.setViewName("updateMountain");
+		return mv;
+	}
+	
+	@RequestMapping(path = "updatePointOfInterest.do", method = RequestMethod.POST)
+	public ModelAndView updatePointOfInterest(PointOfInterest pointOfInterest) {
+		ModelAndView mv = new ModelAndView();
+		
+		try {		
+			PointOfInterest updatedPointOfInterest = parkDAO.updatePointOfInterest(pointOfInterest.getId(), pointOfInterest);
+			System.out.println(updatedPointOfInterest);
+			if (updatedPointOfInterest != null) {
+				mv.addObject("pointOfInterest", updatedPointOfInterest);
+				mv.setViewName("redirect:parks.do");
+			} else {
+				mv.addObject("message", "Failed to update the Point Of Interest.");
+				mv.setViewName("error");
+			}
+		} catch (Exception e) {
+			mv.addObject("message", "Error occurred while updating the Point Of Interest.");
+			mv.setViewName("error");
+			e.printStackTrace();
+		}
+		
+		return mv;
+	}
+	@RequestMapping(path="updatePointOfInterest.do", method=RequestMethod.GET)
+	public ModelAndView showUpdatePointOfInterestForm(@RequestParam("pointOfInterestId") int pointOfInterestId) {
+		ModelAndView mv = new ModelAndView();
+		PointOfInterest updatePointOfInterest = parkDAO.findByPointOfInterestId(pointOfInterestId);
+		mv.addObject("pointOfInterestTypes", parkDAO.findAllPointOfInterestTypes());
+		mv.addObject("updatedPointOfInterest", updatePointOfInterest);
+		mv.setViewName("updatePointOfInterest");
 		return mv;
 	}
 //	@RequestMapping(path = { "success.do" }, method = RequestMethod.POST)

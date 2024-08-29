@@ -11,6 +11,7 @@ import com.skilldistillery.nationalparks.entities.NationalPark;
 import com.skilldistillery.nationalparks.entities.NationalParkComment;
 import com.skilldistillery.nationalparks.entities.PointOfInterest;
 import com.skilldistillery.nationalparks.entities.PointOfInterestComment;
+import com.skilldistillery.nationalparks.entities.PointOfInterestType;
 import com.skilldistillery.nationalparks.entities.Trail;
 import com.skilldistillery.nationalparks.entities.TrailComment;
 
@@ -49,6 +50,14 @@ public interface NationalParkDAO {
 	Mountain updateMountain(int mountainId, Mountain updatedMountain);
 	
 	Mountain update(String mountainName, Mountain updatedMountain);
+	
+	List<PointOfInterestType> findAllPointOfInterestTypes();
+
+	PointOfInterest findByPointOfInterestId(int pointOfInterestId);
+	
+	PointOfInterest update(int pointOfInterestId, PointOfInterest updatedPointOfInterest);
+
+	PointOfInterest updatePointOfInterest(int pointOfInterestId, PointOfInterest updatedPointOfInterest);
 	
 
 	TrailComment addTrailComment(TrailComment comment, int trailId, int id);
