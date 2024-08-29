@@ -1,0 +1,77 @@
+body {
+    background: linear-gradient(to bottom, #a0d6ff, #698c2e);
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+}
+
+.card-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.card-title {
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.form-label {
+    display: none; /* Hide labels */
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.75rem 0;
+    margin-bottom: 1.5rem;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    border-radius: 0;
+    background-color: transparent;
+    box-sizing: border-box;
+    color: #333;
+    font-size: 1rem;
+}
+
+.form-control:focus {
+    border-bottom-color: #698c2e;
+    outline: none;
+}
+
+.form-control::placeholder {
+    color: rgba(0, 0, 0, 0.5); /* Medium opacity placeholder text */
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #698c2e;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #4a6520;
+}
+
+.login-link {
+    margin-top: 1rem;
+    display: block;
+    color: #698c2e;
+    text-decoration: none;
+}
+
+.login-link:hover {
+    text-decoration: underline;
+}

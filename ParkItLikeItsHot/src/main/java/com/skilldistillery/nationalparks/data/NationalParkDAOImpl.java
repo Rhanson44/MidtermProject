@@ -37,15 +37,6 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 		return em.createQuery("SELECT n FROM NationalPark n", NationalPark.class).getResultList();
 	}
 
-//	@Override
-//	public Animal create(Animal newAnimal) {
-//		
-//        newAnimal.getAnimalType()(newAnimal.getAnimalType().getId());;
-//			em.persist(newAnimal);
-//			em.flush();
-//			return newAnimal;
-//		
-//		}
 
 
 	@Override
@@ -118,6 +109,17 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 		return em.find(Trail.class, trailId);
 	}
 	
+	@Override
+	public TrailComment addTrailComment(TrailComment comment, int trailId, int userId) {
+		User foundUser = em.find(User.class, userId);
+		if (foundUser == null) {
+			throw new RuntimeException("User not found");
+		}
+		comment.setUser(foundUser);
+		comment.setTrail(em.find(Trail.class, trailId));
+		em.persist(comment);
+		return comment;
+	}
 	public Animal updateAnimal(int animalId, Animal updatedAnimal) {
 		Animal animal = em.find(Animal.class, animalId);
 		
@@ -185,17 +187,6 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 	}
 
 
-	@Override
-	public TrailComment addTrailComment(TrailComment comment, int trailId, int userId) {
-	    User foundUser = em.find(User.class, userId);
-	    if (foundUser == null) {
-	        throw new RuntimeException("User not found");
-	    }
-	    comment.setUser(foundUser);
-	    comment.setTrail(em.find(Trail.class, trailId));
-	    em.persist(comment);
-	    return comment;
-	}
 
 	@Override
 
@@ -215,9 +206,26 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 	public PointOfInterest findByPoiId(int poiId) {
 		return em.find(PointOfInterest.class, poiId);
 
+
+	}
+
+	@Override
+	public Animal update(int animalTypeId, Animal updatedAnimal) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 
+
+//	@Override
+//	public Animal create(Animal newAnimal) {
+//		
+//        newAnimal.getAnimalType()(newAnimal.getAnimalType().getId());;
+//			em.persist(newAnimal);
+//			em.flush();
+//			return newAnimal;
+//		
+//		}
 
 	
 }
