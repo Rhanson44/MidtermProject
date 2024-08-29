@@ -3,7 +3,7 @@
 
 
 ## Overview
-* Create a full stack application that include the following features:
+* Create a full stack application that includes the following features:
   * Database Schema that is connected to Java code using JPA
   * C.R.U.D. operations
   * A user login, where users have different levels of permission compared to non users
