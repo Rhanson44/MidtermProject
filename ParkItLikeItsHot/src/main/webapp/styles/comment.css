@@ -1,0 +1,22 @@
+@charset "UTF-8";
+main {
+	background-image:
+		url('https://mdbcdn.b-cdn.net/img/new/fluid/nature/012.webp');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	min-height: 100vh;
+}
+
+.reroute {
+	background-color: #f7f6f6;
+}
+
+.comment-section {
+	padding: 20px;
+	border-radius: 8px;
+}
+
+.title {
+	color: white;
+}

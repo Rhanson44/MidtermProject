@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Navbar</title>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/style.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/style.css">
 </head>
 <body>
 <nav class="navbar navbar-light navbar-expand fixed-top" style="background-color: #8fc1ad;">

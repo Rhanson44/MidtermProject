@@ -6,46 +6,19 @@
 <html>
 <head>
     <title>National Parks</title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/style.css">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            background-image: url('https://wallpaperaccess.com/full/1129092.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-        .carousel {
-            max-width: 800px;
-            margin: 40px auto;
-        }
-        .carousel-inner img {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            border-radius: 5px;
-        }
-        .carousel-caption {
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 10px;
-            border-radius: 5px;
-        }
-        h1 {
-            text-align: center;
-            margin-top: 40px;
-            font-size: 2.5em;
-        }
-        .carousel-control-prev-icon,
-        .carousel-control-next-icon {
-            background-color: #9C27B0;
-        }
-    </style>
 </head>
 <body>
-
 <jsp:include page="nav.jsp"/>
+<div
+  class="bg-image"
+  style="
+    background-image: url('https://wallpaperaccess.com/full/1129092.jpg');
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+  ">
 	<br>
     <h1>National Parks</h1>
     
@@ -87,7 +60,6 @@
             <p>No parks found.</p>
         </c:if>
     </div>
-
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
