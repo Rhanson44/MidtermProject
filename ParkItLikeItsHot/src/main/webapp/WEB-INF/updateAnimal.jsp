@@ -6,9 +6,36 @@
 <head>
 <meta charset="UTF-8">
 <title>Edit Animal</title>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/style.css">
+	<style>
+        body {
+            background-image: url(https://www.fws.gov/sites/default/files/2021-10/elk_gannon%20castle%20%2824%29.jpg); /* Path to your image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+        }
+        form {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 5px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            max-width: 300px;
+            margin: 0 auto;
+            text-align: center;
+            max-height: 300px;
+            overflow-y: auto;
+   		}
+    	form input, form select {
+        	display: block;
+        	margin: 0 auto 10px auto;
+    	}
+        }
+   </style>
 </head>
 <body>
-	<h2>Edit Animal</h2>
+	<jsp:include page="nav.jsp"/>
+	<h2 style="text-align: center;">Edit Animal</h2>
 <c:choose>
     <c:when test="${not empty updatedAnimal}">
         <form action="updateAnimal.do" method="POST">

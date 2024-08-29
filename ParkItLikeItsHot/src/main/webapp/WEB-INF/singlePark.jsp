@@ -43,11 +43,6 @@
                                         <p><strong>Description:</strong> ${animal.animalType.description}</p>
                                         <p><strong>Endangered:</strong> ${animal.endangered}</p>
                                         <a href="updateAnimal.do?animalId=${animal.id}&parkId=${park.id}" class="btn btn-primary btn-sm">Update</a>
-                                        <form action="deleteAnimal.do" method="post" style="display: inline;">
-                                            <input type="hidden" name="animalId" value="${animal.id}" />
-                                            <input type="hidden" name="parkId" value="${park.id}" />
-                                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -108,11 +103,6 @@
                                         <p><strong>Type:</strong> ${flora.floraType.name}</p>
                                         <p><strong>Description:</strong> ${flora.floraType.description}</p>
                                         <a href="updateFlora.do?floraId=${flora.id}&parkId=${park.id}" class="btn btn-primary btn-sm">Update</a>
-                                        <form action="deleteFlora.do" method="post" style="display: inline;">
-                                            <input type="hidden" name="floraId" value="${flora.id}" />
-                                            <input type="hidden" name="parkId" value="${park.id}" />
-                                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                                        </form>
                                     </div>
                                 </div>
                             </div>
