@@ -67,3 +67,8 @@ allows for easier maintenance and testing.
 * AWS Ec2
 
 ## Lessons Learned
+* Stick to the user stories​
+* Test a function works fully before moving on​
+* Communication ​
+* Implementing Bootstrap/styling elements​
+* CRUD operations with multiple tables
