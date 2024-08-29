@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="jakarta.tags.core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,44 +7,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profile</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/style.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/account.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/account.css">
 </head>
 <body>
-	<!-- TODO: fix accordion -->
     <main class="account">
         <jsp:include page="nav.jsp" />
         <div class="container mt-4">
         <br>
             <h1>User Profile</h1>
-            <div class="accordion" id="accordionExample">
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingOne">
-                        <button class="accordion-button" type="button"
-                                data-toggle="collapse" data-bs-target="#collapseOne"
-                                aria-expanded="true" aria-controls="collapseOne">
+            <div class="row">
+                <!-- Username Card -->
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-header">
                             Username
-                        </button>
-                    </h2>
-                    
-                        <div class="accordion-body">
-                            <p>
-                                <c:out value="${sessionScope.username}" />
-                            </p>
+                        </div>
+                        <div class="card-body">
+                            <p><c:out value="${sessionScope.username}" /></p>
                         </div>
                     </div>
                 </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingTwo">
-                        <button class="accordion-button collapsed" type="button"
-                                data-toggle="collapse" data-bs-target="#collapseTwo"
-                                aria-expanded="false" aria-controls="collapseTwo">
+
+                <!-- Status Card -->
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-header">
                             Status
-                        </button>
-                    </h2>
-                    
-                        <div class="accordion-body">
+                        </div>
+                        <div class="card-body">
                             <p>
                                 <c:choose>
                                     <c:when test="${sessionScope.loggedInUser.enabled}">
@@ -58,19 +48,15 @@
                             </p>
                         </div>
                     </div>
-              </div> 
-              <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingThree">
-                        <button class="accordion-button collapsed" style=" background-color: #c2f2cf;
-             border-color: #09331d;
-             color: #083008;" type="button"
-                                data-toggle="collapse" data-bs-target="#collapseThree"
-                                aria-expanded="false" aria-controls="collapseThree";>
+                </div>
+
+                <!-- Park Comments Card -->
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-header">
                             Park Comments
-                       </button>
-                    </h2> 
-                  
-                        <div class="accordion-body"> 
+                        </div>
+                        <div class="card-body section-content">
                             <c:choose>
                                 <c:when test="${not empty user.nationalParkComments}">
                                     <ul>
@@ -86,17 +72,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingFour">
-                        <button class="accordion-button collapsed" style=" background-color: #c2f2cf;
-             border-color: #09331d; color: #083008;" type="button"
-                                data-toggle="collapse" data-bs-target="#collapseFour"
-                                aria-expanded="false" aria-controls="collapseFour">
+
+                <!-- Point of Interest Comments Card -->
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-header">
                             Point of Interest Comments
-                        </button>
-                    </h2>
-                    
-                        <div class="accordion-body">
+                        </div>
+                        <div class="card-body section-content">
                             <c:choose>
                                 <c:when test="${not empty user.poiComments}">
                                     <ul>
@@ -112,17 +95,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingFive">
-                        <button class="accordion-button collapsed" style=" background-color: #c2f2cf;
-             border-color: #09331d; color: #083008;" type="button"
-                                data-toggle="collapse" data-bs-target="#collapseFive"
-                                aria-expanded="false" aria-controls="collapseFive">
+
+                <!-- Trail Comments Card -->
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-header">
                             Trail Comments
-                        </button>
-                    </h2>
-                  
-                        <div class="accordion-body">
+                        </div>
+                        <div class="card-body section-content">
                             <c:choose>
                                 <c:when test="${not empty user.trailComments}">
                                     <ul>
@@ -141,6 +121,7 @@
             </div>
         </div>
     </main>
+    <div class="image-banner"></div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
