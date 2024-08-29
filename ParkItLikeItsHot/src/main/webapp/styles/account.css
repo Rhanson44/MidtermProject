@@ -1,0 +1,59 @@
+@charset "UTF-8";
+/* Custom styles for the accordion component */
+
+.account {
+    /* Add general styling for the main account section if needed */
+    padding: 20px;
+    background-color: #f8f9fa; /* Light background color for the account section */
+}
+
+.accordion-button {
+    /* Custom styles for accordion buttons */
+    color: #0056b3; /* Change the text color */
+    font-weight: bold; /* Make text bold */
+}
+
+.accordion-button:not(.collapsed) {
+    /* Custom styles for active accordion buttons */
+    color: #003d7a; /* Darker color when the accordion is expanded */
+    background-color: #e9ecef; /* Light background color for expanded accordion */
+    border-color: #0056b3; /* Border color for expanded accordion */
+}
+
+.accordion-button::after {
+    /* Custom styles for the accordion toggle icon */
+    filter: invert(40%); /* Adjust icon color if needed */
+}
+
+.accordion-body {
+    /* Custom styles for accordion body */
+    padding: 1.25rem; /* Increase padding for better spacing */
+    background-color: #ffffff; /* White background for the accordion body */
+    border-top: 1px solid #dee2e6; /* Border to separate accordion items */
+}
+
+.accordion-item {
+    /* Custom styles for accordion items */
+    margin-bottom: 0.5rem; /* Space between accordion items */
+    border: 1px solid #dee2e6; /* Border around accordion items */
+    border-radius: 0.25rem; /* Rounded corners for accordion items */
+}
+
+.accordion-header {
+    /* Custom styles for accordion header */
+    padding: 0.5rem 1rem; /* Padding for the header */
+}
+
+.accordion-collapse {
+    /* Custom styles for collapsed accordion content */
+    transition: height 0.35s ease; /* Smooth transition for expand/collapse */
+}
+
+/* Ensure the accordion content is properly visible and transitions smoothly */
+.accordion-collapse.collapse {
+    display: none;
+}
+
+.accordion-collapse.show {
+    display: block;
+}

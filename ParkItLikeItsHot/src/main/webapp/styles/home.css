@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+.home .title {
+	color: white;
+	font-family: 'Bovino Medium';
+	font-size: 5rem;
+	text-align: center;
+}
+
+.home .sub-title {
+	color: white;
+	font-family: 'Nexa Textbook', serif;
+	font-size: 2.5rem;
+	text-align: center;
+}
+
+@media ( min-width : 768px) {
+	.home .title {
+		font-size: 8rem;
+	}
+	.home .sub-title {
+		font-size: 4rem;
+	}
+}

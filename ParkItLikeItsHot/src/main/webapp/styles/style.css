@@ -32,6 +32,7 @@ h1 {
 	text-align: center;
 	margin-top: 40px;
 	font-size: 2.5em;
+	font-family: 'Gazpacho';
 }
 
 .carousel-control-prev-icon, .carousel-control-next-icon {
@@ -45,6 +46,7 @@ h1 {
 
 .navbar-expand {
 	max-height: 60px;
+	background-color: #333;
 }
 
 .navbar-collapse {
@@ -59,20 +61,39 @@ h1 {
 .navbar-nav {
 	display: flex;
 	flex-direction: row;
+	justify-content: space-evenly;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	width: 100%;
 }
 
 .navbar-nav a {
 	padding: 15px 20px;
 	text-decoration: none;
-	color: #ffffff;
+	color: #000000;
+	display: flex;
+	align-items: center;
 }
 
 .navbar-nav a:hover {
 	background-color: #6fa08d;
+	border-radius: 4px;
 }
 
 .navbar-brand {
 	padding: 15px;
 	color: #ffffff;
 	font-size: 1.5rem;
+	display: flex;
+	align-items: center;
+}
+
+.register, .body {
+	background: linear-gradient(to bottom, #a0d6ff, #698c2e);
+	margin: 0;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
