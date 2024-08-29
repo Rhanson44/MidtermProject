@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/style.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/account.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
 </head>
 <body>
 	<!-- TODO: fix accordion -->
@@ -27,8 +28,7 @@
                             Username
                         </button>
                     </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse show"
-                         aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    
                         <div class="accordion-body">
                             <p>
                                 <c:out value="${sessionScope.username}" />
@@ -44,8 +44,7 @@
                             Status
                         </button>
                     </h2>
-                    <div id="collapseTwo" class="accordion-collapse collapse"
-                         aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                    
                         <div class="accordion-body">
                             <p>
                                 <c:choose>
@@ -59,18 +58,19 @@
                             </p>
                         </div>
                     </div>
-                </div>
-                <div class="accordion-item">
+              </div> 
+              <div class="accordion-item">
                     <h2 class="accordion-header" id="headingThree">
-                        <button class="accordion-button collapsed" type="button"
+                        <button class="accordion-button collapsed" style=" background-color: #c2f2cf;
+             border-color: #09331d;
+             color: #083008;" type="button"
                                 data-toggle="collapse" data-bs-target="#collapseThree"
-                                aria-expanded="false" aria-controls="collapseThree">
+                                aria-expanded="false" aria-controls="collapseThree";>
                             Park Comments
-                        </button>
-                    </h2>
-                    <div id="collapseThree" class="accordion-collapse collapse"
-                         aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
+                       </button>
+                    </h2> 
+                  
+                        <div class="accordion-body"> 
                             <c:choose>
                                 <c:when test="${not empty user.nationalParkComments}">
                                     <ul>
@@ -88,14 +88,14 @@
                 </div>
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingFour">
-                        <button class="accordion-button collapsed" type="button"
+                        <button class="accordion-button collapsed" style=" background-color: #c2f2cf;
+             border-color: #09331d; color: #083008;" type="button"
                                 data-toggle="collapse" data-bs-target="#collapseFour"
                                 aria-expanded="false" aria-controls="collapseFour">
                             Point of Interest Comments
                         </button>
                     </h2>
-                    <div id="collapseFour" class="accordion-collapse collapse"
-                         aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                    
                         <div class="accordion-body">
                             <c:choose>
                                 <c:when test="${not empty user.poiComments}">
@@ -114,14 +114,14 @@
                 </div>
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingFive">
-                        <button class="accordion-button collapsed" type="button"
+                        <button class="accordion-button collapsed" style=" background-color: #c2f2cf;
+             border-color: #09331d; color: #083008;" type="button"
                                 data-toggle="collapse" data-bs-target="#collapseFive"
                                 aria-expanded="false" aria-controls="collapseFive">
                             Trail Comments
                         </button>
                     </h2>
-                    <div id="collapseFive" class="accordion-collapse collapse"
-                         aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+                  
                         <div class="accordion-body">
                             <c:choose>
                                 <c:when test="${not empty user.trailComments}">
