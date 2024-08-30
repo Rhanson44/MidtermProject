@@ -19,13 +19,17 @@
 
     <div class="container">
         <br>
-        <h1 class="section-title">${park.name} Info</h1>
-
+        <div class="title-container text-center">
+            <h1 class="section-title">${park.name} Info</h1>
+            <a href="parkComment.do?parkId=${park.id}" class="btn btn-primary btn-sm mt-3">Comment Section</a>
+        </div>
+        <br>
+        <br>
         <!-- Animals Section -->
         <c:if test="${not empty park.animals}">
-            <div class="row">
+            <div class="row justify-content-center">
                 <c:forEach var="animal" items="${park.animals}">
-                    <div class="col-md-4 mb-4">
+                    <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
                         <div class="card">
                             <img src="${animal.imageUrl}" class="card-img-top" alt="${animal.name}">
                             <div class="card-body">
@@ -47,9 +51,9 @@
         
         <!-- Flora Section -->
         <c:if test="${not empty park.flora}">
-            <div class="row">
+            <div class="row justify-content-center">
                 <c:forEach var="flora" items="${park.flora}">
-                    <div class="col-md-4 mb-4">
+                    <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
                         <div class="card">
                             <img src="${flora.imageUrl}" class="card-img-top" alt="${flora.name}">
                             <div class="card-body">
@@ -71,9 +75,9 @@
 
         <!-- Mountains Section -->
         <c:if test="${not empty park.mountains}">
-            <div class="row">
+            <div class="row justify-content-center">
                 <c:forEach var="mountain" items="${park.mountains}">
-                    <div class="col-md-4 mb-4">
+                    <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
                         <div class="card">
                             <img src="${mountain.imageUrl}" class="card-img-top" alt="${mountain.name}">
                             <div class="card-body">
@@ -95,9 +99,9 @@
 
         <!-- Points of Interest Section -->
         <c:if test="${not empty park.interests}">
-            <div class="row">
+            <div class="row justify-content-center">
                 <c:forEach var="interest" items="${park.interests}">
-                    <div class="col-md-4 mb-4">
+                    <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
                         <div class="card">
                             <img src="${interest.imageUrl}" class="card-img-top" alt="${interest.name}">
                             <div class="card-body">
@@ -120,9 +124,9 @@
 
         <!-- Trails Section -->
         <c:if test="${not empty park.trails}">
-            <div class="row">
+            <div class="row justify-content-center">
                 <c:forEach var="trail" items="${park.trails}">
-                    <div class="col-md-4 mb-4">
+                    <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center">
                         <div class="card">
                             <img src="${trail.trailMap}" class="card-img-top" alt="${trail.name}">
                             <div class="card-body">

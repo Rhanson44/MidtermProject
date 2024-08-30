@@ -83,6 +83,7 @@
 	<c:if test="${empty loggedInUser}">
 		<div class="reroute">
 		<div class="container text-center my-5">
+			<br>
 			<p>Please Log in to view and post comments.</p>
 			<a class="btn btn-primary" href="login.do">Login</a> <a
 				class="btn btn-secondary" href="registerForm.do">Register</a>

@@ -1,58 +1,102 @@
 @charset "UTF-8";
 
 .card {
-	border: none;
-	text-align: center;
-	background-color: #f8f9fa;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	border-radius: 15px;
+    border: none;
+    text-align: center;
+    background-color: #f8f9fa;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    margin-bottom: 20px; /* Added margin-bottom to space out cards vertically */
 }
 
 .card-img-top {
-	width: 200px;
-	height: 200px;
-	object-fit: cover;
-	border-radius: 5%;
-	margin: 20px auto;
-	display: block;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5%;
+    margin: 20px auto;
+    display: block;
 }
 
 .card-body {
-	min-height: 120px;
+    min-height: 120px;
 }
 
 .btn-primary {
-	background-color: #42755b;
-	border-color: #09331d;
+    background-color: #42755b;
+    border-color: #09331d;
+}
+
+.title-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
 }
 
 .section-title {
-	font-weight: bold;
-	color: #4e5851;
-	text-align: center;
-	margin-bottom: 40px;
+    font-weight: bold;
+    color: #4e5851;
+    text-align: center;
+    margin-bottom: 40px;
 }
 
 .container {
-	margin-top: 40px;
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .side-panel {
-	position: fixed;
-	top: 0;
-	width: 160px;
-	height: 100%;
-	background:
-		url('https://st2.depositphotos.com/7893620/44723/v/450/depositphotos_447235653-stock-illustration-abstract-contemporary-nature-background-design.jpg')
-		no-repeat center center;
-	background-size: cover;
-	z-index: 1000;
+    position: fixed;
+    top: 0;
+    width: 160px;
+    height: 100%;
+    background: url('https://st2.depositphotos.com/7893620/44723/v/450/depositphotos_447235653-stock-illustration-abstract-contemporary-nature-background-design.jpg') no-repeat center center;
+    background-size: cover;
+    z-index: 1000;
 }
 
 .left-panel {
-	left: 0;
+    left: 0;
 }
 
 .right-panel {
-	right: 0;
+    right: 0;
+}
+
+@media (max-width: 1200px) {
+    .side-panel {
+        width: 120px
+    }
+
+    .container {
+        margin-left: 140px;
+        margin-right: 140px;
+    }
+}
+
+@media (max-width: 992px) {
+    .side-panel {
+        width: 100px;
+    }
+
+    .container {
+        margin-left: 120px;
+        margin-right: 120px;
+    }
+}
+
+@media (max-width: 768px) {
+    .side-panel {
+        display: none;
+    }
+
+    .container {
+        margin-left: 0;
+        margin-right: 0;
+    }
 }
