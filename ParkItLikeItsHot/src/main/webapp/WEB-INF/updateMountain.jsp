@@ -23,10 +23,10 @@
     <input type="text" id="mountainName" name="name" value="${updatedMountain.name}"><br><br> 
 
     <label for="mountainElevationInMeters">Elevation (in meters):</label>
-    <input type="text" id="mountainElevationInMeters" name="elevation" value="${updatedMountain.elevationInMeters}"><br><br>
+    <input type="text" id="mountainElevationInMeters" name="elevationInMeters" value="${updatedMountain.elevationInMeters}"><br><br>
 
     <label for="mountainAverageSnowfall">Average Snowfall (in inches):</label>
-    <input type="text" id="mountainAverageSnowfall" name="snowfall" value="${updatedMountain.averageSnowfall}"><br><br>
+    <input type="text" id="mountainAverageSnowfall" name="averageSnowfall" value="${updatedMountain.averageSnowfall}"><br><br>
     
     <label for="mountainDescription">Description:</label>
     <input type="text" id="mountainDescription" name="description" value="${updatedMountain.description}"><br><br> 
