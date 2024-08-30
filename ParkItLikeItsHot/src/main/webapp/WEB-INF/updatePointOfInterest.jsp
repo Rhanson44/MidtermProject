@@ -33,7 +33,7 @@
                         <input type="number" id="poiLongitude" name="longitude" value="${updatedPointOfInterest.longitude}"><br>
 
                         <label for="poiImageUrl">Image Url:</label>
-                        <input type="number" id="poiImageUrl" name="imageUrl" value="${updatedPointOfInterest.imageUrl}"><br>
+                        <input type="text" id="poiImageUrl" name="imageUrl" value="${updatedPointOfInterest.imageUrl}"><br>
 
                         <button type="submit">Update Point of Interest</button>
                     </form>
