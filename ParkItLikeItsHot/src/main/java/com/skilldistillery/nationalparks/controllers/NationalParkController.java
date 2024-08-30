@@ -197,10 +197,10 @@ public class NationalParkController {
 		return mv;
 	}
 	@RequestMapping(path="updatePointOfInterest.do", method=RequestMethod.GET)
-	public ModelAndView showUpdatePointOfInterestForm(@RequestParam("pointOfInterestId") int pointOfInterestId) {
+	public ModelAndView showUpdatePointOfInterestForm(@RequestParam("poiId") int poiId) {
 		ModelAndView mv = new ModelAndView();
-		PointOfInterest updatePointOfInterest = parkDAO.findByPointOfInterestId(pointOfInterestId);
-		mv.addObject("pointOfInterestTypes", parkDAO.findAllPointOfInterestTypes());
+		PointOfInterest updatePointOfInterest = parkDAO.findByPointOfInterestId(poiId);
+//		mv.addObject("pointOfInterestTypes", parkDAO.findAllPointOfInterestTypes());
 		mv.addObject("updatedPointOfInterest", updatePointOfInterest);
 		mv.setViewName("updatePointOfInterest");
 		return mv;
