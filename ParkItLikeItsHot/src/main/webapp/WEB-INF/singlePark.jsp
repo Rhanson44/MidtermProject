@@ -44,11 +44,11 @@
                 </c:forEach>
             </div>
         </c:if>
-
+		<div class="empty">
         <c:if test="${empty park.animals}">
             <p>No animals found for this park.</p>
         </c:if>
-        
+        </div>
         <!-- Flora Section -->
         <c:if test="${not empty park.flora}">
             <div class="row justify-content-center">
@@ -68,11 +68,11 @@
                 </c:forEach>
             </div>
         </c:if>
-
+		<div class="empty">
         <c:if test="${empty park.flora}">
             <p>No flora found for this park.</p>
         </c:if>
-
+		</div>
         <!-- Mountains Section -->
         <c:if test="${not empty park.mountains}">
             <div class="row justify-content-center">
@@ -92,11 +92,11 @@
                 </c:forEach>
             </div>
         </c:if>
-
+		<div class="empty">
         <c:if test="${empty park.mountains}">
             <p>No mountains found for this park.</p>
         </c:if>
-
+		</div>
         <!-- Points of Interest Section -->
         <c:if test="${not empty park.interests}">
             <div class="row justify-content-center">
@@ -117,11 +117,11 @@
                 </c:forEach>
             </div>
         </c:if>
-
+		<div class=empty>
         <c:if test="${empty park.interests}">
             <p>No points of interest found for this park.</p>
         </c:if>
-
+		</div>
         <!-- Trails Section -->
         <c:if test="${not empty park.trails}">
             <div class="row justify-content-center">
@@ -144,11 +144,11 @@
                 </c:forEach>
             </div>
         </c:if>
-
+		<div class="empty">
         <c:if test="${empty park.trails}">
             <p>No trails found for this park.</p>
         </c:if>
-
+		</div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
