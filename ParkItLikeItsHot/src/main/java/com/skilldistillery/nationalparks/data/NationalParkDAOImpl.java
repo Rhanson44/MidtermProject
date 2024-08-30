@@ -262,8 +262,8 @@ public class NationalParkDAOImpl implements NationalParkDAO {
 	}
 
 	@Override
-	public PointOfInterest updatePointOfInterest(int pointOfInterestId, PointOfInterest updatedPointOfInterest) {
-		PointOfInterest pointOfInterest = em.find(PointOfInterest.class, pointOfInterestId);
+	public PointOfInterest updatePointOfInterest(int poiId, PointOfInterest updatedPointOfInterest) {
+		PointOfInterest pointOfInterest = em.find(PointOfInterest.class, poiId);
 		
 		if(pointOfInterest != null) {
 			pointOfInterest.setName(updatedPointOfInterest.getName());

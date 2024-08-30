@@ -32,8 +32,8 @@
                         <label for="poiLongitude">Longitude:</label>
                         <input type="number" id="poiLongitude" name="longitude" value="${updatedPointOfInterest.longitude}"><br>
 
-                        <label for="poiImageUrl">Length (miles):</label>
-                        <input type="number" id="poiLength" name="imageUrl" value="${updatedPointOfInterest.lengthInMiles}"><br>
+                        <label for="poiImageUrl">Image Url:</label>
+                        <input type="text" id="poiImageUrl" name="imageUrl" value="${updatedPointOfInterest.imageUrl}"><br>
 
                         <button type="submit">Update Point of Interest</button>
                     </form>
