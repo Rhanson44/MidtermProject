@@ -36,7 +36,7 @@
 							<div class="col-md-12 col-lg-10 col-xl-8">
 								<c:if test="${not empty loggedInUser}">
 									<form action="postPoiComment.do" method="POST">
-										<input type="hidden" name="trailId" value="${poi.id}">
+										<input type="hidden" name="poiId" value="${poi.id}">
 										<div class="form-group">
 											<textarea class="form-control" name="content" rows="4"
 												placeholder="Write your comment here..." required></textarea>
