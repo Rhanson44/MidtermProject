@@ -5,16 +5,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Edit Trail</title>
+<title>Edit Point of Interest</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/style.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/update.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
     <jsp:include page="nav.jsp"/>
-    <section class="bg-image" style="background-image: url('https://iucn.org/sites/default/files/content/images/2020/shutterstock_116041936.png');">
+    <section class="bg-image" style="background-image: url('https://i0.wp.com/pagelakepowellhub.com/wp-content/uploads/2023/02/HorseshoeBEndSM.webp');">
         <div class="mask">
-            <h2>Edit Trail</h2>
+            <h2>Edit Point of Interest</h2>
             <c:choose>
                 <c:when test="${not empty updatedPointOfInterest}">
                     <form action="updatePointOfInterest.do" method="POST">
